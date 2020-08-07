@@ -1,0 +1,128 @@
+@charset "UTF-8";
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+ul{list-style: none;}
+
+#wrap{
+	width:1300px;
+	min-height:1000px;
+	margin: 0px auto;
+	padding: 5px;
+	border: 1px solid;
+}
+
+#header{height: 200px;}
+
+#logo{
+	width:231px;
+	height: 66px;
+	margin: 67px 0px 15px 67px;
+	float: left;
+}
+
+#mainMenu{
+	float: left;
+	margin-left: 200px;
+	margin-top: 100px;
+}
+
+
+#mainMenu ul li{
+	float: left;
+	margin:10px;
+}
+
+#mainMenu ul li a{
+	color: #da500e;
+	text-decoration: none;
+	font-weight: bolder;
+	padding-bottom: 5px;
+}
+
+#mainMenu ul li a:hover{
+	border-bottom: 2px solid #0080c0;
+}
+
+#title{
+	margin-left: 100px;
+	margin-top: 30px;
+}
+
+#row1{padding: 5px;}
+#searchBox{
+	margin-left: 100px;
+	margin-bottom: 10px;
+}
+
+#weeklyWriteForm{
+	float: left;
+	margin-top: 10px;
+	margin-left: 20px;
+	border: 1px solid;
+	width: 650px;
+}
+#weeklyWriteForm form{
+	padding: 10px;
+	margin-left: 10px;
+}
+
+#button button{
+	height: 45px;
+	margin-bottom: 5px;
+}
+#scheduleForm{
+	float: left;
+	margin-top: 10px;
+	margin-left: 20px;
+	border: 1px solid;
+}
+#scheduleForm form{padding: 10px;}
+.buttonBox {text-align: center;}
+.formRow{margin: 3px;}
+/* label 라인 정렬 */
+.lbWidth{width: 65px;display: inline-block;}
+.verticalTop{vertical-align: top;}
+.verticalCenter{vertical-align: center;}
+.lbWord-break{word-break: keep-all;text-align: center;}
+/* maring 10~50, 100 */
+.margin_10{margin: 10px;}
+.marginTop_10{margin-top: 10px;}
+.marginTop_20{margin-top: 20px;}
+.marginTop_30{margin-top: 30px;}
+.marginTop_40{margin-top: 40px;}
+.marginTop_50{margin-top: 50px;}
+.marginRight_10{margin-right: 10px;}
+.marginRight_20{margin-right: 20px;}
+.marginRight_30{margin-right: 30px;}
+.marginRight_40{margin-right: 40px;}
+.marginRight_50{margin-right: 50px;}
+.marginLeft_10{margin-left: 10px;}
+.marginLeft_20{margin-left: 20px;}
+.marginLeft_30{margin-left: 30px;}
+.marginLeft_40{margin-left: 40px;}
+.marginLeft_50{margin-left: 50px;}
+.marginBottom_10{margin-bottom: 10px;}
+.marginBottom_20{margin-bottom: 20px;}
+.marginBottom_30{margin-bottom: 30px;}
+.marginBottom_40{margin-bottom: 40px;}
+.marginBottom_50{margin-bottom: 50px;}
+.marginTop_100{margin-top: 100px;}
+.marginRight_100{margin-right: 100px;}
+.marginLeft_100{margin-left: 100px;}
+.marginBottom_100{margin-bottom: 100px;}
+/* float */
+.floatLeft{float: left;}
+.floatRight{float: right;}
+.clear{clear: both;}
+.horison{text-align: }
+a{text-decoration: none;color: black;}
+.hover_link:hover{color: red;}
+.subPageForm form{padding: 10px;}
+a:active{color: black;}
+
+
+
+
