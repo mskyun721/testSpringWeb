@@ -1,11 +1,23 @@
-package com.test.dao;
+package com.test.service;
 
 import java.util.Calendar;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.stereotype.Service;
 
+import com.test.dao.HomeDAO;
+import com.test.dto.CstMstInfoDTO;
+import com.test.dto.UserMstInfoDTO;
+
 @Service
 public class HomeServiceImpl implements HomeService {
+	@Inject
+	private HomeDAO homeDAO;
+	
 	Calendar cal = Calendar.getInstance();
 	@Override
 	public String[][] dayOfWeek(int year,int month) {
@@ -50,4 +62,41 @@ public class HomeServiceImpl implements HomeService {
 		}
 		return day;
 	}
+	
+	@Override
+	public void insertUser(UserMstInfoDTO umiDTO) {
+		homeDAO.insertUser(umiDTO);
+	}
+	
+	@Override
+	public List<UserMstInfoDTO> selectUser() {
+		List<UserMstInfoDTO> userList;
+		userList = homeDAO.selectUser();
+		
+		return userList;
+	}
+	
+	@Override
+	public void delUser(UserMstInfoDTO umiDTO) {
+		homeDAO.delUser(umiDTO);
+	}
+	
+	@Override
+	public boolean loginCheck(UserMstInfoDTO umiDTO, HttpSession session) {
+		boolean result=false;
+		int loginCheck = homeDAO.loginCheck(umiDTO);
+		if (loginCheck==1) {
+			session.setAttribute("USERID", umiDTO.getUSERID());
+			result=true;
+		}else {
+			System.out.println("erro");
+			
+		}
+		return result;
+	}
+	@Override
+	public void insertCst(CstMstInfoDTO cmiDTO) {
+		homeDAO.insertCst(cmiDTO);
+	}
+	
 }

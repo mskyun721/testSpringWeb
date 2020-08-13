@@ -3,32 +3,75 @@ body{
 	margin: 0px;
 	padding: 0px;
 }
-
 ul{list-style: none;}
-
+#center{
+	position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+#center #login{
+	display: inline-block;
+    vertical-align: middle;
+}
+#center #blank{
+	display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+}
+#login{
+	width: 500px;
+	height: 300px;
+	border: 1px solid;
+}
+#login form{
+	margin: 150px 0px 0px 150px;
+	padding: 10px;
+}
+#login form button{
+	float: right;
+	margin-right: 78px;
+}
 #wrap{
-	width:1300px;
 	min-height:1000px;
 	margin: 0px auto;
 	padding: 5px;
 	border: 1px solid;
 }
-
-#header{height: 200px;}
-
+#header{height: 50px;}
 #logo{
-	width:231px;
-	height: 66px;
-	margin: 67px 0px 15px 67px;
+	width:20%;
+	margin: 42px 0px 15px 42px;
 	float: left;
 }
-
+#logo img{
+	width:115px;
+	height: 33px;
+}
 #mainMenu{
 	float: left;
-	margin-left: 200px;
-	margin-top: 100px;
 }
-
+#sidebar{
+	float: left;
+	width: 250px;
+	border-right: 1px solid;
+	min-height:1000px;
+}
+#leftMenu{
+	
+}
+#leftMenu ul li a{
+	color: #da500e;
+	text-decoration: none;
+	font-weight: bolder;
+}
+#leftMenu ul li a:hover{
+	border-bottom: 2px solid #0080c0;
+}
+#leftMenu ul li{
+	margin-bottom: 10px;
+}
 
 #mainMenu ul li{
 	float: left;
@@ -51,7 +94,7 @@ ul{list-style: none;}
 	margin-top: 30px;
 }
 
-#row1{padding: 5px;}
+#row1{padding: 5px; float: left;}
 #searchBox{
 	margin-left: 100px;
 	margin-bottom: 10px;
@@ -83,7 +126,7 @@ ul{list-style: none;}
 .buttonBox {text-align: center;}
 .formRow{margin: 3px;}
 /* label 라인 정렬 */
-.lbWidth{width: 65px;display: inline-block;}
+.lbWidth{width: 80px;display: inline-block;}
 .verticalTop{vertical-align: top;}
 .verticalCenter{vertical-align: center;}
 .lbWord-break{word-break: keep-all;text-align: center;}

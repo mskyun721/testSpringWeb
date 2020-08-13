@@ -1,22 +1,31 @@
 package com.test.controller;
 
+import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
+import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.support.DaoSupport;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.test.dao.HomeService;
+import com.test.dao.HomeDAO;
 import com.test.dto.CalDTO;
-
-import sun.java2d.pipe.SpanShapeRenderer.Simple;
+import com.test.dto.CstMstInfoDTO;
+import com.test.dto.UserMstInfoDTO;
+import com.test.service.HomeService;
 
 /**
  * Handles requests for the application home page.
@@ -30,7 +39,7 @@ public class HomeController {
 	HomeService homeService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String index(Model model, CalDTO calDto) {
+	public String index(Model model, CalDTO calDto,HttpSession session) {
 		Calendar cal = Calendar.getInstance();
 		int year;
 		int month;
@@ -41,11 +50,13 @@ public class HomeController {
 			year = calDto.getYear();
 			month = calDto.getMonth()-1;
 		}
+		String USERID = (String) session.getAttribute("USERID");
 		
 		String[][] day = homeService.dayOfWeek(year,month);
 		model.addAttribute("day", day);
 		model.addAttribute("year",year);
 		model.addAttribute("month",month+1);
+		model.addAttribute("USERID",USERID);
 		
 		return "index";
 	}
@@ -75,6 +86,59 @@ public class HomeController {
 		
 		return "scheduleForm";
 	}
+	
+	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
+	public String addUserGet(Model model) {
+		List<UserMstInfoDTO> userList;
+		userList=homeService.selectUser();
+		model.addAttribute("userList",userList);
+		
+		return "addUser";
+	}
+	
+	@RequestMapping(value = "/insertUser", method = RequestMethod.POST)
+	public String addUserPost(UserMstInfoDTO umiDTO,Model model) {
+		homeService.insertUser(umiDTO);
+		return "redirect:addUser";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Model model,UserMstInfoDTO umiDTO) {
+		
+		return "login";
+	}
+	
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	public String loginCheck(Model model,UserMstInfoDTO umiDTO,HttpSession session) {
+		boolean result =  homeService.loginCheck(umiDTO,session);
+		if (result) {
+			return "redirect:/";
+		}else {
+			return "login";
+		}
+	}
+	
+	@RequestMapping(value="/corpManage", method=RequestMethod.GET)
+	public String corpManage()	
+	{
+		return "corpManage";
+	}
+	
+	@RequestMapping(value="/corpManageForm", method=RequestMethod.GET)
+	public String corpManageForm()	
+	{
+		return "corpManageForm";
+	}
+	
+	@RequestMapping(value="/insertCst", method=RequestMethod.POST)
+	public String insertCst(CstMstInfoDTO cmiDTO)	
+	{
+		homeService.insertCst(cmiDTO);
+		System.out.println(cmiDTO.getCSTNM());
+		return "corpManageForm";
+	}
+	
+	
 	
 	
 }

@@ -14,6 +14,9 @@
 	<jsp:include page="../inc/header.jsp"/>
 	<!-- header -->
 	<div id="content">
+		<!-- sidebar -->
+		<jsp:include page="../inc/sidebar.jsp"/>
+		<!-- sidebar -->
 		<div id="row1">
 			<div id="title">
 				<h3>업체 요청 사항</h3>

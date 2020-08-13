@@ -42,6 +42,9 @@ $(document).ready(function() {
 	<jsp:include page="inc/header.jsp"/>
 	<!-- header -->
 	<div id="content">
+		<!-- sidebar -->
+		<jsp:include page="inc/sidebar.jsp"/>
+		<!-- sidebar -->
 		<div id="row1">
 			<div id="title">
 				<h3>일정표</h3>
@@ -62,7 +65,7 @@ $(document).ready(function() {
 			<div class="marginLeft_100 floatLeft">
 				<table id="calTable">
 					<thead>
-						<tr ><th colspan="2" class="red">Sun</th>
+						<tr><th colspan="2" class="red">Sun</th>
 							<th colspan="2">Mon</th>
 							<th colspan="2">Tues</th>
 							<th colspan="2">Wed</th>

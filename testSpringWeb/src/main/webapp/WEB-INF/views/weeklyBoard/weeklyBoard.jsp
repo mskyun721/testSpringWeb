@@ -42,6 +42,9 @@ $(document).ready(function() {
 	<jsp:include page="../inc/header.jsp"/>
 	<!-- header -->
 	<div id="content">
+		<!-- sidebar -->
+		<jsp:include page="../inc/sidebar.jsp"/>
+		<!-- sidebar -->
 		<div id="row1">
 			<div id="title">
 				<h3>주간 업무일지</h3>
