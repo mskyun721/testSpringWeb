@@ -9,6 +9,7 @@
 <link href="resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="resources/css/table.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="resources/js/sidebarDrop.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	/* select option 생성 */
@@ -18,11 +19,11 @@ $(document).ready(function() {
 	var firstDay = new Date(year+'-'+month+'-01').getDay();
 	
 	for(i=0; i<5 ; i++){
-		year = today.getFullYear()-2+i;
-		if (year == today.getFullYear()) {
-			$('#year').append("<option value='"+year+"' selected>"+year+"</option>");
+		var optionYear = today.getFullYear()-2+i;
+		if (optionYear == year) {
+			$('#year').append("<option value='"+optionYear+"' selected>"+optionYear+"</option>");
 		}else{
-			$('#year').append("<option value='"+year+"'>"+year+"</option>");
+			$('#year').append("<option value='"+optionYear+"'>"+optionYear+"</option>");
 		}
 	}
 	

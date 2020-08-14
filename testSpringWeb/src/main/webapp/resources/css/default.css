@@ -3,7 +3,15 @@ body{
 	margin: 0px;
 	padding: 0px;
 }
-ul{list-style: none;}
+ul, li{list-style: none;margin: 0px; padding: 0px;}
+#wrap{
+	min-height:1000px;
+	margin: 0px auto;
+	padding: 5px;
+	border: 1px solid;
+}
+
+/* login */
 #center{
 	position: absolute;
     text-align: center;
@@ -33,61 +41,94 @@ ul{list-style: none;}
 	float: right;
 	margin-right: 78px;
 }
-#wrap{
-	min-height:1000px;
-	margin: 0px auto;
-	padding: 5px;
-	border: 1px solid;
-}
+/* login */
+
+
+/* header */
 #header{height: 50px;}
+#mainMenu{margin-left: 15%;}
+.dropbtn {
+  background-color: #ff8040;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown .dropbtn:hover {background-color: #3e8e41;}
+/* header */
+
+/* sidebar */
 #logo{
-	width:20%;
-	margin: 42px 0px 15px 42px;
-	float: left;
+	width:100%;
+	text-align: center;
 }
 #logo img{
-	width:115px;
-	height: 33px;
+	width:70%;
 }
-#mainMenu{
-	float: left;
+#session{
+	text-align: center;
+	margin: 10px;
+	height: 50px;
+	text-align: center;
 }
 #sidebar{
 	float: left;
-	width: 250px;
+	width: 15%;
 	border-right: 1px solid;
 	min-height:1000px;
 }
-#leftMenu{
-	
+.dropMenu{
+	background-color: #717171;
+	color:white;
+	width: 100%;
+	vertical-align: middle;
 }
-#leftMenu ul li a{
-	color: #da500e;
-	text-decoration: none;
-	font-weight: bolder;
+.dropCheck{display: none;}
+.clickDrop{
+	font-weight: bold;
+	margin-left: 10px;
+	background-color: #717171;
+	color: white;
 }
-#leftMenu ul li a:hover{
-	border-bottom: 2px solid #0080c0;
+.dropDiv{
+	background-color:white;
+	height: 0px;
+	overflow: hidden;
+	padding-left: 15px;
+	padding-top: 10px;
 }
-#leftMenu ul li{
-	margin-bottom: 10px;
+.dropDiv a{
+	display: block;
+	margin-bottom: 5px;
 }
+.dropCheck:checked + .clickDrop + .dropDiv{
+	height: 400px;
+}
+/* sidebar */
 
-#mainMenu ul li{
-	float: left;
-	margin:10px;
-}
-
-#mainMenu ul li a{
-	color: #da500e;
-	text-decoration: none;
-	font-weight: bolder;
-	padding-bottom: 5px;
-}
-
-#mainMenu ul li a:hover{
-	border-bottom: 2px solid #0080c0;
-}
 
 #title{
 	margin-left: 100px;

@@ -65,8 +65,7 @@ $(document).ready(function() {
 								<th>타입</th>
 								<th>비고</th>
 								<th></th></tr>
-							<tr>
-							<th><input type="button" onclick="window.open('RequestForm','_blank','width=585, height=390'); return false" value="add"></th>
+							<tr><th></th>
 								<th></th>
 								<th><input type="text" size="10" name="USERID" value="" id="USERID"></th>
 								<th><input type="text" size="10" name="USERPW" value="" id="USERPW"></th>

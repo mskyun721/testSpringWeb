@@ -84,13 +84,11 @@ public class HomeServiceImpl implements HomeService {
 	@Override
 	public boolean loginCheck(UserMstInfoDTO umiDTO, HttpSession session) {
 		boolean result=false;
-		int loginCheck = homeDAO.loginCheck(umiDTO);
-		if (loginCheck==1) {
-			session.setAttribute("USERID", umiDTO.getUSERID());
+		UserMstInfoDTO loginCheck = homeDAO.loginCheck(umiDTO);
+		if (loginCheck.getUSERNM() != "") {
+			session.setAttribute("USERNM", loginCheck.getUSERNM());
+			session.setAttribute("JOBGRADE", loginCheck.getJOBGRADE());
 			result=true;
-		}else {
-			System.out.println("erro");
-			
 		}
 		return result;
 	}
@@ -98,5 +96,19 @@ public class HomeServiceImpl implements HomeService {
 	public void insertCst(CstMstInfoDTO cmiDTO) {
 		homeDAO.insertCst(cmiDTO);
 	}
-	
+	@Override
+	public List<CstMstInfoDTO> corpList(CstMstInfoDTO cmiDTO) {
+		List<CstMstInfoDTO> corpList;
+		corpList=homeDAO.corpList(cmiDTO);
+		
+		return corpList;
+	}
+	@Override
+	public void delCorp(CstMstInfoDTO cmiDTO) {
+		homeDAO.delCorp(cmiDTO);
+	}
+	@Override
+	public CstMstInfoDTO selectOneCST(CstMstInfoDTO cmiDTO) {
+		return homeDAO.selectOneCST(cmiDTO);
+	}
 }

@@ -18,9 +18,9 @@ $(document).ready(function() {
 		var result = $('#delRow'+num).val();
 		if (confirmResult) {
 			$.ajax({
-				url:"delUser",
+				url:"delCorp",
 				type:"get",
-				data:{USERID:result},
+				data:{CSTCD:result},
 				success:function(data){
 					location.reload();
 				}
@@ -50,7 +50,7 @@ $(document).ready(function() {
 				
 				</div>
 				<div class="marginLeft_50">
-					<form method="post" action="insertUser">
+					<form method="GET">
 					<table class="table1500">
 					<thead>
 						<tr><th></th>
@@ -86,22 +86,26 @@ $(document).ready(function() {
 							</tr>
 					</thead>
 						<tbody>
-							<tr><td><button type="button">edit</button></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td><input type="button" value="Del" id="btnDel">
-									<input type="hidden" id="delRow" value=""></td></tr>
+							<c:forEach items="${corpList }" var="list" varStatus="i">
+							<tr><td><input type="button" 
+										onclick="window.open('corpManageForm?CSTCD=${list.CSTCD}',
+										'_blank','width=585, height=390'); return false" value="edit"></td>
+								<td>${i.index+1 }</td>
+								<td>${list.CSTCD }</td>
+								<td>${list.CSTNM }</td>
+								<td>${list.CSTTYPE }</td>
+								<td>${list.CSTCEO }</td>
+								<td>${list.BIZNO }</td>
+								<td>${list.CSTKIND }</td>
+								<td>${list.CSTITEM }</td>
+								<td>${list.TELNO }</td>
+								<td>${list.FAXNO }</td>
+								<td>${list.ZIPNO }</td>
+								<td>${list.ADDR1 } ${list.ADDR2 }</td>
+								<td>${list.REMARK }</td>
+								<td><input type="button" value="Del" id="btnDel${i.index }">
+									<input type="hidden" id="delRow${i.index }" value="${list.CSTCD }"></td></tr>
+							</c:forEach>
 						</tbody>
 					</table>
 					</form>

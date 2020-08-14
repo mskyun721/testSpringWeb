@@ -12,7 +12,13 @@ public interface HomeDAO {
 
 	public void delUser(UserMstInfoDTO umiDTO);
 
-	public int loginCheck(UserMstInfoDTO umiDTO);
+	public UserMstInfoDTO loginCheck(UserMstInfoDTO umiDTO);
 
 	public void insertCst(CstMstInfoDTO cmiDTO);
+
+	public List<CstMstInfoDTO> corpList(CstMstInfoDTO cmiDTO);
+
+	public void delCorp(CstMstInfoDTO cmiDTO);
+
+	public CstMstInfoDTO selectOneCST(CstMstInfoDTO cmiDTO);
 }

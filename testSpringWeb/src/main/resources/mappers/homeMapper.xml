@@ -3,26 +3,36 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.test.mappers.usermstinfoMapper">
+<mapper namespace="com.test.mappers.homeMapper">
 	<insert id="insertUser">
 		{call SP_SET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{REMARK})}
 	</insert>
-	
 	<select id="selectUser" resultType="userDTO">
 		{CALL SP_GET_TBUSERMSTINFO()}
 	</select>
-	
 	<delete id="delUser">
 		{call SP_DEL_TBUSERMSTINFO(#{USERID})}
 	</delete>
 	
-	<select id="loginCheck" resultType="int">
+	
+	<select id="loginCheck" resultType="userDTO">
 		{call SP_GET_TBUSERMSTINFO_LOGIN(#{USERID},#{USERPW})}
 	</select>
+	
 	
 	<insert id="insertCst">
 		{call SP_SET_TBCSTMSTINFO(#{CSTCD},#{CSTNM},#{CSTTYPE},#{CSTCEO},#{BIZNO},#{CSTKIND},
 		#{CSTITEM},#{TELNO},#{FAXNO},#{ZIPNO},#{ADDR1},#{ADDR2},#{CSTEMPNM},#{REMARK})}
 	</insert>
+	<select id="corpList" resultType="cstDTO">
+		{call SP_GET_TBCSTMSTINFO4(#{CSTCD},#{CSTNM},#{CSTTYPE},#{CSTCEO},#{BIZNO},#{CSTKIND},
+		#{CSTITEM},#{TELNO},#{FAXNO},#{ZIPNO},#{ADDR1},#{ADDR2},#{CSTEMPNM},#{REMARK})}
+	</select>
+	<delete id="delCorp">
+		{call SP_DEL_TBCSTMSTINFO(#{CSTCD})}
+	</delete>
+	<select id="selectOneCST" resultType="cstDTO">
+		{call SP_GET_TBCSTMSTINFO2(#{CSTCD})}
+	</select>
 
 </mapper>

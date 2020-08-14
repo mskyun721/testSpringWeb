@@ -14,4 +14,7 @@ public interface HomeService {
 	public void delUser(UserMstInfoDTO umiDTO);
 	public boolean loginCheck(UserMstInfoDTO umiDTO, HttpSession session);
 	public void insertCst(CstMstInfoDTO cmiDTO);
+	public List<CstMstInfoDTO> corpList(CstMstInfoDTO cmiDTO);
+	public void delCorp(CstMstInfoDTO cmiDTO);
+	public CstMstInfoDTO selectOneCST(CstMstInfoDTO cmiDTO);
 }

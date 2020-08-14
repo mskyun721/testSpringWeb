@@ -14,7 +14,7 @@ import com.test.dto.UserMstInfoDTO;
 public class HomeDAOImpl implements HomeDAO {
 	@Inject
 	private SqlSession sqlSession;
-	private static final String Namespace = "com.test.mappers.usermstinfoMapper";
+	private static final String Namespace = "com.test.mappers.homeMapper";
 	
 	@Override
 	public void insertUser(UserMstInfoDTO umiDTO) {
@@ -29,14 +29,26 @@ public class HomeDAOImpl implements HomeDAO {
 		sqlSession.delete(Namespace+".delUser",umiDTO);
 	}
 	@Override
-	public int loginCheck(UserMstInfoDTO umiDTO) {
-		int loginCheck = sqlSession.selectOne(Namespace+".loginCheck", umiDTO);
-		return loginCheck;
+	public UserMstInfoDTO loginCheck(UserMstInfoDTO umiDTO) {
+		return sqlSession.selectOne(Namespace+".loginCheck", umiDTO);
+		
 	}
 	@Override
 	public void insertCst(CstMstInfoDTO cmiDTO) {
 		sqlSession.insert(Namespace+".insertCst",cmiDTO);
 		
+	}
+	@Override
+	public List<CstMstInfoDTO> corpList(CstMstInfoDTO cmiDTO) {
+		return sqlSession.selectList(Namespace+".corpList",cmiDTO);
+	}
+	@Override
+	public void delCorp(CstMstInfoDTO cmiDTO) {
+		sqlSession.delete(Namespace+".delCorp",cmiDTO);
+	}
+	@Override
+	public CstMstInfoDTO selectOneCST(CstMstInfoDTO cmiDTO) {
+		return sqlSession.selectOne(Namespace+".selectOneCST",cmiDTO);
 	}
 
 }

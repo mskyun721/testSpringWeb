@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,18 +13,19 @@
 $(document).ready(function() {
 	/* select option 생성 */
 	var today = new Date();
-	var year = today.getFullYear();
-	var month = today.getMonth()+1;
+	var year = $('#todayYear').val();
+	var month = $('#todayMonth').val();
 	var firstDay = new Date(year+'-'+month+'-01').getDay();
 	
 	for(i=0; i<5 ; i++){
-		year = today.getFullYear()-2+i;
-		if (year == today.getFullYear()) {
-			$('#year').append("<option value='"+year+"' selected>"+year+"</option>");
+		var optionYear = today.getFullYear()-2+i;
+		if (optionYear == year) {
+			$('#year').append("<option value='"+optionYear+"' selected>"+optionYear+"</option>");
 		}else{
-			$('#year').append("<option value='"+year+"'>"+year+"</option>");
+			$('#year').append("<option value='"+optionYear+"'>"+optionYear+"</option>");
 		}
 	}
+	
 	
 	for(i=1; i<=12 ; i++){
 		if (month == i) {
@@ -32,6 +34,27 @@ $(document).ready(function() {
 			$('#month').append("<option value='"+i+"'>"+i+"</option>");
 		}
 	}
+	
+	
+	$("[id^=trRow]").click(function () {
+		var id = $(this).attr("id");
+		var num = id.replace("trRow","");
+		var week = $('#start'+num).text().split(' ~ ');
+		var user = $('#uer'+num).text(); 
+		var start = week[0].trim();
+		var end = week[1].trim();
+		$.ajax({
+			url:"showReport",
+			type:"get",
+			data:{STARTWEEK:start,
+					ENDWEEK:end,
+					USERNM:user},
+			success:function(data){
+				alert(data.weeklyList.STARTWEEK);
+			}
+		});
+		
+	});
 	
 });
 </script>
@@ -72,72 +95,50 @@ $(document).ready(function() {
 								<th>직급</th></tr>
 						</thead>
 						<tbody>
-							<tr><td>1</td>
-								<td>yyyy-mm-dd ~ yyyy-mm-dd</td>
-								<td>xxx</td>
-								<td>xx</td></tr>
-							<tr><td>2</td>
-								<td>yyyy-mm-dd ~ yyyy-mm-dd</td>
-								<td>xxx</td>
-								<td>xx</td></tr>
-							<tr><td>3</td>
-								<td>yyyy-mm-dd ~ yyyy-mm-dd</td>
-								<td>xxx</td>
-								<td>xx</td></tr>
-							<tr><td>4</td>
-								<td>yyyy-mm-dd ~ yyyy-mm-dd</td>
-								<td>xxx</td>
-								<td>xx</td></tr>
-							<tr><td>5</td>
-								<td>yyyy-mm-dd ~ yyyy-mm-dd</td>
-								<td>xxx</td>
-								<td>xx</td></tr>
-							<tr><td>6</td>
-								<td>yyyy-mm-dd ~ yyyy-mm-dd</td>
-								<td>xxx</td>
-								<td>xx</td></tr>
-							<tr><td>7</td>
-								<td>yyyy-mm-dd ~ yyyy-mm-dd</td>
-								<td>xxx</td>
-								<td>xx</td></tr>
+							<c:forEach items="${weeklyList }" var="list" varStatus="i">
+							<tr onclick="selectRow('${list.STARTWEEK}','${list.ENDWEEK }','${list.USERNM }');" id="trRow${i.index }" class="hover_link"><td>${i.index+1 }</td>
+								<td id="start${i.index }">${list.STARTWEEK } ~ ${list.ENDWEEK }</td>
+								<td id="user${i.index }">${list.USERNM }</td>
+								<td>${list.JOBGRADE }</td></tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div><!-- TaskTable end -->
-			</div><!-- row1_1 end -->
+			</div>
 			<div class="floatLeft">
-				<div class="marginLeft_20">
-					<button id="">저장</button>&nbsp;
-					<button id="">삭제</button>&nbsp;
-					<button id="">취소</button>
-				</div>
-				<div id="weeklyWriteForm">
-					<form>
+				<form action="/sunsoft/weeklyBoard/insertBoard" method="post">
+					<div class="marginLeft_20">
+						<button type="submit">저장</button>&nbsp;
+						<button id="">삭제</button>&nbsp;
+						<button id="">취소</button>
+					</div>
+					<div id="weeklyWriteForm">
 						<div class="formRow">
 							<div class="lbWidth"><label>업무기간</label></div>
-							<input type="date" name="wwt_date"> ~ <input type="date" name="wwt_date">
+							<input type="date" name="STARTWEEK" value="${date }"> ~ <input type="date" name="ENDWEEK" value="${date }">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth"><label>직급</label></div>
-							<input type="text" name="wwt_rank" id="wwt_rank" size="15">
+							<input type="text" name="JOBGRADE" value="${sessionScope.JOBGRADE }" size="15">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth"><label>이름</label></div>
-							<input type="text" name="wwt_writer" id="wwt_writer" size="15">
+							<input type="text" name="USERNM" value="${sessionScope.USERNM }" size="15">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop"><label>처리내용 </label></div>
-							<textarea rows="15" cols="70"></textarea>
+							<textarea rows="20" cols="70" name="CONTENT"></textarea>
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop lbWord-break"><label>특이사항 및 수정사항</label></div>
-							<textarea rows="5" cols="70"></textarea>
+							<textarea rows="10" cols="70" name="PS"></textarea>
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop"><label>비고</label></div>
-							<textarea rows="5" cols="70"></textarea>
+							<textarea rows="5" cols="70" name="REMARK"></textarea>
 						</div>
-					</form>
-				</div>
+					</div>
+				</form>
 			</div>
 			<div class="clear"></div>
 		</div><!-- row1 end -->
