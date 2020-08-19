@@ -6,6 +6,8 @@ public class UserMstInfoDTO {
 	private String USERNM;
 	private String JOBGRADE;
 	private String USERTYPE;
+	private String HPNUMBER;
+	private String HPNUMBER2;
 	private String REMARK;
 	public String getUSERID() {
 		return USERID;
@@ -42,6 +44,18 @@ public class UserMstInfoDTO {
 	}
 	public void setREMARK(String rEMARK) {
 		REMARK = rEMARK;
+	}
+	public String getHPNUMBER() {
+		return HPNUMBER;
+	}
+	public void setHPNUMBER(String hPNUMBER) {
+		HPNUMBER = hPNUMBER;
+	}
+	public String getHPNUMBER2() {
+		return HPNUMBER2;
+	}
+	public void setHPNUMBER2(String hPNUMBER2) {
+		HPNUMBER2 = hPNUMBER2;
 	}
 	
 	

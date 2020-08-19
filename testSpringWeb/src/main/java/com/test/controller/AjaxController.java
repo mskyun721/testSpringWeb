@@ -6,13 +6,15 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 import com.test.dto.CstMstInfoDTO;
 import com.test.dto.UserMstInfoDTO;
-import com.test.dto.WeeklyReportDTO;
+import com.test.dto.WeekWrkHisDTO;
 import com.test.service.HomeService;
 import com.test.service.WeeklyBoardService;
 
@@ -44,15 +46,26 @@ public class AjaxController {
 	}
 	
 	@RequestMapping(value="/weeklyBoard/showReport", method=RequestMethod.GET)
-	public Map<String, Object> showReport(WeeklyReportDTO weeklyDTO){
-		System.out.println(weeklyDTO.getENDWEEK());
+	public Map<String, Object> showReport(WeekWrkHisDTO wrDTO){
 		
-		List<WeeklyReportDTO> weeklyList = weeklyService.weeklyList(weeklyDTO);
+		List<WeekWrkHisDTO> weeklyList = weeklyService.weeklyList(wrDTO);
+//		String start = weeklyList.get(0).getSTARTWEEK();
+//		String end = weeklyList.get(0).getENDWEEK();
+//		String user = weeklyList.get(0).getUSERNM();
+//		String grade = weeklyList.get(0).getJOBGRADE();
+//		String content = weeklyList.get(0).getCONTENT();
+//		String ps = weeklyList.get(0).getPS();
+//		String remark = weeklyList.get(0).getREMARK();
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("weeklyList", weeklyList);
+//		map.put("start", start);
+//		map.put("end", end);
+//		map.put("user", user);
+//		map.put("grade", grade);
+//		map.put("content", content);
+//		map.put("ps", ps);
+//		map.put("remark", remark);
 		return map;
 	}
-	
 	
 	
 	

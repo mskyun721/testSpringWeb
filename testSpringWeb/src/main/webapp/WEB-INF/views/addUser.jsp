@@ -53,9 +53,9 @@ $(document).ready(function() {
 					<form method="post" action="insertUser">
 					<table class="table1100">
 						<thead class="tableSection">
-							<tr><th class="backWhite"></th>
-								<th colspan="10" class="backWhite" align="left"></th>
-								<th colspan="3" align="right" class="backWhite">
+							<!-- <tr><th class="backWhite"></th>
+								<th colspan="10" class="backWhite" align="left">
+								<th colspan="3" align="right" class="backWhite"></th> -->
 							<tr><th></th>
 								<th>NO.</th>
 								<th>ID</th>
@@ -63,28 +63,34 @@ $(document).ready(function() {
 								<th>이름</th>
 								<th>직급</th>
 								<th>타입</th>
+								<th>전화번호</th>
+								<th>비상연락망</th>
 								<th>비고</th>
 								<th></th></tr>
-							<tr><th></th>
-								<th></th>
-								<th><input type="text" size="10" name="USERID" value="" id="USERID"></th>
-								<th><input type="text" size="10" name="USERPW" value="" id="USERPW"></th>
-								<th><input type="text" size="10" name="USERNM" value="" id="USERNM"></th>
-								<th><input type="text" size="10" name="JOBGRADE" value="" id="JOBGRADE"></th>
-								<th><input type="text" size="5" name="USERTYPE" value="" id="USERTYPE"></th>
-								<th><input type="text" size="2" name="REMARK" value="" id="REMARK"></th>
-								<th><input type="submit" value="등록" id="insert"></th>
+							<tr><td><input type="button" onclick="window.open('userForm','_blank','width=300, height=320'); return false" value="add"></td>
+								<td></td>
+								<td><input type="text" size="5" name="USERID" value="" id="USERID"></td>
+								<td><input type="text" size="5" name="USERPW" value="" id="USERPW"></td>
+								<td><input type="text" size="5" name="USERNM" value="" id="USERNM"></td>
+								<td><input type="text" size="5" name="JOBGRADE" value="" id="JOBGRADE"></td>
+								<td><input type="text" size="5" name="USERTYPE" value="" id="USERTYPE"></td>
+								<td><input type="text" size="10" name="HPNUMBER" value="" id="USERTYPE"></td>
+								<td><input type="text" size="10" name="HPNUMBER2" value="" id="USERTYPE"></td>
+								<td><input type="text" size="10" name="REMARK" value="" id="REMARK"></td>
+								<td><input type="button" value="조회"></td>
 								</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${userList }" var="user" varStatus="i">
-							<tr><td><button>edit</button></td>
+							<tr><td><input type="button" onclick="window.open('userForm?USERID=${user.USERID}&USERPW=${user.USERPW}','_blank','width=300, height=320'); return false" value="edit"></td>
 							<td>${i.index+1 }</td>
 							<td>${user.USERID }</td>
 							<td>${user.USERPW }</td>
 							<td>${user.USERNM }</td>
 							<td>${user.JOBGRADE }</td>
 							<td>${user.USERTYPE }</td>
+							<td>${user.HPNUMBER }</td>
+							<td>${user.HPNUMBER2 }</td>
 							<td>${user.REMARK }</td>
 							<td><button type="button" id="btnDel${i.index }">Del</button>
 								<input type="hidden" id="delRow${i.index }" value="${user.USERID }"></td></tr>

@@ -69,7 +69,7 @@ $(document).ready(function() {
 							<th>비고</th>
 							<th></th></tr>
 						<tr><th><input type="button" onclick="window.open('corpManageForm','_blank','width=585, height=390'); return false" value="add"></th>
-							<th></th>
+							<th><input type="text" size="1" readonly="readonly"></th>
 							<th><input type="text" size="10" name="CSTCD" id="CSTCD"></th>
 							<th><input type="text" size="10" name="CSTNM" id="CSTNM"></th>
 							<th><input type="text" size="2" name="CSTTYPE" id="CSTTYPE"></th>

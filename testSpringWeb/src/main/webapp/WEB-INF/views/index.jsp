@@ -40,7 +40,7 @@ $(document).ready(function() {
 <body>
 <div id="wrap">
 	<!-- header -->
-	<jsp:include page="inc/header.jsp"/>
+	<%-- <jsp:include page="inc/header.jsp"/> --%>
 	<!-- header -->
 	<div id="content">
 		<!-- sidebar -->
@@ -77,11 +77,29 @@ $(document).ready(function() {
 					<tbody>
 						<c:forEach items="${day }" var="day1" begin="0" end="5">
 							<tr>
-								<c:forEach items="${day1 }" var="day2" begin="0" end="6">
-									<td class="content"></td>
-									<td class="day"><a href="scheduleForm?year=${year }&month=${month}&day=${day2}" 
-										onclick="window.open(this.href,'_blank','width=300, height=200, left=500, top=300'); return false">
-											${day2 }</a></td>
+								<c:forEach items="${day1 }" var="day2" begin="0" end="6" varStatus="i">
+									<c:choose>
+										<c:when test="${i.index == 0 }">
+											<td class="content red"></td>
+											<td class="day red"><a href="scheduleForm?year=${year }&month=${month}&day=${day2}" 
+												onclick="window.open(this.href,'_blank','width=300, height=200, left=500, top=300'); return false"
+												class="red">
+												${day2 }</a></td>
+										</c:when>
+										<c:when test="${i.index == 6 }">
+											<td class="content blue"></td>
+											<td class="day blue"><a href="scheduleForm?year=${year }&month=${month}&day=${day2}" 
+												onclick="window.open(this.href,'_blank','width=300, height=200, left=500, top=300'); return false"
+												class="blue">
+												${day2 }</a></td>
+										</c:when>
+										<c:otherwise>
+											<td class="content"></td>
+											<td class="day"><a href="scheduleForm?year=${year }&month=${month}&day=${day2}" 
+												onclick="window.open(this.href,'_blank','width=300, height=200, left=500, top=300'); return false">
+												${day2 }</a></td>
+										</c:otherwise>
+									</c:choose>
 								</c:forEach>
 						</c:forEach>
 				</table>

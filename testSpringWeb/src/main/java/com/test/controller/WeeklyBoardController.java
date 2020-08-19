@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.dto.CalDTO;
-import com.test.dto.WeeklyReportDTO;
+import com.test.dto.WeekWrkHisDTO;
 import com.test.service.WeeklyBoardService;
 
 @Controller
@@ -35,7 +35,6 @@ public class WeeklyBoardController {
 			month = calDto.getMonth();
 		}
 		
-		
 		int day = cal.get(Calendar.DATE);
 		int dateMonth = cal.get(Calendar.MONTH)+1;
 		String date = cal.get(Calendar.YEAR)+"-"+dateMonth+"-"+day;
@@ -47,21 +46,33 @@ public class WeeklyBoardController {
 		if (day<10) {
 			date = cal.get(Calendar.YEAR)+"-"+dateMonth+"-0"+day;
 		}
-		WeeklyReportDTO weeklyDTO = new WeeklyReportDTO();
-		weeklyDTO.setSTARTWEEK(weekly);
-		List<WeeklyReportDTO> weeklyList = weeklyService.weeklyList(weeklyDTO);
+		
+		
+//		WeekWrkHisDTO weeklyDTO = new WeekWrkHisDTO();
+//		weeklyDTO.setSTWEEKDAY(weekly);
+//		List<WeekWrkHisDTO> weeklyList = weeklyService.weeklyList(weeklyDTO);
 		model.addAttribute("month", month);
 		model.addAttribute("year",year);
-		model.addAttribute("weeklyList",weeklyList);
 		model.addAttribute("date", date);
+//		model.addAttribute("weeklyList",weeklyList);
+		
 		
 		return "weeklyBoard/weeklyBoard";
 	}
 	
 	@RequestMapping(value="insertBoard", method=RequestMethod.POST)
-	public String insertBoard(WeeklyReportDTO wrDTO) {
+	public String insertBoard(WeekWrkHisDTO wrDTO) {
 		String path="";
 		weeklyService.insertBoard(wrDTO);
+		
+		path="redirect:weeklyBoard";
+		return path;
+	}
+	
+	@RequestMapping(value="delBoard", method=RequestMethod.GET)
+	public String delBoard(WeekWrkHisDTO wrDTO) {
+		String path="";
+		weeklyService.delBoard(wrDTO);
 		
 		path="redirect:weeklyBoard";
 		return path;

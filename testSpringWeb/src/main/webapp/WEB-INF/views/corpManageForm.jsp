@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>업체 요청 사항</title>
+<title>거래처 등록</title>
 <link href="resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="resources/css/table.css" rel="stylesheet" type="text/css">
 </head>

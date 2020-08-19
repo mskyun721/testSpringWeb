@@ -78,22 +78,6 @@ public class HomeController {
 		
 		return "scheduleForm";
 	}
-	
-	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
-	public String addUserGet(Model model) {
-		List<UserMstInfoDTO> userList;
-		userList=homeService.selectUser();
-		model.addAttribute("userList",userList);
-		
-		return "addUser";
-	}
-	
-	@RequestMapping(value = "/insertUser", method = RequestMethod.POST)
-	public String addUserPost(UserMstInfoDTO umiDTO,Model model) {
-		homeService.insertUser(umiDTO);
-		return "redirect:addUser";
-	}
-	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model,UserMstInfoDTO umiDTO) {
 		
@@ -119,6 +103,44 @@ public class HomeController {
 			return "login";
 		}
 	}
+	
+	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
+	public String addUserGet(Model model) {
+		List<UserMstInfoDTO> userList;
+		userList=homeService.selectUser();
+		model.addAttribute("userList",userList);
+//		System.out.println(userList.get(0).getHPNUMBER());
+		
+		return "addUser";
+	}
+	
+	@RequestMapping(value = "/userForm", method = RequestMethod.GET)
+	public String userForm(Model model,UserMstInfoDTO umiDTO) {
+		if (umiDTO.getUSERID() != "") {
+			UserMstInfoDTO oneUser = homeService.oneUser(umiDTO);
+			model.addAttribute("oneUser",oneUser);
+		}
+		return "userForm";
+	}
+	
+	@RequestMapping(value = "/insertUser", method = RequestMethod.POST)
+	public String addUserPost(UserMstInfoDTO umiDTO,Model model, HttpServletResponse response) {
+		homeService.insertUser(umiDTO);
+		
+		try {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("window.opener.location.reload();");
+			out.println("window.close();");
+			out.println("</script>");
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "userForm";
+	}
+	
 	
 	@RequestMapping(value="/corpManage", method=RequestMethod.GET)
 	public String corpManage(Model model,CstMstInfoDTO cmiDTO){
