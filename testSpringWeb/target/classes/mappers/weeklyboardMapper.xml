@@ -5,10 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.test.mappers.weeklyboardMapper">
 	<insert id="insertBoard">
-		{call SP_SET_TBWEEKLYREPORT(#{STARTWEEK},#{ENDWEEK},#{JOBGRADE},#{USERNM},#{CONTENT},#{PS},#{REMARK})}
+		{call SP_SET_TBWEEKWRKHIS(#{YEARWEEK},#{USERID},#{JOBGRADE},#{STWEEKDAY},#{LTWEEKDAY},#{WEEKWORKCONT},#{WEEKPS},#{REMARK})}
 	</insert>
 	<select id="weeklyList" resultType="weeklyDTO">
 		{call SP_GET_TBWEEKLYREPORT(#{STARTWEEK},#{ENDWEEK},#{USERNM})}
 	</select>
+	<delete id="delBoard">
+		{call SP_DEL_TBWEEKLYREPORT(#{STARTWEEK},#{ENDWEEK},#{USERNM})}
+	</delete>
 
 </mapper>

@@ -63,6 +63,7 @@ public class HomeServiceImpl implements HomeService {
 		return day;
 	}
 	
+	/*	user ----------------------------------- */
 	@Override
 	public void insertUser(UserMstInfoDTO umiDTO) {
 		homeDAO.insertUser(umiDTO);
@@ -80,11 +81,16 @@ public class HomeServiceImpl implements HomeService {
 	public void delUser(UserMstInfoDTO umiDTO) {
 		homeDAO.delUser(umiDTO);
 	}
+	@Override
+	public UserMstInfoDTO oneUser(UserMstInfoDTO umiDTO) {
+		return homeDAO.oneUser(umiDTO);
+	}
+	/*	user ----------------------------------- */
 	
 	@Override
 	public boolean loginCheck(UserMstInfoDTO umiDTO, HttpSession session) {
 		boolean result=false;
-		UserMstInfoDTO loginCheck = homeDAO.loginCheck(umiDTO);
+		UserMstInfoDTO loginCheck = homeDAO.oneUser(umiDTO);
 		if (loginCheck.getUSERNM() != "") {
 			session.setAttribute("USERNM", loginCheck.getUSERNM());
 			session.setAttribute("JOBGRADE", loginCheck.getJOBGRADE());

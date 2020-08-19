@@ -37,10 +37,11 @@ $(document).ready(function() {
 	
 	
 	$("[id^=trRow]").click(function () {
+		
 		var id = $(this).attr("id");
 		var num = id.replace("trRow","");
 		var week = $('#start'+num).text().split(' ~ ');
-		var user = $('#uer'+num).text(); 
+		var user = $('#user'+num).text(); 
 		var start = week[0].trim();
 		var end = week[1].trim();
 		$.ajax({
@@ -50,11 +51,21 @@ $(document).ready(function() {
 					ENDWEEK:end,
 					USERNM:user},
 			success:function(data){
-				alert(data.weeklyList.STARTWEEK);
+				$('#STARTWEEK').val(data.start);
+				$('#ENDWEEK').val(data.end);
+				$('#JOBGRADE').val(data.grade);
+				$('#USERNM').val(data.user);
+				$('#CONTENT').text(data.content);
+				$('#PS').text(data.ps);
+				$('#REMARK').text(data.remark);
 			}
 		});
-		
 	});
+	
+	
+	/* $('#delBtn').click(function () {
+		var startweek = 
+	}); */
 	
 });
 </script>
@@ -90,13 +101,13 @@ $(document).ready(function() {
 					<table class="table450">
 						<thead>
 							<tr><th>No.</th>
-								<th>업무기간</th>
+								<th>업무주차</th>
 								<th>담당자</th>
 								<th>직급</th></tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${weeklyList }" var="list" varStatus="i">
-							<tr onclick="selectRow('${list.STARTWEEK}','${list.ENDWEEK }','${list.USERNM }');" id="trRow${i.index }" class="hover_link"><td>${i.index+1 }</td>
+							<tr id="trRow${i.index }" class="hover_link"><td>${i.index+1 }</td>
 								<td id="start${i.index }">${list.STARTWEEK } ~ ${list.ENDWEEK }</td>
 								<td id="user${i.index }">${list.USERNM }</td>
 								<td>${list.JOBGRADE }</td></tr>
@@ -109,33 +120,37 @@ $(document).ready(function() {
 				<form action="/sunsoft/weeklyBoard/insertBoard" method="post">
 					<div class="marginLeft_20">
 						<button type="submit">저장</button>&nbsp;
-						<button id="">삭제</button>&nbsp;
-						<button id="">취소</button>
+						<button type="button" id="delBtn">삭제</button>&nbsp;
+						<button type="reset" id="">취소</button>
 					</div>
 					<div id="weeklyWriteForm">
 						<div class="formRow">
+							<div class="lbWidth"><label>업무주차</label></div>
+							<input type="text" readonly="readonly" size="2">
+						</div>
+						<div class="formRow">
 							<div class="lbWidth"><label>업무기간</label></div>
-							<input type="date" name="STARTWEEK" value="${date }"> ~ <input type="date" name="ENDWEEK" value="${date }">
+							<input type="date" name="STARTWEEK" value="${date }" id="STARTWEEK"> ~ <input type="date" name="ENDWEEK" value="${date }" id="ENDWEEK">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth"><label>직급</label></div>
-							<input type="text" name="JOBGRADE" value="${sessionScope.JOBGRADE }" size="15">
+							<input type="text" name="JOBGRADE" value="${sessionScope.JOBGRADE }" size="15" id="JOBGRADE">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth"><label>이름</label></div>
-							<input type="text" name="USERNM" value="${sessionScope.USERNM }" size="15">
+							<input type="text" name="USERNM" value="${sessionScope.USERNM }" size="15" id="USERNM">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop"><label>처리내용 </label></div>
-							<textarea rows="20" cols="70" name="CONTENT"></textarea>
+							<textarea rows="20" cols="70" name="CONTENT" id="CONTENT"></textarea>
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop lbWord-break"><label>특이사항 및 수정사항</label></div>
-							<textarea rows="10" cols="70" name="PS"></textarea>
+							<textarea rows="10" cols="70" name="PS" id="PS"></textarea>
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop"><label>비고</label></div>
-							<textarea rows="5" cols="70" name="REMARK"></textarea>
+							<textarea rows="5" cols="70" name="REMARK" id="REMARK"></textarea>
 						</div>
 					</div>
 				</form>

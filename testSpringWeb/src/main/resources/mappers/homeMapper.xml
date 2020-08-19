@@ -4,8 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.test.mappers.homeMapper">
+<!-- user  -->
 	<insert id="insertUser">
-		{call SP_SET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{REMARK})}
+		{call SP_SET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{HPNUMBER},#{HPNUMBER2},#{REMARK})}
 	</insert>
 	<select id="selectUser" resultType="userDTO">
 		{CALL SP_GET_TBUSERMSTINFO()}
@@ -13,12 +14,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delUser">
 		{call SP_DEL_TBUSERMSTINFO(#{USERID})}
 	</delete>
-	
-	
-	<select id="loginCheck" resultType="userDTO">
-		{call SP_GET_TBUSERMSTINFO_LOGIN(#{USERID},#{USERPW})}
+	<select id="oneUser" resultType="userDTO">
+		{call SP_GET_TBUSERMSTINFO2(#{USERID},#{USERPW})}
 	</select>
-	
+<!-- user  -->	
 	
 	<insert id="insertCst">
 		{call SP_SET_TBCSTMSTINFO(#{CSTCD},#{CSTNM},#{CSTTYPE},#{CSTCEO},#{BIZNO},#{CSTKIND},

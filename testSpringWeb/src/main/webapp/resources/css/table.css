@@ -17,7 +17,7 @@
 	text-align: center;
 	border-collapse: collapse;
 }
-tr{border-bottom: 1px thin;}
+tr{border-bottom: 1px solid ;}
 th{border: 1px solid;vertical-align: middle;background-color: #474747;color: white;}
 td{border: 1px solid;}
 
@@ -35,5 +35,5 @@ td{border: 1px solid;}
 #calTable .day{width: 4%;font-size: 25px;vertical-align: top;}
 table input{
 	height: 100%;
-	width: 100%;
+	width: 90%;
 }
