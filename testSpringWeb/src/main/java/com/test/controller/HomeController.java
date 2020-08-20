@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
@@ -69,11 +70,15 @@ public class HomeController {
 			year = calDto.getYear();
 			month = calDto.getMonth()-1;
 		}
+		List<UserMstInfoDTO> userList=homeService.selectUser();
 		
-		String[][] day = homeService.dayOfWeek(year,month);
-		model.addAttribute("day", day);
+		Map<String, Object> map = homeService.dayOfWeek(year,month);
+		model.addAttribute("day", map.get("day"));
+		model.addAttribute("day_2", map.get("day2"));
 		model.addAttribute("year",year);
 		model.addAttribute("month",month+1);
+		model.addAttribute("endDays",map.get("endDays"));
+		model.addAttribute("userList",userList);
 		
 		return "index";
 	}

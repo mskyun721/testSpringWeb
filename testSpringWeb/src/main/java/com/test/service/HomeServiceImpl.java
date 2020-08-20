@@ -1,7 +1,9 @@
 package com.test.service;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -20,12 +22,30 @@ public class HomeServiceImpl implements HomeService {
 	
 	Calendar cal = Calendar.getInstance();
 	@Override
-	public String[][] dayOfWeek(int year,int month) {
+	public Map<String, Object> dayOfWeek(int year,int month) {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		int[] endDays = new int[3];
 		cal.set(Calendar.YEAR, year);
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DATE, 1);
         int endDay = cal.getActualMaximum(Calendar.DATE);
+        endDays[0]=endDay;
+        cal.set(Calendar.MONTH, month+1);
+        endDay = cal.getActualMaximum(Calendar.DATE);
+        endDays[1]=endDay;
+        cal.set(Calendar.MONTH, month+2);
+        endDay = cal.getActualMaximum(Calendar.DATE);
+        endDays[2]=endDay;
+        
         String[][] day = new String[6][7];
+        String[][] day2 = new String[3][];
+        
+        for (int i = 0; i < 3; i++) {
+        		day2[i] = new String[endDays[i]];
+        	for (int j = 1; j <= endDays[i]; j++) {
+				day2[i][j-1] = j+"";
+			}
+		}
 		
 		int j=0;
 		for (int i = 1; i <= endDay; i++) {
@@ -59,7 +79,13 @@ public class HomeServiceImpl implements HomeService {
 				break;
 			}
 		}
-		return day;
+		
+		returnMap.put("day", day);
+		returnMap.put("endDays",endDays);
+		returnMap.put("day2",day2);
+		
+		
+		return returnMap;
 	}
 	
 	/*	user ----------------------------------- */

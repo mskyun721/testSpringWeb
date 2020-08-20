@@ -1,6 +1,7 @@
 package com.test.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -8,7 +9,7 @@ import com.test.dto.CstMstInfoDTO;
 import com.test.dto.UserMstInfoDTO;
 
 public interface HomeService {
-	public String[][] dayOfWeek(int year,int month);
+	public Map<String, Object> dayOfWeek(int year,int month);
 //	user ---------------------------------
 	public void insertUser(UserMstInfoDTO umiDTO);
 	public List<UserMstInfoDTO> selectUser();

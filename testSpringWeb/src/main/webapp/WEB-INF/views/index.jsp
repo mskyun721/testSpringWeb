@@ -42,10 +42,11 @@ $(document).ready(function() {
 	<!-- header -->
 	<%-- <jsp:include page="inc/header.jsp"/> --%>
 	<!-- header -->
-	<div id="content">
-		<!-- sidebar -->
+	<!-- sidebar -->
 		<jsp:include page="inc/sidebar.jsp"/>
 		<!-- sidebar -->
+	<div id="content">
+		
 		<div id="row1">
 			<div id="title">
 				<h3>일정표</h3>
@@ -102,6 +103,28 @@ $(document).ready(function() {
 									</c:choose>
 								</c:forEach>
 						</c:forEach>
+				</table>
+				<table class="table5500">
+					<tr><th rowspan="2">직원</th>
+						<c:forEach items="${endDays }" var="endDay" begin="0" end="2" varStatus="i">
+							<th colspan="${endDay }">${month +i.index }</th>
+						</c:forEach></tr>
+					<tr><c:forEach items="${day_2 }" var="day_2_2" begin="0" end="2">
+							<c:forEach items="${day_2_2 }" var="day_2_3">
+								<th>0${day_2_3 }</th>
+							</c:forEach>
+						</c:forEach></tr>
+					<c:forEach items="${userList }" var="list">
+						<tr>
+						<td width="200">${list.USERNM }</td>
+						<c:forEach items="${day_2 }" var="day_2_2" begin="0" end="2">
+							<c:forEach items="${day_2_2 }" var="day_2_3">
+								<td width="100"></td>
+							</c:forEach>
+						</c:forEach>
+						</tr>
+					</c:forEach>
+					
 				</table>
 			</div><!-- calTable end -->
 			<div class="clear"></div>
