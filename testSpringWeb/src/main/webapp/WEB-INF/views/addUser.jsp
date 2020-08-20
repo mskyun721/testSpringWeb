@@ -50,7 +50,7 @@ $(document).ready(function() {
 				
 				</div>
 				<div class="marginLeft_100">
-					<form method="post" action="insertUser">
+					<form method="post" action="searchUser">
 					<table class="table1100">
 						<thead class="tableSection">
 							<!-- <tr><th class="backWhite"></th>
@@ -77,7 +77,7 @@ $(document).ready(function() {
 								<td><input type="text" size="10" name="HPNUMBER" value="" id="USERTYPE"></td>
 								<td><input type="text" size="10" name="HPNUMBER2" value="" id="USERTYPE"></td>
 								<td><input type="text" size="10" name="REMARK" value="" id="REMARK"></td>
-								<td><input type="button" value="조회"></td>
+								<td><input type="submit" value="조회"></td>
 								</tr>
 						</thead>
 						<tbody>

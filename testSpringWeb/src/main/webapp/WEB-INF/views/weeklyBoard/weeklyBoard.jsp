@@ -40,24 +40,23 @@ $(document).ready(function() {
 		
 		var id = $(this).attr("id");
 		var num = id.replace("trRow","");
-		var week = $('#start'+num).text().split(' ~ ');
-		var user = $('#user'+num).text(); 
-		var start = week[0].trim();
-		var end = week[1].trim();
+		var yearWeek = $('#yearWeek'+num).text();
+		var userID = $('#userID'+num).val();
 		$.ajax({
 			url:"showReport",
 			type:"get",
-			data:{STARTWEEK:start,
-					ENDWEEK:end,
-					USERNM:user},
+			data:{YEARWEEK:yearWeek,
+					USERID:userID},
 			success:function(data){
-				$('#STARTWEEK').val(data.start);
-				$('#ENDWEEK').val(data.end);
+				$('#YEARWEEK').val(data.yearweek);
+				$('#USERID').val(data.userId);
 				$('#JOBGRADE').val(data.grade);
-				$('#USERNM').val(data.user);
-				$('#CONTENT').text(data.content);
-				$('#PS').text(data.ps);
+				$('#USERNM').val(data.userNm);
+				$('#WEEKWORKCONT').text(data.cont);
+				$('#WEEKPS').text(data.ps);
 				$('#REMARK').text(data.remark);
+				$('#STWEEKDAY').text(data.stweek);
+				$('#LTWEEKDAY').text(data.ltweek);
 			}
 		});
 	});
@@ -108,8 +107,9 @@ $(document).ready(function() {
 						<tbody>
 							<c:forEach items="${weeklyList }" var="list" varStatus="i">
 							<tr id="trRow${i.index }" class="hover_link"><td>${i.index+1 }</td>
-								<td id="start${i.index }">${list.STARTWEEK } ~ ${list.ENDWEEK }</td>
-								<td id="user${i.index }">${list.USERNM }</td>
+								<td id="yearWeek${i.index }">${list.YEARWEEK }주차</td>
+								<td>${list.USERNM }
+								<input type="hidden" id="userID${i.index }" value="${list.USERID }"></td>
 								<td>${list.JOBGRADE }</td></tr>
 							</c:forEach>
 						</tbody>
@@ -126,11 +126,11 @@ $(document).ready(function() {
 					<div id="weeklyWriteForm">
 						<div class="formRow">
 							<div class="lbWidth"><label>업무주차</label></div>
-							<input type="text" readonly="readonly" size="2">
+							<input type="text" readonly="readonly" name="YEARWEEK" size="2" value="${week }" id="YEARWEEK">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth"><label>업무기간</label></div>
-							<input type="date" name="STARTWEEK" value="${date }" id="STARTWEEK"> ~ <input type="date" name="ENDWEEK" value="${date }" id="ENDWEEK">
+							<input type="date" name="STWEEKDAY" value="${monday }" id="STWEEKDAY"> ~ <input type="date" name="LTWEEKDAY" value="${friday }" id="LTWEEKDAY">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth"><label>직급</label></div>
@@ -139,14 +139,15 @@ $(document).ready(function() {
 						<div class="formRow">
 							<div class="lbWidth"><label>이름</label></div>
 							<input type="text" name="USERNM" value="${sessionScope.USERNM }" size="15" id="USERNM">
+							<input type="hidden" name="USERID" value="${sessionScope.USERID }" id="USERID">
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop"><label>처리내용 </label></div>
-							<textarea rows="20" cols="70" name="CONTENT" id="CONTENT"></textarea>
+							<textarea rows="20" cols="70" name="WEEKWORKCONT" id="WEEKWORKCONT"></textarea>
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop lbWord-break"><label>특이사항 및 수정사항</label></div>
-							<textarea rows="10" cols="70" name="PS" id="PS"></textarea>
+							<textarea rows="10" cols="70" name="WEEKPS" id="WEEKPS"></textarea>
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop"><label>비고</label></div>

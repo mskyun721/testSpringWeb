@@ -4,7 +4,7 @@
 
 <div id="sidebar">
 	<div id="logo">
-		<a href="/sunsoft"><img alt="logo" src="http://www.sunsoft.kr/images/sunsoft_logo.png"></a>
+		<a href="/sunsoft/index"><img alt="logo" src="http://www.sunsoft.kr/images/sunsoft_logo.png"></a>
 	</div>
 	<div class="clear"></div>
 	<div id="session">

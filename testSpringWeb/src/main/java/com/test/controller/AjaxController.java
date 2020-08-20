@@ -49,21 +49,25 @@ public class AjaxController {
 	public Map<String, Object> showReport(WeekWrkHisDTO wrDTO){
 		
 		List<WeekWrkHisDTO> weeklyList = weeklyService.weeklyList(wrDTO);
-//		String start = weeklyList.get(0).getSTARTWEEK();
-//		String end = weeklyList.get(0).getENDWEEK();
-//		String user = weeklyList.get(0).getUSERNM();
-//		String grade = weeklyList.get(0).getJOBGRADE();
-//		String content = weeklyList.get(0).getCONTENT();
-//		String ps = weeklyList.get(0).getPS();
-//		String remark = weeklyList.get(0).getREMARK();
+		String yearweek = weeklyList.get(0).getYEARWEEK();
+		String userNm = weeklyList.get(0).getUSERNM();
+		String userId = weeklyList.get(0).getUSERID();
+		String stweek = weeklyList.get(0).getSTWEEKDAY();
+		String ltweek = weeklyList.get(0).getLTWEEKDAY();
+		String grade = weeklyList.get(0).getJOBGRADE();
+		String cont = weeklyList.get(0).getWEEKWORKCONT();
+		String ps = weeklyList.get(0).getWEEKPS();
+		String remark = weeklyList.get(0).getREMARK();
 		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("start", start);
-//		map.put("end", end);
-//		map.put("user", user);
-//		map.put("grade", grade);
-//		map.put("content", content);
-//		map.put("ps", ps);
-//		map.put("remark", remark);
+		map.put("yearweek", yearweek);
+		map.put("userNm", userNm);
+		map.put("userId", userId);
+		map.put("stweek", stweek);
+		map.put("ltweek", ltweek);
+		map.put("grade", grade);
+		map.put("cont", cont);
+		map.put("ps", ps);
+		map.put("remark", remark);
 		return map;
 	}
 	

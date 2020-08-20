@@ -2,7 +2,6 @@ package com.test.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -35,6 +34,31 @@ public class HomeController {
 	Calendar cal = Calendar.getInstance();
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String login(Model model,UserMstInfoDTO umiDTO) {
+		
+		return "login";
+	}
+	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
+	public String loginCheck(Model model,UserMstInfoDTO umiDTO,HttpSession session,HttpServletResponse response){
+		boolean result =  homeService.loginCheck(umiDTO,session);
+		if (result) {
+			return "redirect:/index";
+		}else {
+			try {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('아이디, 패스워드를 확인하세요.')");
+				out.println("</script>");
+				out.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return "redirect:/";
+		}
+	}
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model, CalDTO calDto,HttpSession session){
 		int year;
 		int month;
@@ -53,14 +77,7 @@ public class HomeController {
 		
 		return "index";
 	}
-	
-	/*
-	 * @RequestMapping("searchCal") public String searchCal(Model model) { int year
-	 * = calDto.getYear(); int month = calDto.getMonth()-1; String[][] day =
-	 * homeService.dayOfWeek(year,month); model.addAttribute("day", day);
-	 * 
-	 * return "index"; }
-	 */
+	 
 	
 	@RequestMapping(value = "/scheduleForm", method = RequestMethod.GET)
 	public String scheduleForm(CalDTO calDto, Model model){
@@ -78,38 +95,13 @@ public class HomeController {
 		
 		return "scheduleForm";
 	}
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model,UserMstInfoDTO umiDTO) {
-		
-		return "login";
-	}
 	
-	@RequestMapping(value = "/loginCheck", method = RequestMethod.POST)
-	public String loginCheck(Model model,UserMstInfoDTO umiDTO,HttpSession session,HttpServletResponse response){
-		boolean result =  homeService.loginCheck(umiDTO,session);
-		if (result) {
-			return "redirect:/";
-		}else {
-			try {
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				out.println("<script>");
-				out.println("alert('아이디, 패스워드를 확인하세요.')");
-				out.println("</script>");
-				out.flush();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return "login";
-		}
-	}
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
 	public String addUserGet(Model model) {
 		List<UserMstInfoDTO> userList;
 		userList=homeService.selectUser();
 		model.addAttribute("userList",userList);
-//		System.out.println(userList.get(0).getHPNUMBER());
 		
 		return "addUser";
 	}
@@ -141,6 +133,17 @@ public class HomeController {
 		return "userForm";
 	}
 	
+	@RequestMapping(value="/searchUser", method =RequestMethod.POST)
+	public String searchUser(UserMstInfoDTO umiDto,Model model) {
+		String path=null;
+		List<UserMstInfoDTO> userList;
+		userList=homeService.selectUser();
+		model.addAttribute("userList",userList);
+		
+		path="addUser";
+		return path;
+	}
+	
 	
 	@RequestMapping(value="/corpManage", method=RequestMethod.GET)
 	public String corpManage(Model model,CstMstInfoDTO cmiDTO){
@@ -162,6 +165,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/insertCst", method=RequestMethod.POST)
 	public String insertCst(CstMstInfoDTO cmiDTO,HttpServletResponse response){
+		System.out.println(cmiDTO.getCSTCD());
 		homeService.insertCst(cmiDTO);
 		
 		try {

@@ -5,11 +5,18 @@ public class WeekWrkHisDTO {
 	private String USERID;
 	private String JOBGRADE;
 	private String STWEEKDAY;
-	private String LTWEELDAY;
+	private String LTWEEKDAY;
 	private String WEEKWORKCONT;
 	private String WEEKPS;
 	private String REMARK;
+	private String USERNM;
 	
+	public String getUSERNM() {
+		return USERNM;
+	}
+	public void setUSERNM(String uSERNM) {
+		USERNM = uSERNM;
+	}
 	public String getYEARWEEK() {
 		return YEARWEEK;
 	}
@@ -34,11 +41,11 @@ public class WeekWrkHisDTO {
 	public void setSTWEEKDAY(String sTWEEKDAY) {
 		STWEEKDAY = sTWEEKDAY;
 	}
-	public String getLTWEELDAY() {
-		return LTWEELDAY;
+	public String getLTWEEKDAY() {
+		return LTWEEKDAY;
 	}
-	public void setLTWEELDAY(String lTWEELDAY) {
-		LTWEELDAY = lTWEELDAY;
+	public void setLTWEEKDAY(String lTWEEKDAY) {
+		LTWEEKDAY = lTWEEKDAY;
 	}
 	public String getWEEKWORKCONT() {
 		return WEEKWORKCONT;

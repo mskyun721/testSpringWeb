@@ -25,7 +25,6 @@ public class HomeServiceImpl implements HomeService {
         cal.set(Calendar.MONTH, month);
         cal.set(Calendar.DATE, 1);
         int endDay = cal.getActualMaximum(Calendar.DATE);
-		
         String[][] day = new String[6][7];
 		
 		int j=0;
@@ -68,7 +67,6 @@ public class HomeServiceImpl implements HomeService {
 	public void insertUser(UserMstInfoDTO umiDTO) {
 		homeDAO.insertUser(umiDTO);
 	}
-	
 	@Override
 	public List<UserMstInfoDTO> selectUser() {
 		List<UserMstInfoDTO> userList;
@@ -76,7 +74,6 @@ public class HomeServiceImpl implements HomeService {
 		
 		return userList;
 	}
-	
 	@Override
 	public void delUser(UserMstInfoDTO umiDTO) {
 		homeDAO.delUser(umiDTO);
@@ -94,6 +91,7 @@ public class HomeServiceImpl implements HomeService {
 		if (loginCheck.getUSERNM() != "") {
 			session.setAttribute("USERNM", loginCheck.getUSERNM());
 			session.setAttribute("JOBGRADE", loginCheck.getJOBGRADE());
+			session.setAttribute("USERID", loginCheck.getUSERID());
 			result=true;
 		}
 		return result;

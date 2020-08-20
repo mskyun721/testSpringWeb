@@ -21,12 +21,12 @@ public class weeklyBoardDAOImpl implements weeklyBoardDAO {
 	}
 	@Override
 	public List<WeekWrkHisDTO> weeklyList(WeekWrkHisDTO wrDTO) {
-//		if (wrDTO.getENDWEEK() == null) {
-//			wrDTO.setENDWEEK("");
-//		}
-//		if (wrDTO.getUSERNM() == null) {
-//			wrDTO.setUSERNM("");
-//		}
+		if (wrDTO.getYEARWEEK()==null) {
+			wrDTO.setYEARWEEK("");
+		}
+		if (wrDTO.getUSERID()==null) {
+			wrDTO.setUSERID("");
+		}
 		return sqlSession.selectList(Namespace+".weeklyList",wrDTO);
 		
 	}

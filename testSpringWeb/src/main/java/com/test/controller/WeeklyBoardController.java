@@ -3,6 +3,7 @@ package com.test.controller;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.test.dto.CalDTO;
+import com.test.dto.UserMstInfoDTO;
 import com.test.dto.WeekWrkHisDTO;
+import com.test.service.HomeService;
 import com.test.service.WeeklyBoardService;
 
 @Controller
@@ -22,40 +25,22 @@ public class WeeklyBoardController {
 	Calendar cal = Calendar.getInstance();
 	@Inject
 	private WeeklyBoardService weeklyService;
+	@Inject
+	private HomeService homeService;
 	
 	@RequestMapping("weeklyBoard")
 	public String weeklyBoard(CalDTO calDto, Model model,HttpSession session) {
-		int year;
-		int month;
-		if (calDto.getYear() == 0) {
-			year = cal.get(Calendar.YEAR);
-			month = cal.get(Calendar.MONTH)+1;
-		}else {
-			year = calDto.getYear();
-			month = calDto.getMonth();
-		}
+		Map<String, Object> calMap = weeklyService.weeklyCal(calDto);
+		WeekWrkHisDTO weeklyDTO = new WeekWrkHisDTO();
 		
-		int day = cal.get(Calendar.DATE);
-		int dateMonth = cal.get(Calendar.MONTH)+1;
-		String date = cal.get(Calendar.YEAR)+"-"+dateMonth+"-"+day;
-		String weekly = year+"-"+month;
-		if (dateMonth<10) {
-			date = cal.get(Calendar.YEAR)+"-0"+dateMonth+"-"+day;
-			weekly = year+"-0"+month;
-		}
-		if (day<10) {
-			date = cal.get(Calendar.YEAR)+"-"+dateMonth+"-0"+day;
-		}
-		
-		
-//		WeekWrkHisDTO weeklyDTO = new WeekWrkHisDTO();
-//		weeklyDTO.setSTWEEKDAY(weekly);
-//		List<WeekWrkHisDTO> weeklyList = weeklyService.weeklyList(weeklyDTO);
-		model.addAttribute("month", month);
-		model.addAttribute("year",year);
-		model.addAttribute("date", date);
-//		model.addAttribute("weeklyList",weeklyList);
-		
+		weeklyDTO.setSTWEEKDAY(calMap.get("yearMonth").toString());
+		List<WeekWrkHisDTO> weeklyList = weeklyService.weeklyList(weeklyDTO);
+		model.addAttribute("month", calMap.get("month"));
+		model.addAttribute("year",calMap.get("year"));
+		model.addAttribute("monday", calMap.get("monday"));
+		model.addAttribute("friday", calMap.get("friday"));
+		model.addAttribute("week", calMap.get("week"));
+		model.addAttribute("weeklyList",weeklyList);
 		
 		return "weeklyBoard/weeklyBoard";
 	}

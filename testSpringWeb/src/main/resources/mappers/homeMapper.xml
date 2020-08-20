@@ -6,10 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.test.mappers.homeMapper">
 <!-- user  -->
 	<insert id="insertUser">
-		{call SP_SET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{HPNUMBER},#{HPNUMBER2},#{REMARK})}
+		{call SP_SET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{HPNUMBER},
+		#{HPNUMBER2},#{REMARK})}
 	</insert>
 	<select id="selectUser" resultType="userDTO">
-		{CALL SP_GET_TBUSERMSTINFO()}
+		{CALL SP_GET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{HPNUMBER},
+		#{HPNUMBER2},#{REMARK})}
 	</select>
 	<delete id="delUser">
 		{call SP_DEL_TBUSERMSTINFO(#{USERID})}
@@ -24,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{CSTITEM},#{TELNO},#{FAXNO},#{ZIPNO},#{ADDR1},#{ADDR2},#{CSTEMPNM},#{REMARK})}
 	</insert>
 	<select id="corpList" resultType="cstDTO">
-		{call SP_GET_TBCSTMSTINFO4(#{CSTCD},#{CSTNM},#{CSTTYPE},#{CSTCEO},#{BIZNO},#{CSTKIND},
+		{call SP_GET_TBCSTMSTINFO(#{CSTCD},#{CSTNM},#{CSTTYPE},#{CSTCEO},#{BIZNO},#{CSTKIND},
 		#{CSTITEM},#{TELNO},#{FAXNO},#{ZIPNO},#{ADDR1},#{ADDR2},#{CSTEMPNM},#{REMARK})}
 	</select>
 	<delete id="delCorp">
