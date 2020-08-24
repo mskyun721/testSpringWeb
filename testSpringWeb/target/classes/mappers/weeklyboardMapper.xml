@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		{call SP_GET_TBWEEKWRKHIS(#{YEARWEEK},#{USERID},#{STWEEKDAY})}
 	</select>
 	<delete id="delBoard">
-		{call SP_DEL_TBWEEKLYREPORT(#{STARTWEEK},#{ENDWEEK},#{USERNM})}
+		{call SP_DEL_TBWEEKWRKHIS(#{YEARWEEK},#{USERID})}
 	</delete>
 
 </mapper>

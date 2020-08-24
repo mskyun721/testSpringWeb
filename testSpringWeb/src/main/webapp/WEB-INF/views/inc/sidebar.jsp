@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="sidebar">
+<div id="sidebar" class="printNone">
 	<div id="logo">
 		<a href="/sunsoft/index"><img alt="logo" src="http://www.sunsoft.kr/images/sunsoft_logo.png"></a>
 	</div>

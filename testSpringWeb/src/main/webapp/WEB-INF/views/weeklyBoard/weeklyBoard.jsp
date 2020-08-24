@@ -8,6 +8,7 @@
 <title>SUNSOFT</title>
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/table.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/print.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -61,10 +62,32 @@ $(document).ready(function() {
 		});
 	});
 	
+	$('#STWEEKDAY').change(function(){
+		var date = $('#STWEEKDAY').val();
+		$.ajax({
+			url:"yearOfWeek",
+			type:"get",
+			data:{stdate:date},
+			success:function(data){
+				$('#YEARWEEK').val(data.week);
+				$('#LTWEEKDAY').val(data.friday);
+			}
+		});
+	});
 	
-	/* $('#delBtn').click(function () {
-		var startweek = 
-	}); */
+	$('#delBtn').click(function(){
+		var yearWeek = $('#YEARWEEK').val();
+		var userId = $('#USERID').val();
+		$.ajax({
+			url:"delWeekwrkhis",
+			type:"get",
+			data:{YEARWEEK:yearWeek,
+					USERID:userId},
+			success:function(data){
+				window.location.reload();
+			}
+		});
+	});
 	
 });
 </script>
@@ -72,17 +95,18 @@ $(document).ready(function() {
 <body>
 <div id="wrap">
 	<!-- header -->
-	<jsp:include page="../inc/header.jsp"/>
+	<%-- <jsp:include page="../inc/header.jsp"/> --%>
 	<!-- header -->
+	<!-- sidebar -->
+	<jsp:include page="../inc/sidebar.jsp"/>
+	<!-- sidebar -->
 	<div id="content">
-		<!-- sidebar -->
-		<jsp:include page="../inc/sidebar.jsp"/>
-		<!-- sidebar -->
-		<div id="row1">
+		
+		<div id="row1" class="printNone">
 			<div id="title">
 				<h3>주간 업무일지</h3>
 			</div>
-			<div class="floatLeft">
+			<div class="floatLeft ">
 				<div id="searchBox">
 				<form method="get">
 					<select id="year" name="year" >
@@ -118,10 +142,11 @@ $(document).ready(function() {
 			</div>
 			<div class="floatLeft">
 				<form action="/sunsoft/weeklyBoard/insertBoard" method="post">
-					<div class="marginLeft_20">
+					<div class="marginLeft_20 ">
 						<button type="submit">저장</button>&nbsp;
 						<button type="button" id="delBtn">삭제</button>&nbsp;
-						<button type="reset" id="">취소</button>
+						<button type="button" onclick="location.reload();">취소</button>&nbsp;
+						<button type="button" onclick="window.print();">출력</button>
 					</div>
 					<div id="weeklyWriteForm">
 						<div class="formRow">
@@ -143,7 +168,7 @@ $(document).ready(function() {
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop"><label>처리내용 </label></div>
-							<textarea rows="20" cols="70" name="WEEKWORKCONT" id="WEEKWORKCONT"></textarea>
+							<textarea rows="25" cols="70" name="WEEKWORKCONT" id="WEEKWORKCONT"></textarea>
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop lbWord-break"><label>특이사항 및 수정사항</label></div>
@@ -158,6 +183,33 @@ $(document).ready(function() {
 			</div>
 			<div class="clear"></div>
 		</div><!-- row1 end -->
+		<div class="webNone">
+				<h1>주간업무일지</h1>
+				<table class="floatRight">
+				<tr><td rowspan="2">결재</td>
+					<td width="70">담당자</td>
+					<td width="70">과장</td>
+					<td width="70">차장</td>
+					<td width="70">차장</td>
+					<td width="70">사장</td></tr>
+				<tr><td height="50"></td>
+					<td height="50"></td>
+					<td height="50"></td>
+					<td height="50"></td>
+					<td height="50"></td></tr>
+				</table>
+			</div>
+			<div></div>
+			<div class="webNone">
+				<table style="width: 100%;">
+					<tr><td>업무기간</td>
+						<td>20년 08월 31일 ~ 20년 08월 31일</td>
+						<td>직급</td>
+						<td>대리</td>
+						<td>성명</td>
+						<td>문성균</td></tr>
+				</table>
+			</div>
 	</div><!-- content end -->
 </div><!-- wrap end -->
 </body>

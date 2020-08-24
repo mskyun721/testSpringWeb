@@ -34,12 +34,13 @@ $(document).ready(function() {
 <body>
 <div id="wrap">
 	<!-- header -->
-	<jsp:include page="inc/header.jsp"/>
+	<%-- <jsp:include page="inc/header.jsp"/> --%>
 	<!-- header -->
+	<!-- sidebar -->
+	<jsp:include page="inc/sidebar.jsp"/>
+	<!-- sidebar -->
 	<div id="content">
-		<!-- sidebar -->
-		<jsp:include page="inc/sidebar.jsp"/>
-		<!-- sidebar -->
+		
 		<div id="row1">
 			<div id="title">
 				<h3>사용자 등록</h3>

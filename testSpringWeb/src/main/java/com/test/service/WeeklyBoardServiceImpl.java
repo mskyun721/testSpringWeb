@@ -25,8 +25,7 @@ public class WeeklyBoardServiceImpl implements WeeklyBoardService {
 		Map<String, Object> calMap = new HashMap<String, Object>();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		
-		int year, month;
-		int day = cal.get(Calendar.DATE);
+		int year, month,day;
 		
 		if (calDto.getYear() == 0) {
 			year = cal.get(Calendar.YEAR);
@@ -34,6 +33,11 @@ public class WeeklyBoardServiceImpl implements WeeklyBoardService {
 		}else {
 			year = calDto.getYear();
 			month = calDto.getMonth();
+		}
+		if (calDto.getDay() == 0) {
+			day = cal.get(Calendar.DATE);
+		}else {
+			day = calDto.getDay();
 		}
 		
 		String yearMonth;
@@ -77,6 +81,5 @@ public class WeeklyBoardServiceImpl implements WeeklyBoardService {
 	@Override
 	public void delBoard(WeekWrkHisDTO wrDTO) {
 		weeklyDAO.delBoard(wrDTO);
-		
 	}
 }

@@ -32,8 +32,12 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 	height: 300px;
 	border: 1px solid;
 }
+#login img{
+	margin-top: 10px;
+	width: 70%;
+}
 #login form{
-	margin: 150px 0px 0px 150px;
+	margin: 50px 0px 0px 150px;
 	padding: 10px;
 }
 #login form button{
@@ -210,6 +214,11 @@ a{text-decoration: none;color: black;}
 a:active{color: black;}
 .back_white{background-color: white; border-bottom-color: black;}
 
-
+.webNone{display: none;}
+@media print{
+	.printNone{display: none;}
+	.webNone{display: block; text-align: center;}
+	.webNone table{border-collapse: collapse;}
+}
 
 

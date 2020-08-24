@@ -11,6 +11,7 @@
 <body>
 <div id="center">
 	<div id="login">
+		<img alt="logo" src="http://www.sunsoft.kr/images/sunsoft_logo.png">
 		<form method="post" action="loginCheck">
 			<div class="formRow">
 				<div class="lbWidth"><label for="">아이디</label></div>

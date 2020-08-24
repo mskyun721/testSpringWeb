@@ -104,7 +104,7 @@ $(document).ready(function() {
 								</c:forEach>
 						</c:forEach>
 				</table>
-				<table class="table5500">
+				<%-- <table class="table5500">
 					<tr><th rowspan="2">직원</th>
 						<c:forEach items="${endDays }" var="endDay" begin="0" end="2" varStatus="i">
 							<th colspan="${endDay }">${month +i.index }</th>
@@ -125,7 +125,7 @@ $(document).ready(function() {
 						</tr>
 					</c:forEach>
 					
-				</table>
+				</table> --%>
 			</div><!-- calTable end -->
 			<div class="clear"></div>
 		</div><!-- row1 end -->
