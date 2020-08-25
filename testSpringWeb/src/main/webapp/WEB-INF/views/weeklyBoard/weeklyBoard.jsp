@@ -184,8 +184,8 @@ $(document).ready(function() {
 			<div class="clear"></div>
 		</div><!-- row1 end -->
 		<div class="webNone">
-				<h1>주간업무일지</h1>
-				<table class="floatRight">
+			<h1>주간업무일지</h1>
+			<table class="floatRight">
 				<tr><td rowspan="2">결재</td>
 					<td width="70">담당자</td>
 					<td width="70">과장</td>
@@ -197,19 +197,25 @@ $(document).ready(function() {
 					<td height="50"></td>
 					<td height="50"></td>
 					<td height="50"></td></tr>
-				</table>
-			</div>
-			<div></div>
-			<div class="webNone">
-				<table style="width: 100%;">
-					<tr><td>업무기간</td>
+			</table>
+			<div class="hiddenBlock"></div>
+			<div>
+				<table class="print_table marginTop_100">
+					<tr height="20"><td>업무기간</td>
 						<td>20년 08월 31일 ~ 20년 08월 31일</td>
 						<td>직급</td>
 						<td>대리</td>
 						<td>성명</td>
 						<td>문성균</td></tr>
+					<tr height="500"><td><pre>업무<br>진행<br>현황</pre></td>
+						<td colspan="5"></td></tr>
+					<tr height="150"><td><pre>특이사항<br>및<br>수정요구</pre></td>
+						<td colspan="5"></td></tr>
+					<tr height="100"><td><pre>비고</pre></td>
+						<td colspan="5"></td></tr>
 				</table>
 			</div>
+		</div><!-- print webNone end -->
 	</div><!-- content end -->
 </div><!-- wrap end -->
 </body>
