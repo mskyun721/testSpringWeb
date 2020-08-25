@@ -183,10 +183,10 @@ $(document).ready(function() {
 			</div>
 			<div class="clear"></div>
 		</div><!-- row1 end -->
-		<div class="onepage webNone">
+
+		<div class="webNone">
 			<h1>주간업무일지</h1>
-			<div>
-				<table class="floatRight">
+			<table class="floatRight">
 				<tr><td rowspan="2">결재</td>
 					<td width="70">담당자</td>
 					<td width="70">과장</td>
@@ -198,25 +198,25 @@ $(document).ready(function() {
 					<td height="50"></td>
 					<td height="50"></td>
 					<td height="50"></td></tr>
-				</table>
-			</div>
+			</table>
+			<div class="hiddenBlock"></div>
 			<div>
-				<table style="width: 100%;">
-					<tr><td width="100">업무기간</td>
-						<td width="400">20년 08월 31일 ~ 20년 08월 31일</td>
-						<td width="70">직급</td>
-						<td width="100">대리</td>
-						<td width="70">성명</td>
-						<td width="100">문성균</td></tr>
-					<tr><td>업무진행현황</td>
+				<table class="print_table marginTop_100">
+					<tr height="20"><td>업무기간</td>
+						<td>20년 08월 31일 ~ 20년 08월 31일</td>
+						<td>직급</td>
+						<td>대리</td>
+						<td>성명</td>
+						<td>문성균</td></tr>
+					<tr height="500"><td><pre>업무<br>진행<br>현황</pre></td>
 						<td colspan="5"></td></tr>
-					<tr><td>특이사항 및 수정요구</td>
+					<tr height="150"><td><pre>특이사항<br>및<br>수정요구</pre></td>
 						<td colspan="5"></td></tr>
-					<tr><td>비고</td>
+					<tr height="100"><td><pre>비고</pre></td>
 						<td colspan="5"></td></tr>
 				</table>
 			</div>
-		</div>
+		</div><!-- print webNone end -->
 	</div><!-- content end -->
 </div><!-- wrap end -->
 </body>

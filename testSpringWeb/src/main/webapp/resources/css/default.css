@@ -215,10 +215,14 @@ a:active{color: black;}
 .back_white{background-color: white; border-bottom-color: black;}
 
 .webNone{display: none;}
+@page  {size: A4;margin: 10mm 0mm 0mm 25mm; }
 @media print{
-	.printNone{display: none;}
+	.printNone{display: none;font-family:initial;  }
 	.webNone{display: block; text-align: center;}
 	.webNone table{border-collapse: collapse;}
+	.print_table{width:100%; }
+	.marginTop_100{margin-top: 100px;}
+	.hiddenBlock{height: 15px;visibility: hidden;}
 }
 .onepage{
 	page-break-before: always;
