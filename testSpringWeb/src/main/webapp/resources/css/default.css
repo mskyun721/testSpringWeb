@@ -220,5 +220,19 @@ a:active{color: black;}
 	.webNone{display: block; text-align: center;}
 	.webNone table{border-collapse: collapse;}
 }
+.onepage{
+	page-break-before: always;
+	box-sizing: border-box;
+	width: 21cm;
+	min-height: 29.7cm;
+	padding: 2cm;
+	margin: 0 auto;
+	background: #eee;
+}
+@page{
+	size:A4;
+	margin: 0;
+}
+
 
 
