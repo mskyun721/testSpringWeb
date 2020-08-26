@@ -19,6 +19,8 @@ import com.test.dto.WeekWrkHisDTO;
 import com.test.service.HomeService;
 import com.test.service.WeeklyBoardService;
 
+import sun.security.ec.ECDSAOperations.Seed;
+
 @Controller
 @RequestMapping("/weeklyBoard/*")
 public class WeeklyBoardController {
@@ -32,7 +34,8 @@ public class WeeklyBoardController {
 	public String weeklyBoard(CalDTO calDto, Model model,HttpSession session) {
 		Map<String, Object> calMap = weeklyService.weeklyCal(calDto);
 		WeekWrkHisDTO weeklyDTO = new WeekWrkHisDTO();
-		
+		weeklyDTO.setVIEWTYPE(session.getAttribute("VIEWTYPE").toString());
+		weeklyDTO.setUSERID(session.getAttribute("USERID").toString());
 		weeklyDTO.setSTWEEKDAY(calMap.get("yearMonth").toString());
 		List<WeekWrkHisDTO> weeklyList = weeklyService.weeklyList(weeklyDTO);
 		model.addAttribute("month", calMap.get("month"));

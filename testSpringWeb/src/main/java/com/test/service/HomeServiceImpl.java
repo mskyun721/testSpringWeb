@@ -113,11 +113,12 @@ public class HomeServiceImpl implements HomeService {
 	@Override
 	public boolean loginCheck(UserMstInfoDTO umiDTO, HttpSession session) {
 		boolean result=false;
-		UserMstInfoDTO loginCheck = homeDAO.oneUser(umiDTO);
-		if (loginCheck.getUSERNM() != "") {
+		UserMstInfoDTO loginCheck = homeDAO.login(umiDTO);
+		if (loginCheck != null) {
 			session.setAttribute("USERNM", loginCheck.getUSERNM());
 			session.setAttribute("JOBGRADE", loginCheck.getJOBGRADE());
 			session.setAttribute("USERID", loginCheck.getUSERID());
+			session.setAttribute("VIEWTYPE", loginCheck.getVIEWTYPE());
 			result=true;
 		}
 		return result;

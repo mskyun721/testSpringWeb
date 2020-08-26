@@ -14,18 +14,18 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 	<!-- MariaDB -->
-    <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
         <property name="driverClass" value="org.mariadb.jdbc.Driver"/>
         <property name="url" value="jdbc:mariadb://192.168.0.200:6036/testweb"></property>
         <property name="username" value="user"/>
         <property name="password" value="Sunsoft1230$#@!"/>
-    </bean> -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+    </bean>
+    <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
         <property name="driverClass" value="org.mariadb.jdbc.Driver"/>
         <property name="url" value="jdbc:mariadb://localhost/testweb"></property>
         <property name="username" value="root"/>
         <property name="password" value="moon94$$"/>
-    </bean>
+    </bean> -->
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>

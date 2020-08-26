@@ -54,9 +54,6 @@ $(document).ready(function() {
 					<form method="post" action="searchUser">
 					<table class="table1100">
 						<thead class="tableSection">
-							<!-- <tr><th class="backWhite"></th>
-								<th colspan="10" class="backWhite" align="left">
-								<th colspan="3" align="right" class="backWhite"></th> -->
 							<tr><th></th>
 								<th>NO.</th>
 								<th>ID</th>
@@ -69,7 +66,7 @@ $(document).ready(function() {
 								<th>비고</th>
 								<th></th></tr>
 							<tr><td><input type="button" onclick="window.open('userForm','_blank','width=300, height=320'); return false" value="add"></td>
-								<td></td>
+								<td><input type="text" size="1" readonly="readonly"></td>
 								<td><input type="text" size="5" name="USERID" value="" id="USERID"></td>
 								<td><input type="text" size="5" name="USERPW" value="" id="USERPW"></td>
 								<td><input type="text" size="5" name="USERNM" value="" id="USERNM"></td>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,14 +25,43 @@
 			</div>
 			<div class="floatLeft">
 				<div id="searchBox">
-					<form action="">
-						<input type="text" size="15">&nbsp;<button>검색</button>
-					</form>
+					<div class="inline floatLeft marginLeft_20" style="width: 400px;">
+						<label>거래처</label>
+						<input type="text" size="10">&nbsp;
+					</div>
+					<div class="inline floatLeft" style="width: 350px;">
+						<div>
+							<label>승인여부</label>
+							<select>
+								<option value="0" selected>--구분--</option>
+								<option value="1">미보고</option>
+								<option value="2">승인</option>
+								<option value="3">보류</option>
+								<option value="4">미승인</option>
+							</select>
+						</div>
+						<div>
+							<label>완료여부</label>
+							<select>
+								<option value="0" selected>--구분--</option>
+								<option value="Y">Y</option>
+								<option value="N">N</option>
+							</select>
+						</div>
+					</div>
+					<div class="inline " style="width: 350px;">
+						<div class="floatRight marginRight_20">
+							<input type="date" size="5" ><br>
+							<input type="date" size="5" >
+						</div>
+						<div class="floatRight marginRight_10"><label class="floatRight">검색기간</label></div>
+					</div>
 				</div>
 				<div class="marginLeft_100">
 					<table class="table1100">
 						<thead>
-							<tr><th>No.</th>
+							<tr><th width="10"><input type="button" onclick="window.open('/sunsoft/corpRequest/RequestForm','insertRequest','width=640, height=840'); return false" value="add"></th>
+								<th>No.</th>
 								<th>날짜</th>
 								<th>거래처명</th>
 								<th>담당자</th>
@@ -41,55 +71,22 @@
 								<th>완료날짜</th></tr>
 						</thead>
 						<tbody>
-							<tr onclick="window.open('/sunsoft/corpRequest/RequestForm','_blank','width=640, height=840'); return false" class="hover_link">
-								<td>1</td>
-								<td>yyyy-mm-dd</td>
-								<td>(주)xxxxx</td>
-								<td>xxx</td>
-								<td>xxx</td>
-								<td>승인</td>
-								<td>미완료</td>
-								<td>yyyy-mm-dd</td></tr>
-							<tr><td>2</td>
-								<td>yyyy-mm-dd</td>
-								<td>(주)xxxxx</td>
-								<td>xxx</td>
-								<td>xxx</td>
-								<td>승인</td>
-								<td>미완료</td>
-								<td>yyyy-mm-dd</td></tr>
-							<tr><td>3</td>
-								<td>yyyy-mm-dd</td>
-								<td>(주)xxxxx</td>
-								<td>xxx</td>
-								<td>xxx</td>
-								<td>승인</td>
-								<td>미완료</td>
-								<td>yyyy-mm-dd</td></tr>
-							<tr><td>4</td>
-								<td>yyyy-mm-dd</td>
-								<td>(주)xxxxx</td>
-								<td>xxx</td>
-								<td>xxx</td>
-								<td>승인</td>
-								<td>미완료</td>
-								<td>yyyy-mm-dd</td></tr>
-							<tr><td>5</td>
-								<td>yyyy-mm-dd</td>
-								<td>(주)xxxxx</td>
-								<td>xxx</td>
-								<td>xxx</td>
-								<td>승인</td>
-								<td>미완료</td>
-								<td>yyyy-mm-dd</td></tr>
-							<tr><td>6</td>
-								<td>yyyy-mm-dd</td>
-								<td>(주)xxxxx</td>
-								<td>xxx</td>
-								<td>xxx</td>
-								<td>승인</td>
-								<td>미완료</td>
-								<td>yyyy-mm-dd</td></tr>
+							<c:forEach items="${reqList }" var="list" varStatus="i">
+								<tr><td width="10"><input type="button" 
+										onclick="window.open('/sunsoft/corpRequest/RequestForm?REQDATE=${list.REQDATE}&REQNO=${list.REQNO }','_blank','width=640, height=840'); return false" value="edit"></td>
+									<td>${i.index+1 }</td>
+									<td>${list.REQDATE }</td>
+									<td>${list.CSTNM }</td>
+									<td>${list.USERNM }</td>
+									<td>${list.CSTEMPNM }</td>
+									<td><c:if test="${list.APPROVAL == '1' }">미보고</c:if>
+										<c:if test="${list.APPROVAL == '2' }">승인</c:if>
+										<c:if test="${list.APPROVAL == '3' }">보류</c:if>
+										<c:if test="${list.APPROVAL == '4' }">미승인</c:if></td>
+									<td>${list.COMPLET }</td>
+									<td>${list.CPTDATE }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

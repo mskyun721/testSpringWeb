@@ -33,6 +33,10 @@ public class HomeDAOImpl implements HomeDAO {
 	public UserMstInfoDTO oneUser(UserMstInfoDTO umiDTO) {
 		return sqlSession.selectOne(Namespace+".oneUser",umiDTO);
 	}
+	@Override
+	public UserMstInfoDTO login(UserMstInfoDTO umiDTO) {
+		return sqlSession.selectOne(Namespace+".login",umiDTO);
+	}
 //	user ------------------------------------------------------
 	
 	@Override

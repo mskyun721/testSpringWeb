@@ -50,12 +50,13 @@ public class HomeController {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('아이디, 패스워드를 확인하세요.')");
+				//out.println("location.href='/sunsoft/'");
 				out.println("</script>");
 				out.flush();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			return "redirect:/";
+			return "login";
 		}
 	}
 	
@@ -170,7 +171,6 @@ public class HomeController {
 	
 	@RequestMapping(value="/insertCst", method=RequestMethod.POST)
 	public String insertCst(CstMstInfoDTO cmiDTO,HttpServletResponse response){
-		System.out.println(cmiDTO.getCSTCD());
 		homeService.insertCst(cmiDTO);
 		
 		try {

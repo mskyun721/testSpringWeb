@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		{call SP_SET_TBWEEKWRKHIS(#{YEARWEEK},#{USERID},#{JOBGRADE},#{STWEEKDAY},#{LTWEEKDAY},#{WEEKWORKCONT},#{WEEKPS},#{REMARK})}
 	</insert>
 	<select id="weeklyList" resultType="weeklyDTO">
-		{call SP_GET_TBWEEKWRKHIS(#{YEARWEEK},#{USERID},#{STWEEKDAY})}
+		{call SP_GET_TBWEEKWRKHIS(#{YEARWEEK},#{USERID},#{STWEEKDAY},#{VIEWTYPE})}
 	</select>
 	<delete id="delBoard">
 		{call SP_DEL_TBWEEKWRKHIS(#{YEARWEEK},#{USERID})}

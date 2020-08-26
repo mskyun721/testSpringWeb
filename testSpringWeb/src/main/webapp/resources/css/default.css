@@ -145,6 +145,13 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 #searchBox{
 	margin-left: 100px;
 	margin-bottom: 10px;
+	border: 1px solid;
+	height: 50px;
+	width: 1100px;
+	padding: 5px;
+}
+#searchBox .inline{
+	display: inline;
 }
 
 #weeklyWriteForm{
@@ -206,6 +213,7 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 /* float */
 .floatLeft{float: left;}
 .floatRight{float: right;}
+
 .clear{clear: both;}
 .horison{text-align: }
 a{text-decoration: none;color: black;}
@@ -214,15 +222,30 @@ a{text-decoration: none;color: black;}
 a:active{color: black;}
 .back_white{background-color: white; border-bottom-color: black;}
 
+/* 프린트 */
 .webNone{display: none;}
-@page  {size: A4;margin: 10mm 0mm 0mm 25mm; }
+@page  {size: auto;margin-left: 50mm }
 @media print{
-	.printNone{display: none;font-family:initial;  }
-	.webNone{display: block; text-align: center;}
+	.printNone{display: none;}
+	.webNone{display: block; text-align: center;margin-left: 100px;}
 	.webNone table{border-collapse: collapse;}
 	.print_table{width:100%; }
 	.marginTop_100{margin-top: 100px;}
 	.hiddenBlock{height: 15px;visibility: hidden;}
 }
+.onepage{
+	page-break-before: always;
+	box-sizing: border-box;
+	width: 21cm;
+	min-height: 29.7cm;
+	padding: 2cm;
+	margin: 0 auto;
+	background: #eee;
+}
+@page{
+	size:A4;
+	margin: 0;
+}
+
 
 
