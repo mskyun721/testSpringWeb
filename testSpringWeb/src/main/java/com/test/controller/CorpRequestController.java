@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.test.dto.CstMstInfoDTO;
 import com.test.dto.CstReqHisDTO;
 import com.test.service.CorpRequestService;
 import com.test.service.HomeService;
@@ -22,6 +23,7 @@ import com.test.service.HomeService;
 @RequestMapping("/corpRequest/*")
 public class CorpRequestController {
 	@Inject CorpRequestService crService;
+	@Inject HomeService homeService;
 	Calendar cal = Calendar.getInstance();
 
 	@RequestMapping("corpRequest")
@@ -82,8 +84,10 @@ public class CorpRequestController {
 	}
 	
 	@RequestMapping(value="CstcdSearch", method=RequestMethod.GET)
-	public String CstcdSearch() {
-		
+	public String CstcdSearch(Model model,CstMstInfoDTO cmiDTO) {
+		List<CstMstInfoDTO> corpList;
+		corpList = homeService.corpList(cmiDTO);
+		model.addAttribute("corpList",corpList);
 		return "corpRequest/CstcdSearch";
 	}
 }
