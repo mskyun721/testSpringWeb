@@ -6,18 +6,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.test.mappers.homeMapper">
 <!-- user  -->
 	<insert id="insertUser">
-		{call SP_SET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{HPNUMBER},
+		{call SP_SET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{VIEWTYPE},#{HPNUMBER},
 		#{HPNUMBER2},#{REMARK})}
 	</insert>
 	<select id="selectUser" resultType="userDTO">
-		{CALL SP_GET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{HPNUMBER},
+		{CALL SP_GET_TBUSERMSTINFO(#{USERID},#{USERPW},#{USERNM},#{JOBGRADE},#{USERTYPE},#{VIEWTYPE},#{HPNUMBER},
 		#{HPNUMBER2},#{REMARK})}
 	</select>
 	<delete id="delUser">
 		{call SP_DEL_TBUSERMSTINFO(#{USERID})}
 	</delete>
 	<select id="oneUser" resultType="userDTO">
-		{call SP_GET_TBUSERMSTINFO2(#{USERID},#{USERPW})}
+		{call SP_GET_TBUSERMSTINFO2(#{USERID})}
+	</select>
+	<select id="login" resultType="userDTO">
+		{call SP_GET_TBUSERMSTINFO_LOGIN(#{USERID},#{USERPW})}
 	</select>
 <!-- user  -->	
 	

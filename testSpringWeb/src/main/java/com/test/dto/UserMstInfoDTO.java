@@ -6,6 +6,7 @@ public class UserMstInfoDTO {
 	private String USERNM;
 	private String JOBGRADE;
 	private String USERTYPE;
+	private String VIEWTYPE;
 	private String HPNUMBER;
 	private String HPNUMBER2;
 	private String REMARK;
@@ -35,6 +36,12 @@ public class UserMstInfoDTO {
 	}
 	public String getUSERTYPE() {
 		return USERTYPE;
+	}
+	public String getVIEWTYPE() {
+		return VIEWTYPE;
+	}
+	public void setVIEWTYPE(String vIEWTYPE) {
+		VIEWTYPE = vIEWTYPE;
 	}
 	public void setUSERTYPE(String uSERTYPE) {
 		USERTYPE = uSERTYPE;

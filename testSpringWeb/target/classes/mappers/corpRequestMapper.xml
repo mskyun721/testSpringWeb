@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mappers.corpRequstMapper">
+	<insert id="requestInsert">
+		{call SP_SET_TBCSTREQHIS(#{REQDATE},#{REQNO},#{CSTCD},#{USERNM},#{CSTEMPNM},#{APPROVAL},#{REQCONT},#{CPTDATE},#{COMPLET},#{CPTCONT})}
+	</insert>
+	<select id="countReqDate" resultType="int">
+		{call SP_GET_TBCSTREQHIS_COUNT(#{REQDATE})}
+	</select>
+	<select id="requestList" resultType="crhDTO">
+		{call SP_GET_TBCSTREQHIS()}
+	</select>
+	<select id="oneRequest" resultType="crhDTO">
+		{call SP_GET_TBCSTREQHIS2(#{REQDATE},#{REQNO})}
+	</select>
+	<delete id="delBoard">
+		{call SP_DEL_TBWEEKWRKHIS(#{YEARWEEK},#{USERID})}
+	</delete>
+
+</mapper>

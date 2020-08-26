@@ -205,7 +205,7 @@ $(document).ready(function() {
 					<tr height="20"><td>업무기간</td>
 						<td>20년 08월 31일 ~ 20년 08월 31일</td>
 						<td>직급</td>
-						<td>대리</td>
+						<td>사원</td>
 						<td>성명</td>
 						<td>문성균</td></tr>
 					<tr height="500"><td><pre>업무<br>진행<br>현황</pre></td>

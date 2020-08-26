@@ -24,5 +24,7 @@ public interface HomeDAO {
 
 	public CstMstInfoDTO selectOneCST(CstMstInfoDTO cmiDTO);
 
+	public UserMstInfoDTO login(UserMstInfoDTO umiDTO);
+
 	
 }

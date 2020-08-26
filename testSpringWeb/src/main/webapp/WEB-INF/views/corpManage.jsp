@@ -69,21 +69,21 @@ $(document).ready(function() {
 							<th>주소</th>
 							<th>비고</th>
 							<th></th></tr>
-						<tr><th><input type="button" onclick="window.open('corpManageForm','_blank','width=585, height=390'); return false" value="add"></th>
-							<th><input type="text" size="1" readonly="readonly"></th>
-							<th><input type="text" size="10" name="CSTCD" id="CSTCD"></th>
-							<th><input type="text" size="10" name="CSTNM" id="CSTNM"></th>
-							<th><input type="text" size="2" name="CSTTYPE" id="CSTTYPE"></th>
-							<th><input type="text" size="10" name="CSTCEO" id="CSTCEO"></th>
-							<th><input type="text" size="10" name="BIZNO" id="BIZNO"></th>
-							<th><input type="text" size="5" name="CSTKIND" id="CSTKIND"></th>
-							<th><input type="text" size="5" name="CSTITEM" id="CSTITEM"></th>
-							<th><input type="text" size="18" name="TELNO" id="TELNO"></th>
-							<th><input type="text" size="18" name="FAXNO" id="FAXNO"></th>
-							<th><input type="text" size="7" name="ZIPNO" id="ZIPNO"></th>
-							<th><input type="text" size="30" name="ADDR1" id="ADDR1"></th>
-							<th><input type="text" size="10"name="REMARK" id="REMARK"></th>
-							<th><input type="submit" value="조회"></th>
+						<tr><td><input type="button" onclick="window.open('corpManageForm','_blank','width=585, height=390'); return false" value="add"></th>
+							<td><input type="text" size="1" readonly="readonly"></td>
+							<td><input type="text" size="10" name="CSTCD" id="CSTCD"></td>
+							<td><input type="text" size="10" name="CSTNM" id="CSTNM"></td>
+							<td><input type="text" size="2" name="CSTTYPE" id="CSTTYPE"></td>
+							<td><input type="text" size="10" name="CSTCEO" id="CSTCEO"></td>
+							<td><input type="text" size="10" name="BIZNO" id="BIZNO"></td>
+							<td><input type="text" size="5" name="CSTKIND" id="CSTKIND"></td>
+							<td><input type="text" size="5" name="CSTITEM" id="CSTITEM"></td>
+							<td><input type="text" size="18" name="TELNO" id="TELNO"></td>
+							<td><input type="text" size="18" name="FAXNO" id="FAXNO"></td>
+							<td><input type="text" size="7" name="ZIPNO" id="ZIPNO"></td>
+							<td><input type="text" size="30" name="ADDR1" id="ADDR1"></td>
+							<tD><input type="text" size="10"name="REMARK" id="REMARK"></td>
+							<td><input type="submit" value="조회"></td>
 							</tr>
 					</thead>
 						<tbody>
