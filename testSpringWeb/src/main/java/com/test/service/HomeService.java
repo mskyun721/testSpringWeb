@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import com.test.dto.CstMstInfoDTO;
 import com.test.dto.UserMstInfoDTO;
+import com.test.dto.UserScheduleDTO;
 
 public interface HomeService {
 	public Map<String, Object> dayOfWeek(int year,int month);
@@ -21,5 +22,7 @@ public interface HomeService {
 	public List<CstMstInfoDTO> corpList(CstMstInfoDTO cmiDTO);
 	public void delCorp(CstMstInfoDTO cmiDTO);
 	public CstMstInfoDTO selectOneCST(CstMstInfoDTO cmiDTO);
+	public void insertSchedule(UserScheduleDTO usDTO);
+	public List<UserScheduleDTO> schList(UserScheduleDTO usDto);
 	
 }

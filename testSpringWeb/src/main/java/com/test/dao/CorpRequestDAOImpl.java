@@ -24,8 +24,8 @@ public class CorpRequestDAOImpl implements CorpRequestDAO {
 		return sqlSession.selectOne(Namespace+".countReqDate", crhDto);
 	}
 	@Override
-	public List<CstReqHisDTO> requestList() {
-		return sqlSession.selectList(Namespace+".requestList");
+	public List<CstReqHisDTO> requestList(CstReqHisDTO crhDto) {
+		return sqlSession.selectList(Namespace+".requestList",crhDto);
 	}
 	@Override
 	public CstReqHisDTO oneRequest(CstReqHisDTO crhDto) {

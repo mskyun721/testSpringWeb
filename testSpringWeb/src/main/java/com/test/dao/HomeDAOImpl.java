@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.test.dto.CstMstInfoDTO;
 import com.test.dto.UserMstInfoDTO;
+import com.test.dto.UserScheduleDTO;
 
 @Repository
 public class HomeDAOImpl implements HomeDAO {
@@ -38,6 +39,16 @@ public class HomeDAOImpl implements HomeDAO {
 		return sqlSession.selectOne(Namespace+".login",umiDTO);
 	}
 //	user ------------------------------------------------------
+	
+	@Override
+	public void insertSchedule(UserScheduleDTO usDTO) {
+		sqlSession.insert(Namespace+".insertSch",usDTO);
+	}
+	@Override
+	public List<UserScheduleDTO> schList(UserScheduleDTO usDto) {
+		return sqlSession.selectList(Namespace+".selectSch", usDto);
+	}
+	
 	
 	@Override
 	public void insertCst(CstMstInfoDTO cmiDTO) {

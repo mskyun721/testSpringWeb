@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 import com.test.dto.CalDTO;
 import com.test.dto.CstMstInfoDTO;
+import com.test.dto.CstReqHisDTO;
 import com.test.dto.UserMstInfoDTO;
 import com.test.dto.WeekWrkHisDTO;
+import com.test.service.CorpRequestService;
 import com.test.service.HomeService;
 import com.test.service.WeeklyBoardService;
 
@@ -27,6 +29,8 @@ public class AjaxController {
 	HomeService homeSercive;
 	@Inject
 	WeeklyBoardService weeklyService;
+	@Inject
+	CorpRequestService crService;
 	
 	/*
 	 * @RequestMapping("/searchYear") public ResponseEntity<String[][]>
@@ -98,6 +102,13 @@ public class AjaxController {
 		weeklyService.delBoard(wrDTO);
 	}
 	
+	@RequestMapping(value="/corpRequest/requestDateSearch", method=RequestMethod.GET)
+	public  List<CstReqHisDTO> delWeekwrkhis(CstReqHisDTO crhDto){
+		Map<String, Object> map = new HashMap<String, Object>();
+		List<CstReqHisDTO> reqList = crService.requestList(crhDto);
+		
+		return reqList;
+	}
 	
 	
 	

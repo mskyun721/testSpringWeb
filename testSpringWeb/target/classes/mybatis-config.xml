@@ -7,6 +7,7 @@
 		<typeAlias type="com.test.dto.CstMstInfoDTO" alias="cstDTO"/>
 		<typeAlias type="com.test.dto.WeekWrkHisDTO" alias="weeklyDTO"/>
 		<typeAlias type="com.test.dto.CstReqHisDTO" alias="crhDTO"/>
+		<typeAlias type="com.test.dto.UserScheduleDTO" alias="schDTO"/>
 	</typeAliases>
 	
 </configuration>

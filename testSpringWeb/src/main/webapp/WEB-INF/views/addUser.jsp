@@ -47,9 +47,6 @@ $(document).ready(function() {
 			</div>
 			
 			<div class="floatLeft">
-				<div id="searchBox">
-				
-				</div>
 				<div class="marginLeft_100">
 					<form method="post" action="searchUser">
 					<table class="table1100">

@@ -51,7 +51,7 @@ $(document).ready(function() {
 			<div id="title">
 				<h3>일정표</h3>
 			</div>
-			<div id="searchBox">
+			<div class="marginLeft_100 marginBottom_10">
 				<form method="get">
 					<select id="year" name="year" >
 					</select>
@@ -79,23 +79,23 @@ $(document).ready(function() {
 						<c:forEach items="${day }" var="day1" begin="0" end="5">
 							<tr>
 								<c:forEach items="${day1 }" var="day2" begin="0" end="6" varStatus="i">
-									<c:choose>
+									<c:choose><c:set var="date" value="${year }-${month }-${day2 }"/>
 										<c:when test="${i.index == 0 }">
-											<td class="content red"></td>
+											<td class="content red" id="${day2 }"><c:forEach items="${schList }" var="list"><c:if test="${list.SCHDATE == date }">${list.SCHCONT}</c:if></c:forEach></td>
 											<td class="day red"><a href="scheduleForm?year=${year }&month=${month}&day=${day2}" 
 												onclick="window.open(this.href,'_blank','width=300, height=200, left=500, top=300'); return false"
 												class="red">
 												${day2 }</a></td>
 										</c:when>
 										<c:when test="${i.index == 6 }">
-											<td class="content blue"></td>
+											<td class="content blue" id="${day2 }"><c:forEach items="${schList }" var="list"><c:if test="${list.SCHDATE == date }">${list.SCHCONT}</c:if></c:forEach></td>
 											<td class="day blue"><a href="scheduleForm?year=${year }&month=${month}&day=${day2}" 
 												onclick="window.open(this.href,'_blank','width=300, height=200, left=500, top=300'); return false"
 												class="blue">
 												${day2 }</a></td>
 										</c:when>
 										<c:otherwise>
-											<td class="content"></td>
+											<td class="content" id="${day2 }"><c:forEach items="${schList }" var="list"><c:if test="${list.SCHDATE == date }">${list.SCHCONT}</c:if></c:forEach></td>
 											<td class="day"><a href="scheduleForm?year=${year }&month=${month}&day=${day2}" 
 												onclick="window.open(this.href,'_blank','width=300, height=200, left=500, top=300'); return false">
 												${day2 }</a></td>
@@ -104,28 +104,6 @@ $(document).ready(function() {
 								</c:forEach>
 						</c:forEach>
 				</table>
-				<%-- <table class="table5500">
-					<tr><th rowspan="2">직원</th>
-						<c:forEach items="${endDays }" var="endDay" begin="0" end="2" varStatus="i">
-							<th colspan="${endDay }">${month +i.index }</th>
-						</c:forEach></tr>
-					<tr><c:forEach items="${day_2 }" var="day_2_2" begin="0" end="2">
-							<c:forEach items="${day_2_2 }" var="day_2_3">
-								<th>0${day_2_3 }</th>
-							</c:forEach>
-						</c:forEach></tr>
-					<c:forEach items="${userList }" var="list">
-						<tr>
-						<td width="200">${list.USERNM }</td>
-						<c:forEach items="${day_2 }" var="day_2_2" begin="0" end="2">
-							<c:forEach items="${day_2_2 }" var="day_2_3">
-								<td width="100"></td>
-							</c:forEach>
-						</c:forEach>
-						</tr>
-					</c:forEach>
-					
-				</table> --%>
 			</div><!-- calTable end -->
 			<div class="clear"></div>
 		</div><!-- row1 end -->

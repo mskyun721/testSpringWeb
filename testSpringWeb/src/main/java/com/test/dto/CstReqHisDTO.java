@@ -11,7 +11,24 @@ public class CstReqHisDTO {
 	private String CPTDATE;
 	private String COMPLET;
 	private String CPTCONT;
+	
 	private String CSTNM;
+	private String STDATE;
+	private String LTDATE;
+	
+	public String getSTDATE() {
+		return STDATE;
+	}
+	public void setSTDATE(String sTDATE) {
+		STDATE = sTDATE;
+	}
+	public String getLTDATE() {
+		return LTDATE;
+	}
+	public void setLTDATE(String lTDATE) {
+		LTDATE = lTDATE;
+	}
+	
 	
 	public String getREQDATE() {
 		return REQDATE;

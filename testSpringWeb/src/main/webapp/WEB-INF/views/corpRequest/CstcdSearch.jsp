@@ -8,6 +8,17 @@
 <title>거래처 검색</title>
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/table.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+function sendValue(CSTNM,CSTCD){
+	window.opener.document.getElementById("CSTNM").value=CSTNM;
+	if (opener.location.pathname == "/sunsoft/corpRequest/corpRequest") {
+		opener.location.href="/sunsoft/corpRequest/corpRequest?CSTNM="+CSTNM;
+	}else{
+		window.opener.document.getElementById("CSTCD").value=CSTCD;	
+	}
+	window.close();
+}
+</script>
 </head>
 <body>
 <div>
@@ -30,8 +41,8 @@
 			<th>전화번호</th>
 			</tr></thead>
 		<tbody>
-		<c:forEach items="corpList" var="list" varStatus="i">
-			<tr><td>${i.index }</td>
+		<c:forEach items="${corpList}" var="list" varStatus="i">
+			<tr onclick="sendValue('${list.CSTNM}','${list.CSTCD }');" class="hover_link"><td>${i.index+1 }</td>
 				<td>${list.CSTCD }</td>
 				<td>${list.CSTNM }</td>
 				<td>${list.CSTTYPE }</td>

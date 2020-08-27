@@ -9,15 +9,16 @@
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/scheduleForm.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	function search() {
-		window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=400,height=400');
-	}
+function print() {
+	
+	opener.window.print();
+}
 </script>
 </head>
 <body>
 <div>
 	<div class="marginLeft_30 floatLeft"><h3>업체 요청 내역</h3></div>
-	<div class="marginRight_50 marginTop_10 floatRight"><button>출력</button></div>
+	<div class="marginRight_50 marginTop_10 floatRight"><button type="button" onclick="print();return false;">출력</button></div>
 </div>
 <div class="clear"></div>
 <div class="marginLeft_20">
@@ -39,7 +40,7 @@
 			<div class="lbWidth"><label for="">거래처</label></div>
 			<input type="text" size="5" name="CSTCD" id="CSTCD" value="${requestCrhDto.CSTCD }">
 			<input type="text" size="10" name="CSTNM" id="CSTNM" value="${requestCrhDto.CSTNM }">
-			<button id="searchCST" onclick="search();">검색</button>
+			<button id="searchCST" onclick="window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=500,height=400'); return false">검색</button>
 		</div>
 		<div class="formRow">
 			<div class="lbWidth"><label>담당자</label></div>

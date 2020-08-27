@@ -26,10 +26,19 @@ public class CorpRequestController {
 	@Inject HomeService homeService;
 	Calendar cal = Calendar.getInstance();
 
-	@RequestMapping("corpRequest")
-	public String corpRequest(Model model) {
-		List<CstReqHisDTO> reqList = crService.requestList();
+	@RequestMapping(value="corpRequest", method= {RequestMethod.GET,RequestMethod.POST})
+	public String corpRequest(Model model,CstReqHisDTO crhDto) {
+		Map<String,Object> dateMap = crService.searchDate();
+		if (crhDto.getSTDATE()==null) {crhDto.setSTDATE(dateMap.get("stdate").toString());}
+		if (crhDto.getLTDATE()==null) {crhDto.setLTDATE(dateMap.get("ltdate").toString());}
+		
+		List<CstReqHisDTO> reqList = crService.requestList(crhDto);
+		model.addAttribute("STDATE",crhDto.getSTDATE());
+		model.addAttribute("LTDATE",crhDto.getLTDATE());
 		model.addAttribute("reqList",reqList);
+		model.addAttribute("CSTNM",crhDto.getCSTNM());
+		model.addAttribute("APPROVAL",crhDto.getAPPROVAL());
+		model.addAttribute("COMPLET",crhDto.getCOMPLET());
 		return "corpRequest/corpRequest";
 	}
 	
@@ -40,18 +49,14 @@ public class CorpRequestController {
 	
 	@RequestMapping("RequestForm")
 	public String RequestForm(Model model, CstReqHisDTO crhDto) {
-		String strMonth = null, strDay = null;
-		int year = cal.get(Calendar.YEAR);
-		int month = cal.get(Calendar.MONTH)+1;
-		int day = cal.get(Calendar.DATE);
-		if (month < 10) {strMonth = "0"+month;}else {strMonth=month+"";}
-		if (day<10) {strDay = "0"+day;} else {strDay=day+"";}
+		Map<String,Object> dateMap = crService.searchDate();
 		if (crhDto != null) {
 			CstReqHisDTO requestCrhDto = crService.oneRequest(crhDto);
 			model.addAttribute("requestCrhDto", requestCrhDto);
 		}
 		
-		model.addAttribute("date", year+"-"+strMonth+"-"+strDay);
+		
+		model.addAttribute("date", dateMap.get("ltdate"));
 		
 		return "corpRequest/RequestForm";
 	}
@@ -90,4 +95,5 @@ public class CorpRequestController {
 		model.addAttribute("corpList",corpList);
 		return "corpRequest/CstcdSearch";
 	}
+	
 }

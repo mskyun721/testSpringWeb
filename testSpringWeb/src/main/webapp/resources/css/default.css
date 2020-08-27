@@ -128,7 +128,7 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 	margin-bottom: 5px;
 }
 .dropCheck:checked + .clickDrop + .dropDiv{
-	height: 400px;
+	height: 300px;
 }
 /* sidebar */
 
@@ -201,6 +201,7 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 .marginLeft_30{margin-left: 30px;}
 .marginLeft_40{margin-left: 40px;}
 .marginLeft_50{margin-left: 50px;}
+.marginBottom_5{margin-bottom: 5px;}
 .marginBottom_10{margin-bottom: 10px;}
 .marginBottom_20{margin-bottom: 20px;}
 .marginBottom_30{margin-bottom: 30px;}
@@ -224,12 +225,16 @@ a:active{color: black;}
 
 /* 프린트 */
 .webNone{display: none;}
-@page  {size: auto;margin-left: 50mm }
+@page  {size: auto;}
 @media print{
 	.printNone{display: none;}
-	.webNone{display: block; text-align: center;margin-left: 100px;}
+	.webNone{display: block; text-align: center;margin-left: 30px;}
 	.webNone table{border-collapse: collapse;}
-	.print_table{width:100%; }
+	.marginLeft{margin-left: 70mm;}
+	.approTable{width:120mm;}
+	.print_table{width:190mm;font-family: "굴림체","GulimChe";table-layout: fixed;word-break: break-all;}
+	.dataPre{text-align: left;vertical-align: top;}
+	.dataPre pre{padding-left: 5px;table-layout: fixed;word-break: break-all;white-space: pre-wrap;}
 	.marginTop_100{margin-top: 100px;}
 	.hiddenBlock{height: 15px;visibility: hidden;}
 }

@@ -49,15 +49,24 @@ $(document).ready(function() {
 			data:{YEARWEEK:yearWeek,
 					USERID:userID},
 			success:function(data){
+				var arrStweek = data.stweek.split('-');
+				var arrLtweek = data.ltweek.split('-');
+				var date = arrStweek[0].substr(2,2)+"년 "+arrStweek[1]+"월 "+arrStweek[2]+"일 ~ "+arrLtweek[0].substr(2,2)+"년 "+arrLtweek[1]+"월 "+arrLtweek[2]+"일";
 				$('#YEARWEEK').val(data.yearweek);
+				$('.DATE').text(date);
 				$('#USERID').val(data.userId);
 				$('#JOBGRADE').val(data.grade);
+				$('.JOBGRADE').text(data.grade);
 				$('#USERNM').val(data.userNm);
+				$('.USERNM').text(data.userNm);
 				$('#WEEKWORKCONT').text(data.cont);
+				$('.WEEKWORKCONT').text(data.cont);
 				$('#WEEKPS').text(data.ps);
+				$('.WEEKPS').text(data.ps);
 				$('#REMARK').text(data.remark);
-				$('#STWEEKDAY').text(data.stweek);
-				$('#LTWEEKDAY').text(data.ltweek);
+				$('.REMARK').text(data.remark);
+				$('#STWEEKDAY').val(data.stweek);
+				$('#LTWEEKDAY').val(data.ltweek);
 			}
 		});
 	});
@@ -107,7 +116,7 @@ $(document).ready(function() {
 				<h3>주간 업무일지</h3>
 			</div>
 			<div class="floatLeft ">
-				<div id="searchBox">
+				<div class="marginLeft_100">
 				<form method="get">
 					<select id="year" name="year" >
 					</select>
@@ -185,14 +194,14 @@ $(document).ready(function() {
 		</div><!-- row1 end -->
 
 		<div class="webNone">
-			<h1>주간업무일지</h1>
-			<table class="floatRight">
+			<div class="marginLeft_100"><h1>주간업무일지</h1></div>
+			<table class="marginLeft approTable">
 				<tr><td rowspan="2">결재</td>
-					<td width="70">담당자</td>
-					<td width="70">과장</td>
-					<td width="70">차장</td>
-					<td width="70">차장</td>
-					<td width="70">사장</td></tr>
+					<td width="100">담당자</td>
+					<td width="100">과장</td>
+					<td width="100">차장</td>
+					<td width="100">차장</td>
+					<td width="100">사장</td></tr>
 				<tr><td height="50"></td>
 					<td height="50"></td>
 					<td height="50"></td>
@@ -201,19 +210,19 @@ $(document).ready(function() {
 			</table>
 			<div class="hiddenBlock"></div>
 			<div>
-				<table class="print_table marginTop_100">
-					<tr height="20"><td>업무기간</td>
-						<td>20년 08월 31일 ~ 20년 08월 31일</td>
-						<td>직급</td>
-						<td>사원</td>
-						<td>성명</td>
-						<td>문성균</td></tr>
-					<tr height="500"><td><pre>업무<br>진행<br>현황</pre></td>
-						<td colspan="5"></td></tr>
+				<table class="print_table">
+					<tr height="20"><td width="100">업무기간</td>
+						<td class="DATE" width="290"></td>
+						<td width="50">직급</td>
+						<td class="JOBGRADE"></td>
+						<td width="50">성명</td>
+						<td class="USERNM"></td></tr>
+					<tr height="500"><td><pre>업 무<br><br>진 행<br><br>현 황</pre></td>
+						<td colspan="5" class="dataPre"><pre class="WEEKWORKCONT dataPre"></pre></td></tr>
 					<tr height="150"><td><pre>특이사항<br>및<br>수정요구</pre></td>
-						<td colspan="5"></td></tr>
-					<tr height="100"><td><pre>비고</pre></td>
-						<td colspan="5"></td></tr>
+						<td colspan="5" class="dataPre"><pre class="WEEKPS dataPre"></pre></td></tr>
+					<tr height="100"><td><pre>비 고</pre></td>
+						<td colspan="5" class="dataPre"><pre class="REMARK dataPre"></pre></td></tr>
 				</table>
 			</div>
 		</div><!-- print webNone end -->

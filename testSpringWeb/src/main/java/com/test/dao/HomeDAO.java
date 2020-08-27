@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.test.dto.CstMstInfoDTO;
 import com.test.dto.UserMstInfoDTO;
+import com.test.dto.UserScheduleDTO;
 
 public interface HomeDAO {
 //	user-----------------------------------------
@@ -25,6 +26,10 @@ public interface HomeDAO {
 	public CstMstInfoDTO selectOneCST(CstMstInfoDTO cmiDTO);
 
 	public UserMstInfoDTO login(UserMstInfoDTO umiDTO);
+
+	public void insertSchedule(UserScheduleDTO usDTO);
+
+	public List<UserScheduleDTO> schList(UserScheduleDTO usDto);
 
 	
 }

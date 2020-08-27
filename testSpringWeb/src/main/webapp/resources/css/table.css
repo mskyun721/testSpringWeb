@@ -23,6 +23,7 @@
 	text-align: center;
 	border-collapse: collapse;
 }
+
 tr{border-bottom: 1px solid ;}
 th{border: 1px solid;vertical-align: middle;background-color: #474747;color: white;}
 td{border: 1px solid;}

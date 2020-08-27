@@ -13,21 +13,21 @@
 </head>
 <body>
 <div class="marginLeft_20">
-	<form action="" class="subPageForm">
+	<form action="insertSchedule" class="subPageForm">
 		<div class="formRow">
 			<div class="lbWidth"><label for="">예정일</label></div>
-			<input type="date" name="" id="selectedDate" value="${date }">
+			<input type="date" name="SCHDATE" id="selectedDate" value="${date }">
 		</div>
 		<div class="formRow">
 			<div class="lbWidth"><label for="">작성자</label></div>
-			<input type="text" name="" id="" size="15" value="">
+			<input type="text" name="USERNM" id="USERNM" size="15" value="${sessionScope.USERNM }">
 		</div>
 		<div class="formRow">
 			<div class="lbWidth verticalTop"><label for="">내용</label></div>
-			<textarea rows="5" cols="25"></textarea>
+			<textarea rows="5" cols="25" name="SCHCONT"></textarea>
 		</div>
 		<div class="buttonBox">
-			<button id="">저장</button>&nbsp;
+			<button type="submit">저장</button>&nbsp;
 			<button id="">삭제</button>&nbsp;
 			<button id="">취소</button>
 		</div>

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.test.dto.CalDTO;
 import com.test.dto.CstMstInfoDTO;
 import com.test.dto.UserMstInfoDTO;
+import com.test.dto.UserScheduleDTO;
 import com.test.service.HomeService;
 
 /**
@@ -71,16 +72,20 @@ public class HomeController {
 			year = calDto.getYear();
 			month = calDto.getMonth()-1;
 		}
-		List<UserMstInfoDTO> userList=homeService.selectUser();
-		
+		String strMonth="";
+		if (month<9) {strMonth="0"+(month+1);}else {strMonth=(month+1)+"";}
+		UserScheduleDTO usDto = new UserScheduleDTO();
+		usDto.setSCHDATE(year+"-"+strMonth);
+		System.out.println(usDto.getSCHDATE());
+		List<UserScheduleDTO> schList = homeService.schList(usDto);
+		System.out.println(schList.get(0).getSCHCONT());
 		Map<String, Object> map = homeService.dayOfWeek(year,month);
 		model.addAttribute("day", map.get("day"));
 		model.addAttribute("day_2", map.get("day2"));
 		model.addAttribute("year",year);
-		model.addAttribute("month",month+1);
+		model.addAttribute("month",strMonth);
 		model.addAttribute("endDays",map.get("endDays"));
-		model.addAttribute("userList",userList);
-		
+		model.addAttribute("schList",schList);
 		return "index";
 	}
 	 
@@ -99,6 +104,23 @@ public class HomeController {
 		}
 		model.addAttribute("date", date);
 		
+		return "scheduleForm";
+	}
+	
+	@RequestMapping(value = "/insertSchedule")
+	public String insertSchedule(UserScheduleDTO usDTO,HttpServletResponse response) {
+		homeService.insertSchedule(usDTO);
+		try {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("window.opener.location.reload();");
+			out.println("window.close();");
+			out.println("</script>");
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return "scheduleForm";
 	}
 	

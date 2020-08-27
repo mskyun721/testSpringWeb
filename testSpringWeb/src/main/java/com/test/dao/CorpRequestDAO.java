@@ -10,7 +10,7 @@ public interface CorpRequestDAO {
 
 	int countReqDate(CstReqHisDTO crhDto);
 
-	List<CstReqHisDTO> requestList();
+	List<CstReqHisDTO> requestList(CstReqHisDTO crhDto);
 
 	CstReqHisDTO oneRequest(CstReqHisDTO crhDto);
 

@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		{call SP_GET_TBCSTREQHIS_COUNT(#{REQDATE})}
 	</select>
 	<select id="requestList" resultType="crhDTO">
-		{call SP_GET_TBCSTREQHIS()}
+		{call SP_GET_TBCSTREQHIS(#{CSTNM},#{APPROVAL},#{COMPLET},#{STDATE},#{LTDATE})}
 	</select>
 	<select id="oneRequest" resultType="crhDTO">
 		{call SP_GET_TBCSTREQHIS2(#{REQDATE},#{REQNO})}

@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import com.test.dao.HomeDAO;
 import com.test.dto.CstMstInfoDTO;
 import com.test.dto.UserMstInfoDTO;
+import com.test.dto.UserScheduleDTO;
 
 @Service
 public class HomeServiceImpl implements HomeService {
@@ -38,14 +39,6 @@ public class HomeServiceImpl implements HomeService {
         endDays[2]=endDay;
         
         String[][] day = new String[6][7];
-        String[][] day2 = new String[3][];
-        
-        for (int i = 0; i < 3; i++) {
-        		day2[i] = new String[endDays[i]];
-        	for (int j = 1; j <= endDays[i]; j++) {
-				day2[i][j-1] = j+"";
-			}
-		}
 		
 		int j=0;
 		for (int i = 1; i <= endDay; i++) {
@@ -82,8 +75,6 @@ public class HomeServiceImpl implements HomeService {
 		
 		returnMap.put("day", day);
 		returnMap.put("endDays",endDays);
-		returnMap.put("day2",day2);
-		
 		
 		return returnMap;
 	}
@@ -109,6 +100,14 @@ public class HomeServiceImpl implements HomeService {
 		return homeDAO.oneUser(umiDTO);
 	}
 	/*	user ----------------------------------- */
+	@Override
+	public void insertSchedule(UserScheduleDTO usDTO) {
+		homeDAO.insertSchedule(usDTO);
+	}
+	@Override
+	public List<UserScheduleDTO> schList(UserScheduleDTO usDto) {
+		return homeDAO.schList(usDto);
+	}
 	
 	@Override
 	public boolean loginCheck(UserMstInfoDTO umiDTO, HttpSession session) {
