@@ -8,17 +8,38 @@
 <title>업체 요청 사항</title>
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/scheduleForm.css" rel="stylesheet" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
-function print() {
-	
-	opener.window.print();
-}
+ 	function printData(REQDATE,CSTNM,USERNM,CSTEMPNM,APPROVAL,REQCONT,CPTDATE,COMPLET,CPTCONT) {
+ 		var reqdate = REQDATE.split('-');
+		var cptdate = CPTDATE.split('-');
+		var req = reqdate[0].substr(2,2)+"년 "+reqdate[1]+"월 "+reqdate[2]+"일";
+		var cpt = cptdate[0].substr(2,2)+"년 "+cptdate[1]+"월 "+cptdate[2]+"일";
+		var approval='';
+		if (APPROVAL == '1') {approval = '미보고';}
+		else if (APPROVAL == '2') {approval = '승인';}
+		else if (APPROVAL == '3') {approval = '보류';}
+		else if (APPROVAL == '4') {approval = '미승인';}
+		window.opener.document.getElementById("prt_REQDATE").innerText=req;
+		window.opener.document.getElementById("prt_CSTNM").innerText=CSTNM;
+		window.opener.document.getElementById("prt_USERNM").innerText=USERNM;
+		window.opener.document.getElementById("prt_CSTEMPNM").innerText=CSTEMPNM;
+		window.opener.document.getElementById("prt_APPROVAL").innerText=approval;
+		window.opener.document.getElementById("prt_REQCONT").innerText=REQCONT;
+		window.opener.document.getElementById("prt_CPTDATE").innerText=cpt;
+		window.opener.document.getElementById("prt_COMPLET").innerText=COMPLET;
+		window.opener.document.getElementById("prt_CPTCONT").innerText=CPTCONT;
+		opener.window.print();
+	} 
 </script>
 </head>
 <body>
 <div>
 	<div class="marginLeft_30 floatLeft"><h3>업체 요청 내역</h3></div>
-	<div class="marginRight_50 marginTop_10 floatRight"><button type="button" onclick="print();return false;">출력</button></div>
+	<div class="marginRight_50 marginTop_10 floatRight"><button type="button" onclick="printData('${requestCrhDto.REQDATE}','${requestCrhDto.CSTNM }','${requestCrhDto.USERNM }',
+											'${requestCrhDto.CSTEMPNM }','${requestCrhDto.APPROVAL}','${requestCrhDto.REQCONT }',
+											'${requestCrhDto.CPTDATE }','${requestCrhDto.COMPLET}','${requestCrhDto.CPTCONT }');" id="printData">
+											출력</button></div>
 </div>
 <div class="clear"></div>
 <div class="marginLeft_20">

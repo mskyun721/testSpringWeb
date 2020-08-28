@@ -79,7 +79,7 @@ $(document).ready(function() {
 						<c:forEach items="${day }" var="day1" begin="0" end="5">
 							<tr>
 								<c:forEach items="${day1 }" var="day2" begin="0" end="6" varStatus="i">
-									<c:choose><c:set var="date" value="${year }-${month }-${day2 }"/>
+									<c:choose><%-- <c:set var="date" value="${year }-${month }-${day2 }"/> --%>
 										<c:when test="${i.index == 0 }">
 											<td class="content red" id="${day2 }"><c:forEach items="${schList }" var="list"><c:if test="${list.SCHDATE == date }">${list.SCHCONT}</c:if></c:forEach></td>
 											<td class="day red"><a href="scheduleForm?year=${year }&month=${month}&day=${day2}" 

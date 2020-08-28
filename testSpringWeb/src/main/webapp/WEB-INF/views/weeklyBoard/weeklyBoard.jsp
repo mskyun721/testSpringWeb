@@ -154,7 +154,7 @@ $(document).ready(function() {
 					<div class="marginLeft_20 ">
 						<button type="submit">저장</button>&nbsp;
 						<button type="button" id="delBtn">삭제</button>&nbsp;
-						<button type="button" onclick="location.reload();">취소</button>&nbsp;
+						<button type="button" onclick="location.href='/sunsoft/weeklyBoard/weeklyBoard?';return false;">취소</button>&nbsp;
 						<button type="button" onclick="window.print();">출력</button>
 					</div>
 					<div id="weeklyWriteForm">
@@ -211,7 +211,7 @@ $(document).ready(function() {
 			<div class="hiddenBlock"></div>
 			<div>
 				<table class="print_table">
-					<tr height="20"><td width="100">업무기간</td>
+					<tr height="40"><td width="100">업무기간</td>
 						<td class="DATE" width="290"></td>
 						<td width="50">직급</td>
 						<td class="JOBGRADE"></td>

@@ -51,7 +51,6 @@ public class HomeController {
 				PrintWriter out = response.getWriter();
 				out.println("<script>");
 				out.println("alert('아이디, 패스워드를 확인하세요.')");
-				//out.println("location.href='/sunsoft/'");
 				out.println("</script>");
 				out.flush();
 			} catch (IOException e) {
@@ -76,9 +75,7 @@ public class HomeController {
 		if (month<9) {strMonth="0"+(month+1);}else {strMonth=(month+1)+"";}
 		UserScheduleDTO usDto = new UserScheduleDTO();
 		usDto.setSCHDATE(year+"-"+strMonth);
-		System.out.println(usDto.getSCHDATE());
 		List<UserScheduleDTO> schList = homeService.schList(usDto);
-		System.out.println(schList.get(0).getSCHCONT());
 		Map<String, Object> map = homeService.dayOfWeek(year,month);
 		model.addAttribute("day", map.get("day"));
 		model.addAttribute("day_2", map.get("day2"));
