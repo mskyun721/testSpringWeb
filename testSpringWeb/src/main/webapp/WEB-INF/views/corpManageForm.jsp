@@ -86,7 +86,7 @@
 		</div>
 		<div class="buttonBox">
 		<button type="submit" id="">저장</button>&nbsp;
-		<button type="reset">취소</button>&nbsp;
+		<button type="button" onclick="window.close();">취소</button>&nbsp;
 		</div>
 	</form>
 </div>

@@ -12,14 +12,6 @@
 	</div>
 	<div id="leftMenu">
 		<div class="dropMenu">
-			<input type="radio" class="dropCheck" id="dropCheck1" name="drop">
-			<label for="dropCheck1" class="clickDrop">기초코드관리</label>
-			<div class="dropDiv">
-				<a href="/sunsoft/addUser">사용자 관리</a>
-				<a href="/sunsoft/corpManage">거래처 관리</a>
-			</div>
-		</div>
-		<div class="dropMenu">
 			<input type="radio" class="dropCheck" id="dropCheck2" name="drop">
 			<label for="dropCheck2" class="clickDrop">주간업무</label>
 			<div class="dropDiv">
@@ -33,6 +25,14 @@
 			<div class="dropDiv">
 				<a href="/sunsoft/corpRequest/corpRequest">업체 요청 사항</a>
 				<a href="/sunsoft/corpRequest/corpRequestList">업체 요청 조회</a>
+			</div>
+		</div>
+		<div class="dropMenu">
+			<input type="radio" class="dropCheck" id="dropCheck1" name="drop">
+			<label for="dropCheck1" class="clickDrop">기초코드관리</label>
+			<div class="dropDiv">
+				<a href="/sunsoft/addUser">사용자 관리</a>
+				<a href="/sunsoft/corpManage">거래처 관리</a>
 			</div>
 		</div>
 	</div>

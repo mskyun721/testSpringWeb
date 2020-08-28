@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,6 +55,32 @@
 		<div class="clear"></div>
 		<div class="formRow">
 			<div class="floatLeft width200">
+				<div class="lbWidth"><label for="VIEWTYPE">조회권한</label></div>
+				<c:choose>
+					<c:when test="${oneUser.VIEWTYPE == 'N' }">
+						<select id="VIEWTYPE" name="VIEWTYPE">
+							<option value="N" selected>N</option>
+							<option value="Y">Y</option>
+						</select>
+					</c:when>
+					<c:when test="${oneUser.VIEWTYPE == 'Y' }">
+						<select id="VIEWTYPE" name="VIEWTYPE">
+							<option value="N" >N</option>
+							<option value="Y" selected>Y</option>
+						</select>
+					</c:when>
+					<c:otherwise>
+						<select id="VIEWTYPE" name="VIEWTYPE">
+							<option value="N" selected>N</option>
+							<option value="Y" >Y</option>
+						</select>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div class="formRow">
+			<div class="floatLeft width200">
 				<div class="lbWidth"><label for="HPNUMBER">전화번호</label></div>
 				<input type="text" size="10" name="HPNUMBER" value="${oneUser.HPNUMBER }">
 			</div>
@@ -76,7 +103,7 @@
 		<br>
 		<div class="buttonBox">
 		<button type="submit" id="">저장</button>&nbsp;
-		<button type="reset">취소</button>&nbsp;
+		<button type="button" onclick="window.close();">취소</button>&nbsp;
 		</div>
 	</form>
 </div>

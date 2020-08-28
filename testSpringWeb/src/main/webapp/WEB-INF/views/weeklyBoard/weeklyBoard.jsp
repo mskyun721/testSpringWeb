@@ -159,24 +159,24 @@ $(document).ready(function() {
 					</div>
 					<div id="weeklyWriteForm">
 						<div class="formRow">
-							<div class="lbWidth"><label>업무주차</label></div>
-							<input type="text" readonly="readonly" name="YEARWEEK" size="2" value="${week }" id="YEARWEEK">
+							<div class="lbWidth">&nbsp;<label>업무주차</label></div>
+							<input type="text" readonly="readonly" name="YEARWEEK" size="1" value="${week }" id="YEARWEEK">
 						</div>
 						<div class="formRow">
-							<div class="lbWidth"><label>업무기간</label></div>
+							<div class="lbWidth">&nbsp;<label>업무기간</label></div>
 							<input type="date" name="STWEEKDAY" value="${monday }" id="STWEEKDAY"> ~ <input type="date" name="LTWEEKDAY" value="${friday }" id="LTWEEKDAY">
 						</div>
 						<div class="formRow">
-							<div class="lbWidth"><label>직급</label></div>
+							<div class="lbWidth">&nbsp;<label>직급</label></div>
 							<input type="text" name="JOBGRADE" value="${sessionScope.JOBGRADE }" size="15" id="JOBGRADE">
 						</div>
 						<div class="formRow">
-							<div class="lbWidth"><label>이름</label></div>
+							<div class="lbWidth">&nbsp;<label>이름</label></div>
 							<input type="text" name="USERNM" value="${sessionScope.USERNM }" size="15" id="USERNM">
 							<input type="hidden" name="USERID" value="${sessionScope.USERID }" id="USERID">
 						</div>
 						<div class="formRow">
-							<div class="lbWidth verticalTop"><label>처리내용 </label></div>
+							<div class="lbWidth verticalTop">&nbsp;<label>처리내용 </label></div>
 							<textarea rows="25" cols="70" name="WEEKWORKCONT" id="WEEKWORKCONT"></textarea>
 						</div>
 						<div class="formRow">
@@ -184,7 +184,7 @@ $(document).ready(function() {
 							<textarea rows="10" cols="70" name="WEEKPS" id="WEEKPS"></textarea>
 						</div>
 						<div class="formRow">
-							<div class="lbWidth verticalTop"><label>비고</label></div>
+							<div class="lbWidth verticalTop">&nbsp;<label>비고</label></div>
 							<textarea rows="5" cols="70" name="REMARK" id="REMARK"></textarea>
 						</div>
 					</div>

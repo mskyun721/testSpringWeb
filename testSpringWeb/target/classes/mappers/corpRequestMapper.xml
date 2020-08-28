@@ -16,8 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="oneRequest" resultType="crhDTO">
 		{call SP_GET_TBCSTREQHIS2(#{REQDATE},#{REQNO})}
 	</select>
-	<delete id="delBoard">
-		{call SP_DEL_TBWEEKWRKHIS(#{YEARWEEK},#{USERID})}
+	<delete id="requestDel">
+		{call SP_DEL_TBCSTREQHIS(#{REQDATE},#{REQNO})}
 	</delete>
 
 </mapper>

@@ -53,8 +53,8 @@ $(document).ready(function() {
 								<label>승인여부</label>
 								<c:choose>
 									<c:when test="${APPROVAL == '1'}">
-										<select id="APPROVAL" name="APPROVAL" >
-											<option value="0" >--구분--</option>
+										<select id="APPROVAL" name="APPROVAL"class="comboSize">
+											<option value="0" >전체</option>
 											<option value="1" selected>미보고</option>
 											<option value="2">승인</option>
 											<option value="3">보류</option>
@@ -62,8 +62,8 @@ $(document).ready(function() {
 										</select>
 									</c:when>
 									<c:when test="${APPROVAL == '2'}">
-										<select id="APPROVAL" name="APPROVAL" >
-											<option value="0" >--구분--</option>
+										<select id="APPROVAL" name="APPROVAL" class="comboSize">
+											<option value="0" >전체</option>
 											<option value="1" >미보고</option>
 											<option value="2" selected>승인</option>
 											<option value="3">보류</option>
@@ -71,8 +71,8 @@ $(document).ready(function() {
 										</select>
 									</c:when>
 									<c:when test="${APPROVAL == '3'}">
-										<select id="APPROVAL" name="APPROVAL" >
-											<option value="0" >--구분--</option>
+										<select id="APPROVAL" name="APPROVAL" class="comboSize">
+											<option value="0" >전체</option>
 											<option value="1" >미보고</option>
 											<option value="2">승인</option>
 											<option value="3" selected>보류</option>
@@ -80,8 +80,8 @@ $(document).ready(function() {
 										</select>
 									</c:when>
 									<c:when test="${APPROVAL == '4'}">
-										<select id="APPROVAL" name="APPROVAL" >
-											<option value="0" >--구분--</option>
+										<select id="APPROVAL" name="APPROVAL" class="comboSize">
+											<option value="0" >전체</option>
 											<option value="1" >미보고</option>
 											<option value="2">승인</option>
 											<option value="3">보류</option>
@@ -89,8 +89,8 @@ $(document).ready(function() {
 										</select>
 									</c:when>
 									<c:otherwise>
-										<select id="APPROVAL" name="APPROVAL" >
-											<option value="0" selected>--구분--</option>
+										<select id="APPROVAL" name="APPROVAL" class="comboSize">
+											<option value="0" selected>전체</option>
 											<option value="1">미보고</option>
 											<option value="2">승인</option>
 											<option value="3">보류</option>
@@ -103,22 +103,22 @@ $(document).ready(function() {
 								<label>완료여부</label>
 								<c:choose>
 									<c:when test="${COMPLET == 'Y'}">
-										<select id="COMPLET" name="COMPLET">
-											<option value="0">--구분--</option>
+										<select id="COMPLET" name="COMPLET" class="comboSize">
+											<option value="0">전체</option>
 											<option value="Y"selected >Y</option>
 											<option value="N">N</option>
 										</select>
 									</c:when>
 									<c:when test="${COMPLET == 'N'}">
-										<select id="COMPLET" name="COMPLET">
-											<option value="0">--구분--</option>
+										<select id="COMPLET" name="COMPLET" class="comboSize">
+											<option value="0">전체</option>
 											<option value="Y" >Y</option>
 											<option value="N" selected>N</option>
 										</select>
 									</c:when>
 									<c:otherwise>
-										<select id="COMPLET" name="COMPLET">
-											<option value="0" selected>--구분--</option>
+										<select id="COMPLET" name="COMPLET" class="comboSize">
+											<option value="0" selected>전체</option>
 											<option value="Y">Y</option>
 											<option value="N">N</option>
 										</select>
@@ -151,7 +151,8 @@ $(document).ready(function() {
 							<th>요청자</th>
 							<th>승인여부</th>
 							<th>완료여부</th>
-							<th>완료날짜</th></tr>
+							<th>완료날짜</th>
+							<th></th></tr>
 					</thead>
 					<tbody id="reqList">
 						<c:forEach items="${reqList }" var="list" varStatus="i">
@@ -168,6 +169,7 @@ $(document).ready(function() {
 									<c:if test="${list.APPROVAL == '4' }">미승인</c:if></td>
 								<td>${list.COMPLET }</td>
 								<td>${list.CPTDATE }</td>
+								<td><button type="button" onclick="location.href='requestDel?REQDATE=${list.REQDATE}&REQNO=${list.REQNO}'">del</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>

@@ -83,7 +83,6 @@
 			<c:choose>
 				<c:when test="${requestCrhDto.APPROVAL == '1'}">
 					<select id="APPROVAL" name="APPROVAL" >
-						<option value="0" >--구분--</option>
 						<option value="1" selected>미보고</option>
 						<option value="2">승인</option>
 						<option value="3">보류</option>
@@ -92,7 +91,6 @@
 				</c:when>
 				<c:when test="${requestCrhDto.APPROVAL == '2'}">
 					<select id="APPROVAL" name="APPROVAL" >
-						<option value="0" >--구분--</option>
 						<option value="1" >미보고</option>
 						<option value="2" selected>승인</option>
 						<option value="3">보류</option>
@@ -101,7 +99,6 @@
 				</c:when>
 				<c:when test="${requestCrhDto.APPROVAL == '3'}">
 					<select id="APPROVAL" name="APPROVAL" >
-						<option value="0" >--구분--</option>
 						<option value="1" >미보고</option>
 						<option value="2">승인</option>
 						<option value="3" selected>보류</option>
@@ -110,7 +107,6 @@
 				</c:when>
 				<c:when test="${requestCrhDto.APPROVAL == '4'}">
 					<select id="APPROVAL" name="APPROVAL" >
-						<option value="0" >--구분--</option>
 						<option value="1" >미보고</option>
 						<option value="2">승인</option>
 						<option value="3">보류</option>
@@ -119,8 +115,7 @@
 				</c:when>
 				<c:otherwise>
 					<select id="APPROVAL" name="APPROVAL" >
-						<option value="0" selected>--구분--</option>
-						<option value="1">미보고</option>
+						<option value="1" selected>미보고</option>
 						<option value="2">승인</option>
 						<option value="3">보류</option>
 						<option value="4">미승인</option>
@@ -141,23 +136,20 @@
 			<c:choose>
 				<c:when test="${requestCrhDto.COMPLET == 'Y'}">
 					<select id="COMPLET" name="COMPLET">
-						<option value="0">--구분--</option>
 						<option value="Y"selected >Y</option>
 						<option value="N">N</option>
 					</select>
 				</c:when>
 				<c:when test="${requestCrhDto.COMPLET == 'N'}">
 					<select id="COMPLET" name="COMPLET">
-						<option value="0">--구분--</option>
 						<option value="Y" >Y</option>
 						<option value="N" selected>N</option>
 					</select>
 				</c:when>
 				<c:otherwise>
 					<select id="COMPLET" name="COMPLET">
-						<option value="0" selected>--구분--</option>
 						<option value="Y">Y</option>
-						<option value="N">N</option>
+						<option value="N" selected>N</option>
 					</select>
 				</c:otherwise>
 			</c:choose>

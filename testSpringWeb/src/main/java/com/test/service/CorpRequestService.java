@@ -17,4 +17,6 @@ public interface CorpRequestService {
 
 	Map<String, Object> searchDate();
 
+	void requestDel(CstReqHisDTO crhDto);
+
 }

@@ -49,6 +49,11 @@ public class CorpRequestServiceImpl implements CorpRequestService {
 		return reqList;
 	}
 	@Override
+	public void requestDel(CstReqHisDTO crhDto) {
+		crDao.requestDel(crhDto);
+	}
+	
+	@Override
 	public CstReqHisDTO oneRequest(CstReqHisDTO crhDto) {
 		CstReqHisDTO requestCrhDto = crDao.oneRequest(crhDto);
 		return requestCrhDto;

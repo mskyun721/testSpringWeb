@@ -99,7 +99,7 @@ $(document).ready(function() {
 								<td>${list.TELNO }</td>
 								<td>${list.FAXNO }</td>
 								<td>${list.ZIPNO }</td>
-								<td>${list.ADDR1 } ${list.ADDR2 }</td>
+								<td>${list.ADDR1 }&nbsp;${list.ADDR2 }</td>
 								<td>${list.REMARK }</td>
 								<td><input type="button" value="Del" id="btnDel${i.index }">
 									<input type="hidden" id="delRow${i.index }" value="${list.CSTCD }"></td></tr>

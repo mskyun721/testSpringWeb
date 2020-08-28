@@ -62,7 +62,7 @@ $(document).ready(function() {
 								<th>비상연락망</th>
 								<th>비고</th>
 								<th></th></tr>
-							<tr><td><input type="button" onclick="window.open('userForm','_blank','width=300, height=320'); return false" value="add"></td>
+							<tr><td><input type="button" onclick="window.open('userForm','_blank','width=300, height=350'); return false" value="add"></td>
 								<td><input type="text" size="1" readonly="readonly"></td>
 								<td><input type="text" size="5" name="USERID" value="" id="USERID"></td>
 								<td><input type="text" size="5" name="USERPW" value="" id="USERPW"></td>
@@ -77,7 +77,7 @@ $(document).ready(function() {
 						</thead>
 						<tbody>
 							<c:forEach items="${userList }" var="user" varStatus="i">
-							<tr><td><input type="button" onclick="window.open('userForm?USERID=${user.USERID}&USERPW=${user.USERPW}','_blank','width=300, height=320'); return false" value="edit"></td>
+							<tr><td><input type="button" onclick="window.open('userForm?USERID=${user.USERID}&USERPW=${user.USERPW}','_blank','width=300, height=350'); return false" value="edit"></td>
 							<td>${i.index+1 }</td>
 							<td>${user.USERID }</td>
 							<td>${user.USERPW }</td>

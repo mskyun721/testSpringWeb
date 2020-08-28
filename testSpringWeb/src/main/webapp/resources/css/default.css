@@ -149,6 +149,7 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 	height: 50px;
 	width: 1100px;
 	padding: 5px;
+	background-color: #faddc2;
 }
 #searchBox .inline{
 	display: inline;
@@ -160,6 +161,7 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 	margin-left: 20px;
 	border: 1px solid;
 	width: 650px;
+	background-color: #faddc2;
 }
 #weeklyWriteForm form{
 	padding: 10px;
@@ -177,6 +179,7 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 	border: 1px solid;
 }
 #scheduleForm form{padding: 10px;}
+.comboSize{width: 70px;}
 .buttonBox {text-align: center;}
 .formRow{margin: 3px;}
 /* label 라인 정렬 */

@@ -28,6 +28,10 @@ public class CorpRequestDAOImpl implements CorpRequestDAO {
 		return sqlSession.selectList(Namespace+".requestList",crhDto);
 	}
 	@Override
+	public void requestDel(CstReqHisDTO crhDto) {
+		sqlSession.delete(Namespace+".requestDel",crhDto);
+	}
+	@Override
 	public CstReqHisDTO oneRequest(CstReqHisDTO crhDto) {
 		return sqlSession.selectOne(Namespace+".oneRequest",crhDto);
 	}

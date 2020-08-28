@@ -14,4 +14,6 @@ public interface CorpRequestDAO {
 
 	CstReqHisDTO oneRequest(CstReqHisDTO crhDto);
 
+	void requestDel(CstReqHisDTO crhDto);
+
 }
