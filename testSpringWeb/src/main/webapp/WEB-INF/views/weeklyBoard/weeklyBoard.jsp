@@ -6,10 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>SUNSOFT</title>
+<link type="text/css" href="../resources/style/default.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/common.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/layout.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/design.css" rel="stylesheet">
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/table.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/print.css" rel="stylesheet" type="text/css">
+<link href="../resources/font/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <script type="text/javascript">
 $(document).ready(function() {
 	/* select option 생성 */
@@ -102,35 +108,33 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div id="wrap">
-	<!-- header -->
-	<%-- <jsp:include page="../inc/header.jsp"/> --%>
-	<!-- header -->
-	<!-- sidebar -->
-	<jsp:include page="../inc/sidebar.jsp"/>
-	<!-- sidebar -->
-	<div id="content">
-		
-		<div id="row1" class="printNone">
-			<div id="title">
-				<h3>주간 업무일지</h3>
-			</div>
-			<div class="floatLeft ">
-				<div class="marginLeft_100">
-				<form method="get">
-					<select id="year" name="year" >
-					</select>
-					년 &nbsp;&nbsp;
-					<select id="month" name="month">
-					</select>
-					월
-					<button type="submit">조회</button>
-				</form>
-				<input type="hidden" id="todayYear" value="${year }">
-				<input type="hidden" id="todayMonth" value="${month }">
-			</div>
-				<div class="marginLeft_100 marginTop_10">
-					<table class="table450">
+<!-- header -->
+<jsp:include page="../public/header.jsp"/>
+<!-- header -->
+<div class="row">
+<!-- sidebar -->
+<jsp:include page="../public/sidebar.jsp"/>
+<!-- sidebar -->
+	<div class="rightcolumn">
+		<div class="card">
+			<h3><i class="fas fa-caret-right"></i> 사용자 등록</h3>
+			<hr />
+			<div style="width: 30%;height:auto;display: inline;">
+				<div>
+					<form method="get">
+						<select id="year" name="year" >
+						</select>
+						년 &nbsp;&nbsp;
+						<select id="month" name="month">
+						</select>
+						월
+						<button type="submit"><i class="fas fa-object-ungroup"style="font-size:15px;"></i>&nbsp;&nbsp;조회</button>
+					</form>
+					<input type="hidden" id="todayYear" value="${year }">
+					<input type="hidden" id="todayMonth" value="${month }">
+				</div>
+				<div>
+					<table class="table30">
 						<thead>
 							<tr><th>No.</th>
 								<th>업무주차</th>
@@ -149,13 +153,13 @@ $(document).ready(function() {
 					</table>
 				</div><!-- TaskTable end -->
 			</div>
-			<div class="floatLeft">
+			<div style="width: 70%;display: inline;">
 				<form action="/sunsoft/weeklyBoard/insertBoard" method="post">
-					<div class="marginLeft_20 ">
-						<button type="submit">저장</button>&nbsp;
-						<button type="button" id="delBtn">삭제</button>&nbsp;
-						<button type="button" onclick="location.href='/sunsoft/weeklyBoard/weeklyBoard?';return false;">취소</button>&nbsp;
-						<button type="button" onclick="window.print();">출력</button>
+					<div>
+						<button type="submit" ><i class="fas fa-save" style="font-size:15px;"></i>&nbsp;&nbsp;저장</button>&nbsp;
+						<button type="button" id="delBtn"><i class="fas fa-trash-alt" style="font-size:15px;"></i>&nbsp;&nbsp;삭제</button>&nbsp;
+						<button type="button" onclick="location.href='/sunsoft/weeklyBoard/weeklyBoard?';return false;"><i class="fas fa-window-close" style="font-size:15px;"></i>&nbsp;&nbsp;취소</button>&nbsp;
+						<button type="button" onclick="window.print();"><i class="fas fa-file-powerpoint" style="font-size:15px;"></i>&nbsp;&nbsp;출력</button>
 					</div>
 					<div id="weeklyWriteForm">
 						<div class="formRow">
@@ -190,7 +194,6 @@ $(document).ready(function() {
 					</div>
 				</form>
 			</div>
-			<div class="clear"></div>
 		</div><!-- row1 end -->
 
 		<div class="webNone">

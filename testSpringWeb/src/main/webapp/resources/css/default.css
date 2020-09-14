@@ -156,11 +156,10 @@ ul, li{list-style: none;margin: 0px; padding: 0px;}
 }
 
 #weeklyWriteForm{
-	float: left;
 	margin-top: 10px;
 	margin-left: 20px;
 	border: 1px solid;
-	width: 650px;
+	width:60%;
 	background-color: #faddc2;
 }
 #weeklyWriteForm form{

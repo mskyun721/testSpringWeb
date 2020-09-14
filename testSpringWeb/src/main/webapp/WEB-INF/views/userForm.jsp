@@ -8,6 +8,7 @@
 <title>사용자 등록</title>
 <link href="resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="resources/css/table.css" rel="stylesheet" type="text/css">
+<link href="resources/font/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div>
@@ -102,8 +103,8 @@
 		<div class="clear"></div>
 		<br>
 		<div class="buttonBox">
-		<button type="submit" id="">저장</button>&nbsp;
-		<button type="button" onclick="window.close();">취소</button>&nbsp;
+		<button type="submit"><i class="fas fa-save" style="font-size:15px;"></i>&nbsp;&nbsp;저장</button>&nbsp;
+		<button type="button" onclick="window.close; return false;"><i class="fas fa-window-close" style="font-size:15px;"></i>&nbsp;&nbsp;취소</button>
 		</div>
 	</form>
 </div>

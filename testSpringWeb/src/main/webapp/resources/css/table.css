@@ -23,10 +23,30 @@
 	text-align: center;
 	border-collapse: collapse;
 }
-
+.table100{
+	border: 1px solid black;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+.table30{
+	border: 1px solid black;
+	width: 30%;
+	text-align: center;
+	border-collapse: collapse;
+}
+.table70{
+	border: 1px solid;
+	width: 70%;
+	text-align: center;
+	border-collapse: collapse;
+}
+.table100 input{border: 1px solid gray;width: 99%;}
+.table100 input:focus {border:1px solid blue;}
+.table100 button{background-color: white;}
 tr{border-bottom: 1px solid ;}
-th{border: 1px solid black;vertical-align: middle;background-color: #474747;color: white;}
-td{border: 1px solid;}
+th{border: 1px solid black;vertical-align: middle;background-color: #1467b3;color: white;}
+td{border: 1px solid black;}
 
 #calTable{
 	border: 1px solid;

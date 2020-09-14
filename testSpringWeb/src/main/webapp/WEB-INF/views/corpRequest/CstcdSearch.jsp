@@ -8,6 +8,7 @@
 <title>거래처 검색</title>
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/table.css" rel="stylesheet" type="text/css">
+<link href="../resources/font/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 function sendValue(CSTNM,CSTCD){
 	window.opener.document.getElementById("CSTNM").value=CSTNM;
@@ -26,7 +27,7 @@ function sendValue(CSTNM,CSTCD){
 </div>
 <div class="clear"></div>
 <div class="marginLeft_20">
-	<input type="text" size="20"><button>검색</button>
+	<input type="text" size="20"><button><i class="fas fa-search"></i>&nbsp;&nbsp;검색</button>
 </div>
 <div>
 	<table class="table450 marginLeft_20">

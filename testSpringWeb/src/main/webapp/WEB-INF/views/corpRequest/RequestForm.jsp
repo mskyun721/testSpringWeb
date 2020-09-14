@@ -8,6 +8,7 @@
 <title>업체 요청 사항</title>
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/scheduleForm.css" rel="stylesheet" type="text/css">
+<link href="../resources/font/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
  	function printData(REQDATE,CSTNM,USERNM,CSTEMPNM,APPROVAL,REQCONT,CPTDATE,COMPLET,CPTCONT) {
@@ -39,7 +40,7 @@
 	<div class="marginRight_50 marginTop_10 floatRight"><button type="button" onclick="printData('${requestCrhDto.REQDATE}','${requestCrhDto.CSTNM }','${requestCrhDto.USERNM }',
 											'${requestCrhDto.CSTEMPNM }','${requestCrhDto.APPROVAL}','${requestCrhDto.REQCONT }',
 											'${requestCrhDto.CPTDATE }','${requestCrhDto.COMPLET}','${requestCrhDto.CPTCONT }');" id="printData">
-											출력</button></div>
+											<i class="fas fa-file-powerpoint" style="font-size:15px;"></i>&nbsp;&nbsp;출력</button></div>
 </div>
 <div class="clear"></div>
 <div class="marginLeft_20">
@@ -61,7 +62,7 @@
 			<div class="lbWidth"><label for="">거래처</label></div>
 			<input type="text" size="5" name="CSTCD" id="CSTCD" value="${requestCrhDto.CSTCD }">
 			<input type="text" size="10" name="CSTNM" id="CSTNM" value="${requestCrhDto.CSTNM }">
-			<button id="searchCST" onclick="window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=500,height=400'); return false">검색</button>
+			<button id="searchCST" onclick="window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=500,height=400'); return false"><i class="fas fa-object-ungroup"style="font-size:15px;"></i>&nbsp;&nbsp;조회</button>
 		</div>
 		<div class="formRow">
 			<div class="lbWidth"><label>담당자</label></div>
@@ -159,9 +160,8 @@
 			<textarea rows="15" cols="70" name="CPTCONT" id="CPTCONT">${requestCrhDto.CPTCONT }</textarea>
 		</div>
 		<div class="buttonBox">
-		<button type="submit">저장</button>&nbsp;
-		<button id="">삭제</button>&nbsp;
-		<button id="" onclick="window.close">취소</button>&nbsp;
+		<button type="submit"><i class="fas fa-save" style="font-size:15px;"></i>&nbsp;&nbsp;저장</button>&nbsp;
+		<button type="button" onclick="window.close"><i class="fas fa-window-close" style="font-size:15px;"></i>&nbsp;&nbsp;취소</button>
 		</div>
 	</form>
 </div>

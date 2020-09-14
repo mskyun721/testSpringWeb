@@ -8,6 +8,7 @@
 <title>SUNSOFT</title>
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/table.css" rel="stylesheet" type="text/css">
+<link href="../resources/font/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -46,7 +47,7 @@ $(document).ready(function() {
 						<div class="inline floatLeft marginLeft_20" style="width: 400px;">
 							<label>거래처</label>
 							<input type="text" size="10" id="CSTNM" name="CSTNM" value="${CSTNM }">&nbsp;
-							<button type="button" onclick="window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=500,height=400')">조회</button>
+							<button type="button" onclick="window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=500,height=400')"><i class="fas fa-object-ungroup"style="font-size:15px;"></i>&nbsp;&nbsp;조회</button>
 						</div>
 						<div class="inline floatLeft" style="width: 350px;">
 							<div class="marginBottom_5">
@@ -127,8 +128,8 @@ $(document).ready(function() {
 							</div>
 						</div>
 						<div class="floatRight marginRight_10">
-						<button type="submit">검색</button><br>
-						<button type="button" onclick="location.href='/sunsoft/corpRequest/corpRequest?'">취소</button>
+						<button type="submit"><i class="fas fa-search"></i>&nbsp;&nbsp;검색</button><br>
+						<button type="button" onclick="location.href='/sunsoft/corpRequest/corpRequest?'"><i class="fas fa-window-close" style="font-size:15px;"></i>&nbsp;&nbsp;취소</button>
 						</div>
 						<div class="inline " style="width: 350px;">
 							<div class="floatRight marginRight_20">
@@ -143,7 +144,7 @@ $(document).ready(function() {
 			<div class="marginLeft_100">
 				<table class="table1100">
 					<thead>
-						<tr><th width="10"><input type="button" onclick="window.open('/sunsoft/corpRequest/RequestForm','insertRequest','width=640, height=840'); return false" value="add"></th>
+						<tr><th width="30"><button type="button" onclick="window.open('/sunsoft/corpRequest/RequestForm','insertRequest','width=640, height=840'); return false"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;add</button></th>
 							<th>No.</th>
 							<th>날짜</th>
 							<th>거래처명</th>
@@ -152,12 +153,12 @@ $(document).ready(function() {
 							<th>승인여부</th>
 							<th>완료여부</th>
 							<th>완료날짜</th>
-							<th></th></tr>
+							<th width="30"></th></tr>
 					</thead>
 					<tbody id="reqList">
 						<c:forEach items="${reqList }" var="list" varStatus="i">
-							<tr><td width="10"><input type="button" 
-									onclick="window.open('/sunsoft/corpRequest/RequestForm?REQDATE=${list.REQDATE}&REQNO=${list.REQNO }','_blank','width=640, height=840'); return false" value="edit"></td>
+							<tr><td width="10"><button type="button" 
+									onclick="window.open('/sunsoft/corpRequest/RequestForm?REQDATE=${list.REQDATE}&REQNO=${list.REQNO }','_blank','width=640, height=840'); return false"><i class="fas fa-edit"></i>edit</button></td>
 								<td>${i.index+1 }</td>
 								<td>${list.REQDATE }</td>
 								<td>${list.CSTNM }</td>
@@ -169,7 +170,7 @@ $(document).ready(function() {
 									<c:if test="${list.APPROVAL == '4' }">미승인</c:if></td>
 								<td>${list.COMPLET }</td>
 								<td>${list.CPTDATE }</td>
-								<td><button type="button" onclick="location.href='requestDel?REQDATE=${list.REQDATE}&REQNO=${list.REQNO}'">del</button></td>
+								<td><button type="button" onclick="location.href='requestDel?REQDATE=${list.REQDATE}&REQNO=${list.REQNO}'"><i class="fas fa-trash-alt" style="font-size:15px;"></i>Del</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>
