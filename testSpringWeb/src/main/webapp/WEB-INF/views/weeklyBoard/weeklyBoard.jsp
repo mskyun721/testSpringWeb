@@ -18,7 +18,6 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	/* select option 생성 */
 	var today = new Date();
 	var year = $('#todayYear').val();
 	var month = $('#todayMonth').val();
@@ -104,6 +103,12 @@ $(document).ready(function() {
 		});
 	});
 	
+	$('#month').change(function(){
+		var monthVal = $(this).val();
+		var yearVal = $('#year').val();
+		
+		location
+	});
 });
 </script>
 </head>
@@ -112,14 +117,11 @@ $(document).ready(function() {
 <jsp:include page="../public/header.jsp"/>
 <!-- header -->
 <div class="row">
-<!-- sidebar -->
-<jsp:include page="../public/sidebar.jsp"/>
-<!-- sidebar -->
-	<div class="rightcolumn">
+	<div style="width:40%;float: left; ">
 		<div class="card">
-			<h3><i class="fas fa-caret-right"></i> 사용자 등록</h3>
+			<h3><i class="fas fa-caret-right"></i> 주간업무일지</h3>
 			<hr />
-			<div style="width: 30%;height:auto;display: inline;">
+			<div>
 				<div>
 					<form method="get">
 						<select id="year" name="year" >
@@ -128,13 +130,12 @@ $(document).ready(function() {
 						<select id="month" name="month">
 						</select>
 						월
-						<button type="submit"><i class="fas fa-object-ungroup"style="font-size:15px;"></i>&nbsp;&nbsp;조회</button>
 					</form>
 					<input type="hidden" id="todayYear" value="${year }">
 					<input type="hidden" id="todayMonth" value="${month }">
 				</div>
 				<div>
-					<table class="table30">
+					<table class="table100">
 						<thead>
 							<tr><th>No.</th>
 								<th>업무주차</th>
@@ -153,10 +154,14 @@ $(document).ready(function() {
 					</table>
 				</div><!-- TaskTable end -->
 			</div>
-			<div style="width: 70%;display: inline;">
-				<form action="/sunsoft/weeklyBoard/insertBoard" method="post">
-					<div>
-						<button type="submit" ><i class="fas fa-save" style="font-size:15px;"></i>&nbsp;&nbsp;저장</button>&nbsp;
+		</div>
+	</div>
+		
+		<div style="width: 60%;float: right;">
+			<div class="card">
+				<form action="/sunsoft/weeklyBoard/insertBoard" method="post" class="weeklyForm">
+					<div style="margin-left: 1em;">
+						<button type="submit"><i class="fas fa-save" style="font-size:15px;"></i>&nbsp;&nbsp;저장</button>&nbsp;
 						<button type="button" id="delBtn"><i class="fas fa-trash-alt" style="font-size:15px;"></i>&nbsp;&nbsp;삭제</button>&nbsp;
 						<button type="button" onclick="location.href='/sunsoft/weeklyBoard/weeklyBoard?';return false;"><i class="fas fa-window-close" style="font-size:15px;"></i>&nbsp;&nbsp;취소</button>&nbsp;
 						<button type="button" onclick="window.print();"><i class="fas fa-file-powerpoint" style="font-size:15px;"></i>&nbsp;&nbsp;출력</button>
@@ -181,20 +186,21 @@ $(document).ready(function() {
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop">&nbsp;<label>처리내용 </label></div>
-							<textarea rows="25" cols="70" name="WEEKWORKCONT" id="WEEKWORKCONT"></textarea>
+							<textarea rows="30" cols="100" name="WEEKWORKCONT" id="WEEKWORKCONT"></textarea>
 						</div>
 						<div class="formRow">
-							<div class="lbWidth verticalTop lbWord-break"><label>특이사항 및 수정사항</label></div>
-							<textarea rows="10" cols="70" name="WEEKPS" id="WEEKPS"></textarea>
+							<div class="lbWidth verticalTop lbWord-break"><label>특이사항<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;및<br>수정사항</label></div>
+							<textarea rows="5" cols="100" name="WEEKPS" id="WEEKPS"></textarea>
 						</div>
 						<div class="formRow">
 							<div class="lbWidth verticalTop">&nbsp;<label>비고</label></div>
-							<textarea rows="5" cols="70" name="REMARK" id="REMARK"></textarea>
+							<textarea rows="5" cols="100" name="REMARK" id="REMARK"></textarea>
 						</div>
 					</div>
 				</form>
 			</div>
-		</div><!-- row1 end -->
+		</div>
+	</div><!-- row end -->
 
 		<div class="webNone">
 			<div class="marginLeft_100"><h1>주간업무일지</h1></div>
@@ -229,7 +235,8 @@ $(document).ready(function() {
 				</table>
 			</div>
 		</div><!-- print webNone end -->
-	</div><!-- content end -->
-</div><!-- wrap end -->
+<!-- footer -->
+<jsp:include page="../public/footer.jsp"/>
+<!-- footer -->
 </body>
 </html>

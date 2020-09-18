@@ -6,55 +6,83 @@
 <head>
 <meta charset="UTF-8">
 <title>SUNSOFT</title>
+<link type="text/css" href="../resources/style/default.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/common.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/layout.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/design.css" rel="stylesheet">
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/table.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/print.css" rel="stylesheet" type="text/css">
 <link href="../resources/font/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#STDATE").change(function () {
+		var cstnm = $('#CSTNM').val();
+		var complet = $('#COMPLET').val();
+		var approval = $('#APPROVAL').val();
 		var stdate = $('#STDATE').val();
 		var ltdate = $('#LTDATE').val();
 		
-		location.href="/sunsoft/corpRequest/corpRequest?STDATE="+stdate+"&LTDATE="+ltdate;
+		location.href="/sunsoft/corpRequest/corpRequest?CSTNM="+cstnm+"&APPROVAL="+approval+"&COMPLET="+complet+"&STDATE="+stdate+"&LTDATE="+ltdate;
 	});
 	$("#LTDATE").change(function () {
+		var cstnm = $('#CSTNM').val();
+		var complet = $('#COMPLET').val();
+		var approval = $('#APPROVAL').val();
 		var stdate = $('#STDATE').val();
 		var ltdate = $('#LTDATE').val();
 		
-		location.href="/sunsoft/corpRequest/corpRequest?STDATE="+stdate+"&LTDATE="+ltdate;
+		location.href="/sunsoft/corpRequest/corpRequest?CSTNM="+cstnm+"&APPROVAL="+approval+"&COMPLET="+complet+"&STDATE="+stdate+"&LTDATE="+ltdate;
 	});
+	
+	
+	$('#APPROVAL').change(function(){
+		var cstnm = $('#CSTNM').val();
+		var approval = $(this).val();
+		var complet = $('#COMPLET').val();
+		var stdate = $('#STDATE').val();
+		var ltdate = $('#LTDATE').val();
+		location.href="/sunsoft/corpRequest/corpRequest?CSTNM="+cstnm+"&APPROVAL="+approval+"&COMPLET="+complet+"&STDATE="+stdate+"&LTDATE="+ltdate;
+	});
+	
+	$('#COMPLET').change(function(){
+		var cstnm = $('#CSTNM').val();
+		var approval = $('#APPROVAL').val();
+		var complet = $(this).val();
+		var stdate = $('#STDATE').val();
+		var ltdate = $('#LTDATE').val();
+		location.href="/sunsoft/corpRequest/corpRequest?CSTNM="+cstnm+"&APPROVAL="+approval+"&COMPLET="+complet+"&STDATE="+stdate+"&LTDATE="+ltdate;
+	});
+	
+	
 	
 });
 </script>
 </head>
 <body>
-<div id="wrap">
-	<!-- header -->
-	<%-- <jsp:include page="../inc/header.jsp"/> --%>
-	<!-- header -->
-	<!-- sidebar -->
-	<jsp:include page="../inc/sidebar.jsp"/>
-	<!-- sidebar -->
-	<div id="content">
-		<div id="row1" class="printNone">
-			<div id="title">
-				<h3>업체 요청 사항</h3>
-			</div>
-			<div class="floatLeft">
+<!-- header -->
+<jsp:include page="../public/header.jsp"/>
+<!-- header -->
+<div class="row">
+	<div>
+		<div class="card">
+			<h3><i class="fas fa-caret-right"></i>업체 요청 사항</h3>
+			<hr />
+			<div >
 				<form>
-					<div id="searchBox">
-						<div class="inline floatLeft marginLeft_20" style="width: 400px;">
-							<label>거래처</label>
+					<div class="searchBox" style="display: flex;">
+						<div style="display: inline;position: static;height: 100%;">
+							<label>사업장</label>
 							<input type="text" size="10" id="CSTNM" name="CSTNM" value="${CSTNM }">&nbsp;
 							<button type="button" onclick="window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=500,height=400')"><i class="fas fa-object-ungroup"style="font-size:15px;"></i>&nbsp;&nbsp;조회</button>
 						</div>
-						<div class="inline floatLeft" style="width: 350px;">
-							<div class="marginBottom_5">
+						
+						<div style="display: inline; position: relative; left: 10em;">
 								<label>승인여부</label>
 								<c:choose>
 									<c:when test="${APPROVAL == '1'}">
-										<select id="APPROVAL" name="APPROVAL"class="comboSize">
+										<select id="APPROVAL" name="APPROVAL"class="comboSize" id="APPROVAL">
 											<option value="0" >전체</option>
 											<option value="1" selected>미보고</option>
 											<option value="2">승인</option>
@@ -63,7 +91,7 @@ $(document).ready(function() {
 										</select>
 									</c:when>
 									<c:when test="${APPROVAL == '2'}">
-										<select id="APPROVAL" name="APPROVAL" class="comboSize">
+										<select id="APPROVAL" name="APPROVAL" class="comboSize" id="APPROVAL">
 											<option value="0" >전체</option>
 											<option value="1" >미보고</option>
 											<option value="2" selected>승인</option>
@@ -72,7 +100,7 @@ $(document).ready(function() {
 										</select>
 									</c:when>
 									<c:when test="${APPROVAL == '3'}">
-										<select id="APPROVAL" name="APPROVAL" class="comboSize">
+										<select id="APPROVAL" name="APPROVAL" class="comboSize" id="APPROVAL">
 											<option value="0" >전체</option>
 											<option value="1" >미보고</option>
 											<option value="2">승인</option>
@@ -81,7 +109,7 @@ $(document).ready(function() {
 										</select>
 									</c:when>
 									<c:when test="${APPROVAL == '4'}">
-										<select id="APPROVAL" name="APPROVAL" class="comboSize">
+										<select id="APPROVAL" name="APPROVAL" class="comboSize" id="APPROVAL">
 											<option value="0" >전체</option>
 											<option value="1" >미보고</option>
 											<option value="2">승인</option>
@@ -90,7 +118,7 @@ $(document).ready(function() {
 										</select>
 									</c:when>
 									<c:otherwise>
-										<select id="APPROVAL" name="APPROVAL" class="comboSize">
+										<select id="APPROVAL" name="APPROVAL" class="comboSize" id="APPROVAL">
 											<option value="0" selected>전체</option>
 											<option value="1">미보고</option>
 											<option value="2">승인</option>
@@ -98,27 +126,25 @@ $(document).ready(function() {
 											<option value="4">미승인</option>
 										</select>
 									</c:otherwise>
-								</c:choose>
-							</div>
-							<div>
+								</c:choose><br>
 								<label>완료여부</label>
 								<c:choose>
 									<c:when test="${COMPLET == 'Y'}">
-										<select id="COMPLET" name="COMPLET" class="comboSize">
+										<select id="COMPLET" name="COMPLET" class="comboSize" id="COMPLET">
 											<option value="0">전체</option>
 											<option value="Y"selected >Y</option>
 											<option value="N">N</option>
 										</select>
 									</c:when>
 									<c:when test="${COMPLET == 'N'}">
-										<select id="COMPLET" name="COMPLET" class="comboSize">
+										<select id="COMPLET" name="COMPLET" class="comboSize" id="COMPLET">
 											<option value="0">전체</option>
 											<option value="Y" >Y</option>
 											<option value="N" selected>N</option>
 										</select>
 									</c:when>
 									<c:otherwise>
-										<select id="COMPLET" name="COMPLET" class="comboSize">
+										<select id="COMPLET" name="COMPLET" class="comboSize" id="COMPLET">
 											<option value="0" selected>전체</option>
 											<option value="Y">Y</option>
 											<option value="N">N</option>
@@ -126,34 +152,31 @@ $(document).ready(function() {
 									</c:otherwise>
 								</c:choose>
 							</div>
-						</div>
-						<div class="floatRight marginRight_10">
-						<button type="submit"><i class="fas fa-search"></i>&nbsp;&nbsp;검색</button><br>
-						<button type="button" onclick="location.href='/sunsoft/corpRequest/corpRequest?'"><i class="fas fa-window-close" style="font-size:15px;"></i>&nbsp;&nbsp;취소</button>
-						</div>
-						<div class="inline " style="width: 350px;">
-							<div class="floatRight marginRight_20">
-								<input type="date" size="5" name="STDATE" id="STDATE" value=${STDATE }><br>
-								<input type="date" size="5" name="LTDATE" id="LTDATE" value=${LTDATE }>
+						<div style="position: relative;left: 20em;">
+							<div style="display: flex;">
+								<div><label>요청일</label></div>
+								<div style="display: inline; position: relative;left: 1em;">
+									<input type="date" size="5" name="STDATE" id="STDATE" value=${STDATE }><br>
+									<input type="date" size="5" name="LTDATE" id="LTDATE" value=${LTDATE }>
+								</div>
 							</div>
-							<div class="floatRight marginRight_10"><label class="floatRight">검색기간</label></div>
 						</div>
 					</div><!-- searchBox end -->
 				</form>
 			</div><!-- form end -->
-			<div class="marginLeft_100">
-				<table class="table1100">
+			<div>
+				<table class="table100">
 					<thead>
-						<tr><th width="30"><button type="button" onclick="window.open('/sunsoft/corpRequest/RequestForm','insertRequest','width=640, height=840'); return false"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;add</button></th>
-							<th>No.</th>
-							<th>날짜</th>
-							<th>거래처명</th>
-							<th>담당자</th>
-							<th>요청자</th>
-							<th>승인여부</th>
-							<th>완료여부</th>
-							<th>완료날짜</th>
-							<th width="30"></th></tr>
+						<tr><th style="width: 5%"><button type="button" style="background-color: #1467b3;color: white;"onclick="window.open('/sunsoft/corpRequest/RequestForm','insertRequest','width=640, height=840'); return false"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;add</button></th>
+							<th style="width: 5%">No.</th>
+							<th style="width: 15%">날짜</th>
+							<th style="width: 20%">거래처명</th>
+							<th style="width: 10%">담당자</th>
+							<th style="width: 10%">요청자</th>
+							<th style="width: 10%">승인여부</th>
+							<th style="width: 5%">완료여부</th>
+							<th style="width: 15%">완료날짜</th>
+							<th style="width: 5%"></th></tr>
 					</thead>
 					<tbody id="reqList">
 						<c:forEach items="${reqList }" var="list" varStatus="i">
@@ -177,6 +200,9 @@ $(document).ready(function() {
 				</table>
 			</div><!-- table end -->
 		</div><!-- row end -->
+	</div>
+</div>
+
 		<div class="webNone">
 			<div class="marginLeft_100"><h1>업체요청사항</h1></div>
 			<table class="marginLeft approTable">
@@ -215,8 +241,10 @@ $(document).ready(function() {
 						<td colspan="5" class="dataPre"><pre class="dataPre" id="prt_CPTCONT"></pre></td></tr>
 				</table>
 			</div>
+			
 		</div><!-- print webNone end -->
-	</div><!-- content end -->
-</div>
+<!-- footer -->
+<jsp:include page="../public/footer.jsp"/>
+<!-- footer -->
 </body>
 </html>

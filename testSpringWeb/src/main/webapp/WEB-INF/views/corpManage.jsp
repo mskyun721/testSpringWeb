@@ -41,12 +41,9 @@ $(document).ready(function() {
 <jsp:include page="public/header.jsp"/>
 <!-- header -->
 <div class="row">
-<!-- sidebar -->
-<jsp:include page="public/sidebar.jsp"/>
-<!-- sidebar -->
-	<div class="rightcolumn">
+	<div>
 		<div class="card">
-			<h3><i class="fas fa-caret-right"></i> 사용자 등록</h3>
+			<h3><i class="fas fa-caret-right"></i>사업장 관리</h3>
 			<hr />
 			<div>
 				<form method="GET">
@@ -54,9 +51,7 @@ $(document).ready(function() {
 				<thead>
 					<tr><th style="width: 3%"></th>
 						<th style="width: 3%">No.</th>
-						<th style="width: 5%">거래처 코드</th>
 						<th style="width: 7%">거래처</th>
-						<th style="width: 3%">타입</th>
 						<th style="width: 5%">대표자</th>
 						<th style="width: 8%">사업자 번호</th>
 						<th style="width: 5%">업태</th>
@@ -69,9 +64,7 @@ $(document).ready(function() {
 						<th style="width: 5%"></th></tr>
 					<tr><td><button type="button" onclick="window.open('corpManageForm','_blank','width=585, height=390'); return false"><i class="fas fa-plus-square"></i>add</button></td>
 						<td><input type="text" size="1" readonly="readonly"></td>
-						<td><input type="text" size="10" name="CSTCD" id="CSTCD"></td>
 						<td><input type="text" size="10" name="CSTNM" id="CSTNM"></td>
-						<td><input type="text" size="2" name="CSTTYPE" id="CSTTYPE"></td>
 						<td><input type="text" size="10" name="CSTCEO" id="CSTCEO"></td>
 						<td><input type="text" size="10" name="BIZNO" id="BIZNO"></td>
 						<td><input type="text" size="5" name="CSTKIND" id="CSTKIND"></td>
@@ -90,9 +83,7 @@ $(document).ready(function() {
 									onclick="window.open('corpManageForm?CSTCD=${list.CSTCD}',
 									'_blank','width=585, height=390'); return false"><i class="fas fa-edit"></i>edit</button></td>
 							<td>${i.index+1 }</td>
-							<td>${list.CSTCD }</td>
 							<td>${list.CSTNM }</td>
-							<td>${list.CSTTYPE }</td>
 							<td>${list.CSTCEO }</td>
 							<td>${list.BIZNO }</td>
 							<td>${list.CSTKIND }</td>
@@ -112,5 +103,8 @@ $(document).ready(function() {
 		</div><!-- row1 end -->
 	</div><!-- content end -->
 </div>
+<!-- footer -->
+<jsp:include page="public/footer.jsp"/>
+<!-- footer -->
 </body>
 </html>

@@ -9,10 +9,10 @@
 <style>
 @font-face {
     font-family: 'NotoSansCJKkr-Regular';
-    src: url("font/NotoSansCJKkr-Regular.otf") format("opentype");
+    src: url("resources/font/NotoSansCJKkr-Regular.otf") format("opentype");
 }
 body {font-family: NotoSansCJKkr-Regular;
-background-image:url(images/bg1.JPG);font-size:14px;
+background-image:url(resources/images/bg1.JPG);font-size:14px;
     background-repeat: no-repeat; background-size:cover;
     background-position: 50% 0
 }

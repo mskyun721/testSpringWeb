@@ -41,12 +41,9 @@ $(document).ready(function() {
 <jsp:include page="public/header.jsp"/>
 <!-- header -->
 <div class="row">
-<!-- sidebar -->
-<jsp:include page="public/sidebar.jsp"/>
-<!-- sidebar -->
-	<div class="rightcolumn">
+	<div>
 		<div class="card">
-			<h3><i class="fas fa-caret-right"></i> 사용자 등록</h3>
+			<h3><i class="fas fa-caret-right"></i> 사용자 관리</h3>
 			<hr />
 			<div>
 				<form method="post" action="searchUser">
@@ -81,7 +78,7 @@ $(document).ready(function() {
 						<tr><td width="30"><button type="button" onclick="window.open('userForm?USERID=${user.USERID}&USERPW=${user.USERPW}','_blank','width=300, height=350'); return false"><i class="fas fa-edit"></i>edit</button></td>
 						<td>${i.index+1 }</td>
 						<td>${user.USERID }</td>
-						<td>${user.USERPW }</td>
+						<td>*****</td>
 						<td>${user.USERNM }</td>
 						<td>${user.JOBGRADE }</td>
 						<td>${user.USERTYPE }</td>
@@ -98,5 +95,8 @@ $(document).ready(function() {
 		</div><!-- row1 end -->
 	</div><!-- content end -->
 </div>
+<!-- footer -->
+<jsp:include page="public/footer.jsp"/>
+<!-- footer -->
 </body>
 </html>
