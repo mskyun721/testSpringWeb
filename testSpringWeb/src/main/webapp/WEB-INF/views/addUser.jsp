@@ -33,6 +33,26 @@ $(document).ready(function() {
 		}
 		
 	});
+	
+	
+	$('#add').click(function(){
+		var popUpX = (window.screen.width/2)-400;
+		var popUpY = (window.screen.height/2)-250;
+		
+		window.open('userForm','_blank','width=335, height=410, left='+popUpX+', top='+popUpY);
+	});
+	
+	$("[id^=edit]").click(function(){
+		var id = $(this).attr("id");
+		var num = id.replace("edit","");
+		var userid = $('#delRow'+num).val();
+		
+		var popUpX = (window.screen.width/2)-400;
+		var popUpY = (window.screen.height/2)-250;
+		
+		window.open('userForm?USERID='+userid,'_blank','width=335, height=410, left='+popUpX+', top='+popUpY);
+	});
+	
 });
 </script>
 </head>
@@ -55,18 +75,16 @@ $(document).ready(function() {
 							<th style="width: 7%">PassWord</th>
 							<th style="width: 7%">이름</th>
 							<th style="width: 5%">직급</th>
-							<th style="width: 3%">타입</th>
 							<th style="width: 10%">전화번호</th>
 							<th style="width: 10%">비상연락망</th>
 							<th style="width: 15%">비고</th>
 							<th style="width: 3%"></th></tr>
-						<tr><td><button type="button" onclick="window.open('userForm','_blank','width=300, height=350'); return false"><i class="fas fa-plus-square"></i>add</button></td>
+						<tr><td><button type="button" id="add"><i class="fas fa-plus-square"></i>add</button></td>
 							<td><input type="text" size="1" readonly="readonly"></td>
 							<td><input type="text" size="4" name="USERID" value="" id="USERID"></td>
 							<td><input type="text" size="4" name="USERPW" value="" id="USERPW"></td>
 							<td><input type="text" size="4" name="USERNM" value="" id="USERNM"></td>
 							<td><input type="text" size="3" name="JOBGRADE" value="" id="JOBGRADE"></td>
-							<td><input type="text" size="1" name="USERTYPE" value="" id="USERTYPE"></td>
 							<td><input type="text" size="7" name="HPNUMBER" value="" id="USERTYPE"></td>
 							<td><input type="text" size="7" name="HPNUMBER2" value="" id="USERTYPE"></td>
 							<td><input type="text" size="7" name="REMARK" value="" id="REMARK"></td>
@@ -75,13 +93,12 @@ $(document).ready(function() {
 					</thead>
 					<tbody>
 						<c:forEach items="${userList }" var="user" varStatus="i">
-						<tr><td width="30"><button type="button" onclick="window.open('userForm?USERID=${user.USERID}&USERPW=${user.USERPW}','_blank','width=300, height=350'); return false"><i class="fas fa-edit"></i>edit</button></td>
+						<tr><td width="30"><button type="button" id="edit${i.index }"><i class="fas fa-edit"></i>edit</button></td>
 						<td>${i.index+1 }</td>
 						<td>${user.USERID }</td>
 						<td>*****</td>
 						<td>${user.USERNM }</td>
 						<td>${user.JOBGRADE }</td>
-						<td>${user.USERTYPE }</td>
 						<td>${user.HPNUMBER }</td>
 						<td>${user.HPNUMBER2 }</td>
 						<td>${user.REMARK }</td>

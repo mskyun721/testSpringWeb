@@ -59,7 +59,11 @@ public class HomeController {
 			return "login";
 		}
 	}
-	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(Model model,HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
+	}
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model, CalDTO calDto,HttpSession session){
 		int year;

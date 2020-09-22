@@ -33,6 +33,21 @@ $(document).ready(function() {
 		}
 		
 	});
+	
+	var popUpX = (window.screen.width/2)-400;
+	var popUpY = (window.screen.height/2)-250;
+	$('#add').click(function(){
+		window.open('corpManageForm','_blank','width=600, height=440, left='+popUpX+', top='+popUpY);
+	});
+	
+	$("[id^=edit]").click(function(){
+		var id = $(this).attr("id");
+		var num = id.replace("edit","");
+		var result = $('#delRow'+num).val();
+		
+		window.open('corpManageForm?UNTCD='+result,'_blank','width=600, height=440, left='+popUpX+', top='+popUpY);
+	});
+	
 });
 </script>
 </head>
@@ -62,7 +77,7 @@ $(document).ready(function() {
 						<th style="width: 15%">주소</th>
 						<th style="width: 10%">비고</th>
 						<th style="width: 5%"></th></tr>
-					<tr><td><button type="button" onclick="window.open('corpManageForm','_blank','width=585, height=390'); return false"><i class="fas fa-plus-square"></i>add</button></td>
+					<tr><td><button type="button" id="add"><i class="fas fa-plus-square"></i>add</button></td>
 						<td><input type="text" size="1" readonly="readonly"></td>
 						<td><input type="text" size="10" name="CSTNM" id="CSTNM"></td>
 						<td><input type="text" size="10" name="CSTCEO" id="CSTCEO"></td>
@@ -80,8 +95,7 @@ $(document).ready(function() {
 					<tbody>
 						<c:forEach items="${corpList }" var="list" varStatus="i">
 						<tr><td><button type="button" 
-									onclick="window.open('corpManageForm?CSTCD=${list.CSTCD}',
-									'_blank','width=585, height=390'); return false"><i class="fas fa-edit"></i>edit</button></td>
+									id="edit${i.index }"><i class="fas fa-edit"></i>edit</button></td>
 							<td>${i.index+1 }</td>
 							<td>${list.CSTNM }</td>
 							<td>${list.CSTCEO }</td>

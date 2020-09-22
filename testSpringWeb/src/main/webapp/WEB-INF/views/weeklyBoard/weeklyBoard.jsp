@@ -107,16 +107,22 @@ $(document).ready(function() {
 		var monthVal = $(this).val();
 		var yearVal = $('#year').val();
 		
-		location
+		location.href="/sunsoft/weeklyBoard/weeklyBoard?year="+yearVal+"&month="+monthVal;
+	});
+	$('#year').change(function(){
+		var yearVal = $(this).val();
+		var monthVal = $('#month').val();
+		
+		location.href="/sunsoft/weeklyBoard/weeklyBoard?year="+yearVal+"&month="+monthVal;
 	});
 });
 </script>
 </head>
 <body>
 <!-- header -->
-<jsp:include page="../public/header.jsp"/>
+<div class="printNone"><jsp:include page="../public/header.jsp"/></div>
 <!-- header -->
-<div class="row">
+<div class="row printNone">
 	<div style="width:40%;float: left; ">
 		<div class="card">
 			<h3><i class="fas fa-caret-right"></i> 주간업무일지</h3>
@@ -236,7 +242,7 @@ $(document).ready(function() {
 			</div>
 		</div><!-- print webNone end -->
 <!-- footer -->
-<jsp:include page="../public/footer.jsp"/>
+<div class="printNone"><jsp:include page="../public/footer.jsp"/></div>
 <!-- footer -->
 </body>
 </html>

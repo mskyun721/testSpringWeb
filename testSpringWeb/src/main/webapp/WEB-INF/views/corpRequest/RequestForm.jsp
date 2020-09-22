@@ -6,6 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>업체 요청 사항</title>
+<link type="text/css" href="../resources/style/default.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/common.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/layout.css" rel="stylesheet">
+<link type="text/css" href="../resources/style/design.css" rel="stylesheet">
 <link href="../resources/css/default.css" rel="stylesheet" type="text/css">
 <link href="../resources/css/scheduleForm.css" rel="stylesheet" type="text/css">
 <link href="../resources/font/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,14 +39,14 @@
 </script>
 </head>
 <body>
-<div>
-	<div class="marginLeft_30 floatLeft"><h3>업체 요청 내역</h3></div>
-	<div class="marginRight_50 marginTop_10 floatRight"><button type="button" onclick="printData('${requestCrhDto.REQDATE}','${requestCrhDto.CSTNM }','${requestCrhDto.USERNM }',
+<div class="marginRight_50 marginTop_10 floatRight"><button type="button" onclick="printData('${requestCrhDto.REQDATE}','${requestCrhDto.CSTNM }','${requestCrhDto.USERNM }',
 											'${requestCrhDto.CSTEMPNM }','${requestCrhDto.APPROVAL}','${requestCrhDto.REQCONT }',
 											'${requestCrhDto.CPTDATE }','${requestCrhDto.COMPLET}','${requestCrhDto.CPTCONT }');" id="printData">
 											<i class="fas fa-file-powerpoint" style="font-size:15px;"></i>&nbsp;&nbsp;출력</button></div>
-</div>
-<div class="clear"></div>
+<div class="popUpCard">
+	<h3 style="text-align: center;">업체 요청 내역</h3><br>
+	
+
 <div class="marginLeft_20">
 	<form action="/sunsoft/corpRequest/requestInsert" method="get" class="subPageForm">
 		<div class="formRow">
@@ -164,6 +168,7 @@
 		<button type="button" onclick="window.close"><i class="fas fa-window-close" style="font-size:15px;"></i>&nbsp;&nbsp;취소</button>
 		</div>
 	</form>
+</div>
 </div>
 </body>
 </html>
