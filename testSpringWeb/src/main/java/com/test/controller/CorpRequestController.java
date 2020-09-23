@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,24 +28,25 @@ public class CorpRequestController {
 	Calendar cal = Calendar.getInstance();
 
 	@RequestMapping(value="corpRequest", method= {RequestMethod.GET,RequestMethod.POST})
-	public String corpRequest(Model model,CstReqHisDTO crhDto) {
-		Map<String,Object> dateMap = crService.searchDate();
-		if (crhDto.getSTDATE()==null) {crhDto.setSTDATE(dateMap.get("stdate").toString());}
-		if (crhDto.getLTDATE()==null) {crhDto.setLTDATE(dateMap.get("ltdate").toString());}
-		
-		List<CstReqHisDTO> reqList = crService.requestList(crhDto);
-		model.addAttribute("STDATE",crhDto.getSTDATE());
-		model.addAttribute("LTDATE",crhDto.getLTDATE());
-		model.addAttribute("reqList",reqList);
-		model.addAttribute("CSTNM",crhDto.getCSTNM());
-		model.addAttribute("APPROVAL",crhDto.getAPPROVAL());
-		model.addAttribute("COMPLET",crhDto.getCOMPLET());
-		return "corpRequest/corpRequest";
-	}
-	
-	@RequestMapping("corpRequestList")
-	public String corpRequestList() {
-		return "corpRequest/corpRequestList";
+	public String corpRequest(Model model,CstReqHisDTO crhDto,HttpSession session) {
+		String path="";
+		if(session.getAttribute("USERID")==null) {
+			path="redirect:/";
+		}else {
+			Map<String,Object> dateMap = crService.searchDate();
+			if (crhDto.getSTDATE()==null) {crhDto.setSTDATE(dateMap.get("stdate").toString());}
+			if (crhDto.getLTDATE()==null) {crhDto.setLTDATE(dateMap.get("ltdate").toString());}
+			
+			List<CstReqHisDTO> reqList = crService.requestList(crhDto);
+			model.addAttribute("STDATE",crhDto.getSTDATE());
+			model.addAttribute("LTDATE",crhDto.getLTDATE());
+			model.addAttribute("reqList",reqList);
+			model.addAttribute("CSTNM",crhDto.getCSTNM());
+			model.addAttribute("APPROVAL",crhDto.getAPPROVAL());
+			model.addAttribute("COMPLET",crhDto.getCOMPLET());
+			path="corpRequest/corpRequest";
+		}
+		return path;
 	}
 	
 	@RequestMapping("RequestForm")

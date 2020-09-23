@@ -66,6 +66,11 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(Model model, CalDTO calDto,HttpSession session){
+		String path="";
+		if(session.getAttribute("USERID")==null) {
+			path="redirect:/";
+		}else {
+		
 		int year;
 		int month;
 		if (calDto.getYear() == 0) {
@@ -87,7 +92,9 @@ public class HomeController {
 		model.addAttribute("month",strMonth);
 		model.addAttribute("endDays",map.get("endDays"));
 		model.addAttribute("schList",schList);
-		return "index";
+		 path="index";
+		}
+		return path;
 	}
 	 
 	
@@ -127,12 +134,18 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/addUser", method = RequestMethod.GET)
-	public String addUserGet(Model model) {
-		List<UserMstInfoDTO> userList;
-		userList=homeService.selectUser();
-		model.addAttribute("userList",userList);
+	public String addUserGet(Model model, HttpSession session) {
+		String path="";
+		if(session.getAttribute("USERID")==null) {
+			path="redirect:/";
+		}else {
+			List<UserMstInfoDTO> userList;
+			userList=homeService.selectUser();
+			model.addAttribute("userList",userList);
+			path="addUser";
+		}
 		
-		return "addUser";
+		return path;
 	}
 	
 	@RequestMapping(value = "/userForm", method = RequestMethod.GET)
@@ -175,12 +188,18 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/corpManage", method=RequestMethod.GET)
-	public String corpManage(Model model,CstMstInfoDTO cmiDTO){
-		List<CstMstInfoDTO> corpList;
-		corpList = homeService.corpList(cmiDTO);
-		model.addAttribute("corpList",corpList);
+	public String corpManage(Model model,CstMstInfoDTO cmiDTO, HttpSession session){
+		String path="";
+		if(session.getAttribute("USERID")==null) {
+			path="redirect:/";
+		}else {
+			List<CstMstInfoDTO> corpList;
+			corpList = homeService.corpList(cmiDTO);
+			model.addAttribute("corpList",corpList);
+			path="corpManage";
+		}
 		
-		return "corpManage";
+		return path;
 	}
 	
 	@RequestMapping(value="/corpManageForm", method=RequestMethod.GET)

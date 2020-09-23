@@ -27,25 +27,29 @@ public class WeeklyBoardController {
 	Calendar cal = Calendar.getInstance();
 	@Inject
 	private WeeklyBoardService weeklyService;
-	@Inject
-	private HomeService homeService;
 	
 	@RequestMapping("weeklyBoard")
 	public String weeklyBoard(CalDTO calDto, Model model,HttpSession session) {
-		Map<String, Object> calMap = weeklyService.weeklyCal(calDto);
-		WeekWrkHisDTO weeklyDTO = new WeekWrkHisDTO();
-		weeklyDTO.setVIEWTYPE(session.getAttribute("VIEWTYPE").toString());
-		weeklyDTO.setUSERID(session.getAttribute("USERID").toString());
-		weeklyDTO.setSTWEEKDAY(calMap.get("yearMonth").toString());
-		List<WeekWrkHisDTO> weeklyList = weeklyService.weeklyList(weeklyDTO);
-		model.addAttribute("month", calMap.get("month"));
-		model.addAttribute("year",calMap.get("year"));
-		model.addAttribute("monday", calMap.get("monday"));
-		model.addAttribute("friday", calMap.get("friday"));
-		model.addAttribute("week", calMap.get("week"));
-		model.addAttribute("weeklyList",weeklyList);
+		String path="";
+		if(session.getAttribute("USERID")==null) {
+			path="redirect:/";
+		}else {
+			Map<String, Object> calMap = weeklyService.weeklyCal(calDto);
+			WeekWrkHisDTO weeklyDTO = new WeekWrkHisDTO();
+			weeklyDTO.setVIEWTYPE(session.getAttribute("VIEWTYPE").toString());
+			weeklyDTO.setUSERID(session.getAttribute("USERID").toString());
+			weeklyDTO.setSTWEEKDAY(calMap.get("yearMonth").toString());
+			List<WeekWrkHisDTO> weeklyList = weeklyService.weeklyList(weeklyDTO);
+			model.addAttribute("month", calMap.get("month"));
+			model.addAttribute("year",calMap.get("year"));
+			model.addAttribute("monday", calMap.get("monday"));
+			model.addAttribute("friday", calMap.get("friday"));
+			model.addAttribute("week", calMap.get("week"));
+			model.addAttribute("weeklyList",weeklyList);
+			path="weeklyBoard/weeklyBoard";
+		}
 		
-		return "weeklyBoard/weeklyBoard";
+		return path;
 	}
 	
 	@RequestMapping(value="insertBoard", method=RequestMethod.POST)
@@ -66,10 +70,5 @@ public class WeeklyBoardController {
 		return path;
 	}
 	
-	@RequestMapping("weeklyBoardList")
-	public String weeklyBoardList(Locale locale, Model model) {
-		
-		return "weeklyBoard/weeklyBoardList";
-	}
 	
 }
