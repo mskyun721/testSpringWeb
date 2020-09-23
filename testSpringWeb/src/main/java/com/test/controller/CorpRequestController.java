@@ -88,12 +88,7 @@ public class CorpRequestController {
 		return "corpRequest/RequestForm";
 	}
 	
-	@RequestMapping(value="requestDel")
-	public String requestDel(CstReqHisDTO crhDto) {
-		crService.requestDel(crhDto);
-		
-		return "redirect:/corpRequest/corpRequest";
-	}
+	
 	
 	@RequestMapping(value="CstcdSearch", method=RequestMethod.GET)
 	public String CstcdSearch(Model model,CstMstInfoDTO cmiDTO) {

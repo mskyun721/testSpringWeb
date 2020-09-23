@@ -110,6 +110,9 @@ public class AjaxController {
 		return reqList;
 	}
 	
-	
+	@RequestMapping(value="/corpRequest/requestDel")
+	public void requestDel(CstReqHisDTO crhDto) {
+		crService.requestDel(crhDto);
+	}
 	
 }

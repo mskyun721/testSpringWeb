@@ -55,16 +55,46 @@ $(document).ready(function() {
 		location.href="/sunsoft/corpRequest/corpRequest?CSTNM="+cstnm+"&APPROVAL="+approval+"&COMPLET="+complet+"&STDATE="+stdate+"&LTDATE="+ltdate;
 	});
 	
+	var popUpX = (window.screen.width/2)-400;
+	$('#add').click(function(){
+		window.open('RequestForm','_blank','width=670, height=800, left='+popUpX);
+	});
 	
+	$('[id^=edit]').click(function(){
+		var id = $(this).attr("id");
+		var num = id.replace("edit","");
+		var reqdate = $('#REQDATE'+num).val();
+		var reqno = $('#REQNO'+num).val();
+		window.open('/sunsoft/corpRequest/RequestForm?REQDATE='+reqdate+'&REQNO='+reqno,'_blank','width=670, height=800, left='+popUpX);
+	});
+	
+	$("[id^=btnDel]").click(function () {
+		var confirmResult = confirm("삭제하시겠습니까?");
+		var id = $(this).attr("id");
+		var num = id.replace("btnDel","");
+		var reqdate = $('#REQDATE'+num).val();
+		var reqno = $('#REQNO'+num).val();
+		if (confirmResult) {
+			$.ajax({
+				url:"requestDel",
+				type:"get",
+				data:{REQDATE:reqdate,REQNO:reqno},
+				success:function(data){
+					location.reload();
+				}
+			});
+		}
+		
+	});
 	
 });
 </script>
 </head>
 <body>
 <!-- header -->
-<jsp:include page="../public/header.jsp"/>
+<div class="printNone"><jsp:include page="../public/header.jsp"/></div>
 <!-- header -->
-<div class="row">
+<div class="row printNone">
 	<div>
 		<div class="card">
 			<h3><i class="fas fa-caret-right"></i>업체 요청 사항</h3>
@@ -75,7 +105,7 @@ $(document).ready(function() {
 						<div style="display: inline;position: static;height: 100%;">
 							<label>사업장</label>
 							<input type="text" size="10" id="CSTNM" name="CSTNM" value="${CSTNM }">&nbsp;
-							<button type="button" onclick="window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=500,height=400')"><i class="fas fa-object-ungroup"style="font-size:15px;"></i>&nbsp;&nbsp;조회</button>
+							<button type="button" onclick="window.open('/sunsoft/corpRequest/CstcdSearch','searchCst','width=640,height=855')"><i class="fas fa-object-ungroup"style="font-size:15px;"></i>&nbsp;&nbsp;조회</button>
 						</div>
 						
 						<div style="display: inline; position: relative; left: 10em;">
@@ -167,7 +197,7 @@ $(document).ready(function() {
 			<div>
 				<table class="table100">
 					<thead>
-						<tr><th style="width: 5%"><button type="button" style="background-color: #1467b3;color: white;"onclick="window.open('/sunsoft/corpRequest/RequestForm','insertRequest','width=640, height=840'); return false"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;add</button></th>
+						<tr><th style="width: 5%"><button type="button" id="add" style="background-color: #1467b3;color: white;"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;add</button></th>
 							<th style="width: 5%">No.</th>
 							<th style="width: 15%">날짜</th>
 							<th style="width: 20%">거래처명</th>
@@ -180,8 +210,7 @@ $(document).ready(function() {
 					</thead>
 					<tbody id="reqList">
 						<c:forEach items="${reqList }" var="list" varStatus="i">
-							<tr><td width="10"><button type="button" 
-									onclick="window.open('/sunsoft/corpRequest/RequestForm?REQDATE=${list.REQDATE}&REQNO=${list.REQNO }','_blank','width=640, height=840'); return false"><i class="fas fa-edit"></i>edit</button></td>
+							<tr><td width="10"><button type="button" id="edit${i.index }"><i class="fas fa-edit"></i>edit</button></td>
 								<td>${i.index+1 }</td>
 								<td>${list.REQDATE }</td>
 								<td>${list.CSTNM }</td>
@@ -193,8 +222,10 @@ $(document).ready(function() {
 									<c:if test="${list.APPROVAL == '4' }">미승인</c:if></td>
 								<td>${list.COMPLET }</td>
 								<td>${list.CPTDATE }</td>
-								<td><button type="button" onclick="location.href='requestDel?REQDATE=${list.REQDATE}&REQNO=${list.REQNO}'"><i class="fas fa-trash-alt" style="font-size:15px;"></i>Del</button></td>
+								<td><button type="button" id="btnDel${i.index }"><i class="fas fa-trash-alt" style="font-size:15px;"></i>Del</button></td>
 							</tr>
+							<input type="hidden" id="REQDATE${i.index }" value="${list.REQDATE }">
+							<input type="hidden" id="REQNO${i.index }" value="${list.REQNO }">
 						</c:forEach>
 					</tbody>
 				</table>
@@ -204,14 +235,14 @@ $(document).ready(function() {
 </div>
 
 		<div class="webNone">
-			<div class="marginLeft_100"><h1>업체요청사항</h1></div>
+			<div class="marginLeft_100 marginTop_50"><h1>업체요청사항</h1></div><br>
 			<table class="marginLeft approTable">
-				<tr><td rowspan="2">결재</td>
-					<td width="100">담당자</td>
-					<td width="100">과장</td>
-					<td width="100">차장</td>
-					<td width="100">차장</td>
-					<td width="100">사장</td></tr>
+				<tr><td rowspan="2" style="width: 10%;">결<br>재</td>
+					<td style="width: 18%;">담당자</td>
+					<td style="width: 18%;">과장</td>
+					<td style="width: 18%;">차장</td>
+					<td style="width: 18%;">차장</td>
+					<td style="width: 18%;">사장</td></tr>
 				<tr><td height="50"></td>
 					<td height="50"></td>
 					<td height="50"></td>
@@ -221,30 +252,30 @@ $(document).ready(function() {
 			<div class="hiddenBlock"></div>
 			<div>
 				<table class="print_table">
-					<tr height="20"><td width="100" rowspan="2">요청일</td>
+					<tr height="20"><td width="100" rowspan="2"><b>요청일</b></td>
 						<td id="prt_REQDATE" width="200" rowspan="2" ></td>
-						<td width="100">거래처</td>
+						<td width="100"><b>거래처</b></td>
 						<td id="prt_CSTNM"></td>
-						<td width="100">요청자</td>
+						<td width="100"><b>요청자</b></td>
 						<td id=prt_CSTEMPNM></td></tr>
-					<tr><td width="100">담당자</td>
+					<tr><td width="100"><b>담당자</b></td>
 						<td id="prt_USERNM"></td>
-						<td width="100">승인여부</td>
+						<td width="100"><b>승인여부</b></td>
 						<td id="prt_APPROVAL"></td></tr>
-					<tr height="400"><td><pre>요 청<br><br>사 항</pre></td>
+					<tr height="400"><td><pre><b>요 청</b><br><br><b>사 항</b></pre></td>
 						<td colspan="5" class="dataPre"><pre class="dataPre" id="prt_REQCONT"></pre></td></tr>
-					<tr height="40"><td width="100">완료일</td>
+					<tr height="40"><td width="100"><b>완료일</b></td>
 						<td colspan="2" id="prt_CPTDATE"></td>
-						<td width="100">완료여부</td>
+						<td width="100"><b>완료여부</b></td>
 						<td colspan="2" id="prt_COMPLET"></td></tr>
-					<tr height="400"><td><pre>완 료<br><br>내 용</pre></td>
+					<tr height="400"><td><pre><b>완 료</b><br><br><b>내 용</b></pre></td>
 						<td colspan="5" class="dataPre"><pre class="dataPre" id="prt_CPTCONT"></pre></td></tr>
 				</table>
 			</div>
 			
 		</div><!-- print webNone end -->
 <!-- footer -->
-<jsp:include page="../public/footer.jsp"/>
+<div class="printNone"><jsp:include page="../public/footer.jsp"/></div>
 <!-- footer -->
 </body>
 </html>

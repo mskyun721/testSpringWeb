@@ -64,7 +64,7 @@ $(document).ready(function() {
 				<form method="GET">
 				<table class="table100">
 				<thead>
-					<tr><th style="width: 3%"></th>
+					<tr><th style="width: 3%"><button type="button" id="add" style="background-color: #1467b3;color: white;"><i class="fas fa-plus-square"></i>add</button></th>
 						<th style="width: 3%">No.</th>
 						<th style="width: 7%">거래처</th>
 						<th style="width: 5%">대표자</th>
@@ -76,21 +76,7 @@ $(document).ready(function() {
 						<th style="width: 7%">우편 번호</th>
 						<th style="width: 15%">주소</th>
 						<th style="width: 10%">비고</th>
-						<th style="width: 5%"></th></tr>
-					<tr><td><button type="button" id="add"><i class="fas fa-plus-square"></i>add</button></td>
-						<td><input type="text" size="1" readonly="readonly"></td>
-						<td><input type="text" size="10" name="CSTNM" id="CSTNM"></td>
-						<td><input type="text" size="10" name="CSTCEO" id="CSTCEO"></td>
-						<td><input type="text" size="10" name="BIZNO" id="BIZNO"></td>
-						<td><input type="text" size="5" name="CSTKIND" id="CSTKIND"></td>
-						<td><input type="text" size="5" name="CSTITEM" id="CSTITEM"></td>
-						<td><input type="text" size="20" name="TELNO" id="TELNO"></td>
-						<td><input type="text" size="20" name="FAXNO" id="FAXNO"></td>
-						<td><input type="text" size="7" name="ZIPNO" id="ZIPNO"></td>
-						<td><input type="text" size="40" name="ADDR1" id="ADDR1"></td>
-						<tD><input type="text" size="10"name="REMARK" id="REMARK"></td>
-						<td><button type="submit"><i class="fas fa-search"></i>&nbsp;검색</button></td>
-						</tr>
+						<th style="width: 5%"><button type="submit" style="background-color: #1467b3;color: white;"><i class="fas fa-search"></i>&nbsp;Sch</button></th></tr>
 				</thead>
 					<tbody>
 						<c:forEach items="${corpList }" var="list" varStatus="i">

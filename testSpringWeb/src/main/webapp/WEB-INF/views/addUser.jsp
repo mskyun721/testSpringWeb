@@ -69,7 +69,7 @@ $(document).ready(function() {
 				<form method="post" action="searchUser">
 				<table class="table100">
 					<thead>
-						<tr><th style="width: 3%"></th>
+						<tr><th style="width: 3%"><button type="button" id="add" style="background-color: #1467b3;color: white;"><i class="fas fa-plus-square"></i>add</button></th>
 							<th style="width: 3%">NO.</th>
 							<th style="width: 7%">ID</th>
 							<th style="width: 7%">PassWord</th>
@@ -78,18 +78,7 @@ $(document).ready(function() {
 							<th style="width: 10%">전화번호</th>
 							<th style="width: 10%">비상연락망</th>
 							<th style="width: 15%">비고</th>
-							<th style="width: 3%"></th></tr>
-						<tr><td><button type="button" id="add"><i class="fas fa-plus-square"></i>add</button></td>
-							<td><input type="text" size="1" readonly="readonly"></td>
-							<td><input type="text" size="4" name="USERID" value="" id="USERID"></td>
-							<td><input type="text" size="4" name="USERPW" value="" id="USERPW"></td>
-							<td><input type="text" size="4" name="USERNM" value="" id="USERNM"></td>
-							<td><input type="text" size="3" name="JOBGRADE" value="" id="JOBGRADE"></td>
-							<td><input type="text" size="7" name="HPNUMBER" value="" id="USERTYPE"></td>
-							<td><input type="text" size="7" name="HPNUMBER2" value="" id="USERTYPE"></td>
-							<td><input type="text" size="7" name="REMARK" value="" id="REMARK"></td>
-							<td><button type="submit"><i class="fas fa-search"></i>검색</button></td>
-							</tr>
+							<th style="width: 3%"><button type="submit" style="background-color: #1467b3;color: white;"><i class="fas fa-search"></i>Sch</button></th></tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${userList }" var="user" varStatus="i">
