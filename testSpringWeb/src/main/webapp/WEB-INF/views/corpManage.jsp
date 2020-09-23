@@ -45,7 +45,7 @@ $(document).ready(function() {
 		var num = id.replace("edit","");
 		var result = $('#delRow'+num).val();
 		
-		window.open('corpManageForm?UNTCD='+result,'_blank','width=600, height=440, left='+popUpX+', top='+popUpY);
+		window.open('corpManageForm?CSTCD='+result,'_blank','width=600, height=440, left='+popUpX+', top='+popUpY);
 	});
 	
 });

@@ -89,15 +89,17 @@ a:active{color: black;}
 @page  {size: auto;}
 @media print{
 	.printNone{display: none;}
-	.webNone{display: block; text-align: center;margin-left: 30px;}
+	.webNone{display: block; text-align: center;margin-left: 30px;color: black;}
 	.webNone table{border-collapse: collapse;}
 	.marginLeft{margin-left: 70mm;}
 	.approTable{width:120mm;}
 	.print_table{width:190mm;font-family: "굴림체","GulimChe";table-layout: fixed;word-break: break-all;}
 	.dataPre{text-align: left;vertical-align: top;}
-	.dataPre pre{padding-left: 5px;table-layout: fixed;word-break: break-all;white-space: pre-wrap;}
+	.dataPre pre{padding-left: 5px;table-layout: fixed;word-break: break-all;white-space: pre-wrap;color: black;}
 	.marginTop_100{margin-top: 100px;}
 	.hiddenBlock{height: 15px;visibility: hidden;}
+	
+	.webNone pre{border: none; color: black;}
 }
 .onepage{
 	page-break-before: always;

@@ -6,6 +6,7 @@
 		<div class="top">
 			<a href="#" class="btn_menu"><i class="fa fa-bars"></i></a>
 			<h1><a href="/sunsoft/index"><img src="http://www.sunsoft.kr/images/sunsoft_logo.png" width="150" height="43" ></a></h1>
+			<div class="userInfo">${sessionScope.USERNM }님</div>
 			<a href="/sunsoft/logout" class="btn_logout">로그아웃</a>
 		</div>
 		<nav class="btm">

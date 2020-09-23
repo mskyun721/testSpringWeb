@@ -208,15 +208,15 @@ $(document).ready(function() {
 		</div>
 	</div><!-- row end -->
 
-		<div class="webNone">
-			<div class="marginLeft_100"><h1>주간업무일지</h1></div>
+		<div class="webNone marginTop_50">
+			<div class="marginLeft_100"><h1>주간업무일지</h1></div><br>
 			<table class="marginLeft approTable">
-				<tr><td rowspan="2">결재</td>
-					<td width="100">담당자</td>
-					<td width="100">과장</td>
-					<td width="100">차장</td>
-					<td width="100">차장</td>
-					<td width="100">사장</td></tr>
+				<tr><td rowspan="2" style="width: 10%;">결<br>재</td>
+					<td style="width: 18%;">담당자</td>
+					<td style="width: 18%;">과장</td>
+					<td style="width: 18%;">차장</td>
+					<td style="width: 18%;">차장</td>
+					<td style="width: 18%;">사장</td></tr>
 				<tr><td height="50"></td>
 					<td height="50"></td>
 					<td height="50"></td>
@@ -232,7 +232,7 @@ $(document).ready(function() {
 						<td class="JOBGRADE"></td>
 						<td width="50">성명</td>
 						<td class="USERNM"></td></tr>
-					<tr height="500"><td><pre>업 무<br><br>진 행<br><br>현 황</pre></td>
+					<tr height="550"><td><pre>업 무<br><br>진 행<br><br>현 황</pre></td>
 						<td colspan="5" class="dataPre"><pre class="WEEKWORKCONT dataPre"></pre></td></tr>
 					<tr height="150"><td><pre>특이사항<br>및<br>수정요구</pre></td>
 						<td colspan="5" class="dataPre"><pre class="WEEKPS dataPre"></pre></td></tr>
