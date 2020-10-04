@@ -23,8 +23,10 @@ import com.test.service.HomeService;
 @Controller
 @RequestMapping("/corpRequest/*")
 public class CorpRequestController {
-	@Inject CorpRequestService crService;
-	@Inject HomeService homeService;
+	@Inject
+	CorpRequestService crService;
+	@Inject
+	HomeService homeService;
 	Calendar cal = Calendar.getInstance();
 
 	@RequestMapping(value="corpRequest", method= {RequestMethod.GET,RequestMethod.POST})
